@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
- # 类似router
+
+# 类似router
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -8,3 +9,7 @@ def index(request):
 
 def news(request):
     return render(request, 'news.html')
+
+
+def login(request):
+    return render(request, 'login.html')

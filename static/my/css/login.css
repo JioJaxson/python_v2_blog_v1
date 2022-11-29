@@ -1,0 +1,132 @@
+body {
+  width: 100%;
+  height: 100vh;
+}
+body #app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  width: 600px;
+  height: 700px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+main .top {
+  padding: 40px 20px 20px 20px;
+}
+main .top .title {
+  text-align: center;
+}
+main .top .title a {
+  color: #808595;
+}
+main .top .title a.active {
+  color: orange;
+}
+main .top .login_from {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+main .top .login_from input {
+  margin-bottom: 20px;
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+  padding-left: 20px;
+  border: 1px solid #f0eeee;
+  transition: all 0.3s;
+}
+main .top .login_from input:focus {
+  border: 1px solid orange;
+}
+main .top .login_from input .code {
+  display: flex;
+  justify-content: space-between;
+}
+main .top .login_from input .code img {
+  height: 42px;
+  border-radius: 5px;
+}
+main .top .login_from input button {
+  border: none;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: orange;
+}
+main .top .login_from .code {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+main .top .login_from .code input {
+  width: 60%;
+}
+main .top .login_from .code img {
+  height: 42px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+main .top .login_from > button {
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  color: white;
+  background-color: orange;
+  border-radius: 5px;
+}
+main .other_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+main .other_login > p {
+  font-size: 14px;
+  color: #808595;
+}
+main .other_login::before, main .other_login::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 10px;
+  width: 140px;
+  height: 1px;
+  background-color: #808595;
+}
+main .other_login::before {
+  left: 90px;
+}
+main .other_login::after {
+  right: 90px;
+}
+main .other_login > div img {
+  width: 40px;
+  margin-top: 20px;
+  margin-right: 15px;
+}
+main .other_login > div img:last-child {
+  margin-right: 0;
+}
+main .bottom img {
+  width: 270px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*# sourceMappingURL=login.css.map */

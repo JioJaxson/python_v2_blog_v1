@@ -1,0 +1,167 @@
+
+body {
+  width: 100%;
+  height: 100vh;
+
+  #app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //background-color: orange;
+  }
+
+}
+
+main {
+  width: 600px;
+  height: 700px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+  .top {
+    padding: 40px 20px 20px 20px;
+
+    .title {
+      text-align: center;
+
+      a {
+        color: #808595;
+      }
+
+      a.active {
+        color: orange;
+      }
+    }
+
+
+    .login_from {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+
+      input {
+        margin-bottom: 20px;
+        height: 40px;
+        outline: none;
+        border-radius: 5px;
+        padding-left: 20px;
+        border: 1px solid #f0eeee;
+        transition: all .3s;
+
+        &:focus {
+          border: 1px solid orange;
+        }
+
+        .code {
+          display: flex;
+          justify-content: space-between;
+
+          img {
+            height: 42px;
+            border-radius: 5px;
+          }
+        }
+
+        button {
+          border: none;
+          height: 40px;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+          background-color: orange;
+        }
+      }
+
+      .code {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        input {
+          width: 60%
+        }
+
+        img {
+          height: 42px;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+      }
+
+      > button {
+        border: none;
+        cursor: pointer;
+        height: 40px;
+        color: white;
+        background-color: orange;
+        border-radius: 5px;
+      }
+
+
+    }
+
+
+  }
+
+  .other_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    > p {
+      font-size: 14px;
+      color: #808595;
+    }
+
+    &::before, &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 10px;
+      width: 140px;
+      height: 1px;
+      background-color: #808595;
+    }
+
+    &::before {
+      left: 90px;
+    }
+
+    &::after {
+      right: 90px;
+    }
+
+    > div {
+      img {
+        width: 40px;
+        margin-top: 20px;
+        margin-right: 15px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+
+  }
+
+  .bottom {
+    img {
+      width: 270px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%)
+    }
+  }
+}
