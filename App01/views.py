@@ -13,3 +13,7 @@ def news(request):
 
 def login(request):
     return render(request, 'login.html')
+
+
+def sign(request):
+    return render(request, 'sign.html')
