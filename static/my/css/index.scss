@@ -17,17 +17,13 @@
       a {
         font-size: 14px;
       }
-
     }
-
   }
 
   .body {
     padding: 10px 20px 20px 20px;
     background-color: white;
     border-radius: 0 0 5px 5px;
-
-
   }
 }
 
@@ -103,7 +99,8 @@ header {
 main {
   display: flex;
   justify-content: center;
-  width: calc(100% - 240px);
+  align-items: center;
+  //width: calc(100% - 240px);
   padding: 20px 120px;
   min-height: 600px;
   color: var(--main-color);
@@ -121,6 +118,113 @@ main {
 
     .left {
       width: 69%;
+
+      .blog_articles > .body {
+        background-color: transparent;
+        padding: 0;
+
+        > ul {
+          width: 100%;
+
+          > li {
+            width: 100%;
+            display: flex;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 5px;
+
+            &:first-child {
+              border-radius: 0 0 5px 5px;
+
+              .left {
+                padding: 10px 10px 20px 20px;
+              }
+
+              .right {
+                padding: 10px 20px 20px 10px;
+              }
+            }
+
+            .left {
+              width: 30%;
+              padding: 20px 10px 20px 20px;
+
+              > div {
+                width: 100%;
+                height: 120px;
+                overflow: hidden;
+                border-radius: 5px;
+
+              }
+
+              img {
+                width: 100%;
+                transition: all 0.3s;
+                display: block;
+
+                &:hover {
+                  transform: scale(1.1)
+                }
+              }
+            }
+
+            .right {
+              position: relative;
+              width: 70%;
+              padding: 20px 20px 20px 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: baseline;
+              justify-content: space-between;
+
+              > h2 {
+                font-size: 23px;
+                margin-bottom: 5px;
+              }
+
+
+              p {
+                margin-bottom: 10px;
+                // 文字多行截断
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              .article_info {
+                font-size: 14px;
+
+                > span {
+                  margin-right: 10px;
+
+                  > i {
+                    margin-right: 5px;
+                  }
+
+                }
+              }
+
+              > a {
+                position: absolute;
+                right: 18px;
+                bottom: 18px;
+                width: 100px;
+                height: 30px;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                background-color: #ff9800;
+
+              }
+            }
+          }
+        }
+      }
+
     }
 
     .right {

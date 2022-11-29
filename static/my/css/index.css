@@ -80,7 +80,7 @@ header > div img {
 main {
   display: flex;
   justify-content: center;
-  width: calc(100% - 240px);
+  align-items: center;
   padding: 20px 120px;
   min-height: 600px;
   color: var(--main-color);
@@ -97,6 +97,90 @@ main .main > div > div {
 }
 main .main .left {
   width: 69%;
+}
+main .main .left .blog_articles > .body {
+  background-color: transparent;
+  padding: 0;
+}
+main .main .left .blog_articles > .body > ul {
+  width: 100%;
+}
+main .main .left .blog_articles > .body > ul > li {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+main .main .left .blog_articles > .body > ul > li:first-child {
+  border-radius: 0 0 5px 5px;
+}
+main .main .left .blog_articles > .body > ul > li:first-child .left {
+  padding: 10px 10px 20px 20px;
+}
+main .main .left .blog_articles > .body > ul > li:first-child .right {
+  padding: 10px 20px 20px 10px;
+}
+main .main .left .blog_articles > .body > ul > li .left {
+  width: 30%;
+  padding: 20px 10px 20px 20px;
+}
+main .main .left .blog_articles > .body > ul > li .left > div {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+main .main .left .blog_articles > .body > ul > li .left img {
+  width: 100%;
+  transition: all 0.3s;
+  display: block;
+}
+main .main .left .blog_articles > .body > ul > li .left img:hover {
+  transform: scale(1.1);
+}
+main .main .left .blog_articles > .body > ul > li .right {
+  position: relative;
+  width: 70%;
+  padding: 20px 20px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+}
+main .main .left .blog_articles > .body > ul > li .right > h2 {
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+main .main .left .blog_articles > .body > ul > li .right p {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main .main .left .blog_articles > .body > ul > li .right .article_info {
+  font-size: 14px;
+}
+main .main .left .blog_articles > .body > ul > li .right .article_info > span {
+  margin-right: 10px;
+}
+main .main .left .blog_articles > .body > ul > li .right .article_info > span > i {
+  margin-right: 5px;
+}
+main .main .left .blog_articles > .body > ul > li .right > a {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #ff9800;
 }
 main .main .right {
   width: 30%;
