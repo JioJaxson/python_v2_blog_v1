@@ -27,19 +27,10 @@
             <a href="#">注册</a>
         </div>
     </nav>
-    <header>
-        {% for img in img_list %}
-            <div class="header_banner">
-                <img src="{{ img }}" alt="">
-            </div>
-        {% endfor %}
-    </header>
+    {% banner  'index'%}
     <main>
-        {{ img_list }}
         内容区域
-        <div>
-            {{ 2|add2 }}
-        </div>
+
     </main>
     <footer>
         底部区域
