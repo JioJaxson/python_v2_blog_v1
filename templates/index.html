@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load my_tags %}
 <head>
     <meta charset="UTF-8">
     <title>个人博客</title>
@@ -36,6 +37,9 @@
     <main>
         {{ img_list }}
         内容区域
+        <div>
+            {{ 2|add2 }}
+        </div>
     </main>
     <footer>
         底部区域
@@ -75,7 +79,9 @@
 
     let banner_list_length = banner_list.length
     let index = 0
-    setInterval(() => {
+    let timer = null;
+    clearInterval(timer);
+    timer = setInterval(() => {
         index++
         if (index === banner_list_length) {
             index = 0

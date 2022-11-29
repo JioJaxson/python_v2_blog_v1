@@ -8,7 +8,10 @@ nav {
   width: calc(100% - 240px);
   height: 60px;
   padding: 0 120px;
-  background-color: var(--nav-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 nav .left {
   width: 60%;
