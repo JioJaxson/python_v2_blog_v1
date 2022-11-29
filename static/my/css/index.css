@@ -27,7 +27,7 @@ nav .right img {
   cursor: pointer;
 }
 nav a {
-  color: var(--nav-color);
+  color: white;
   margin-right: 20px;
 }
 nav a:last-child {
@@ -57,9 +57,51 @@ header > div img {
 }
 
 main {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 240px);
+  padding: 20px 120px;
   min-height: 600px;
   color: var(--main-color);
   background-color: var(--main-bg);
+}
+main .main {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  min-height: 400px;
+}
+main .main .left {
+  width: 69%;
+  height: 100px;
+}
+main .main .right {
+  width: 30%;
+  height: 100px;
+}
+
+.main > div > div {
+  margin-bottom: 20px;
+}
+.main .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 20px 20px 10px 20px;
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+}
+.main .title h2 {
+  font-size: 20px;
+}
+.main .title > div a {
+  font-size: 14px;
+}
+.main .body {
+  padding: 10px 20px 20px 20px;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
 }
 
 footer {
