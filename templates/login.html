@@ -44,7 +44,8 @@
     </main>
 </div>
 
-<script src="/static/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>
+<script src="/static/axios/axios.min.js"></script>
 <script src="/static/vue/vue.js"></script>
 
 <script>
@@ -59,10 +60,19 @@
         },
         methods: {
             login() {
-                {#console.log(this.login_from);#}
-                $.post('/login/', this.login_from, (res) => {
+                let qs = Qs;
+                let data = qs.stringify(
+                    this.login_from
+                )
+                console.log(data)
+                axios.post('/login/', data, {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                }).then(res => {
                     console.log(res)
                 })
+
             }
         }
     })
