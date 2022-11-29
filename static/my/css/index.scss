@@ -53,6 +53,11 @@ header {
     width: 100%;
     height: 100%;
     transition: all 1s;
+    // 处理首次banner加载卡顿(后期文件过多 )
+    opacity: 0;
+    &:first-child {
+      opacity: 1;
+    }
 
     img {
       width: 100%;
