@@ -37,7 +37,7 @@ nav a:last-child {
 header {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
 }
 header > div {
   position: absolute;
@@ -59,10 +59,90 @@ main {
 }
 
 footer {
+  display: flex;
   width: 100%;
-  min-height: 400px;
+  height: 180px;
   color: var(--footer-color);
   background-color: var(--footer-bg);
+  font-size: 14px;
+}
+footer .left, footer .right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer .thank {
+  color: #26c6e1;
+  font-size: 20px;
+}
+footer .site_info {
+  display: flex;
+  align-items: center;
+}
+footer .site_info span {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+footer .site_info img {
+  width: 20px;
+  margin-right: 5px;
+}
+footer .version {
+  display: flex;
+}
+footer .version span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 30px;
+  width: 60px;
+}
+footer .version span:nth-child(1) {
+  background-color: #ff9800;
+  border-radius: 5px 0 0 5px;
+}
+footer .version span:nth-child(2) {
+  background-color: #26c6da;
+  border-radius: 0 5px 5px 0;
+}
+footer .beian a {
+  display: flex;
+  align-items: center;
+}
+footer .beian a img {
+  display: flex;
+  margin-right: 5px;
+}
+footer p {
+  margin-bottom: 10px;
+}
+footer .contact {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+footer .contact > div {
+  position: relative;
+  margin-right: 40px;
+}
+footer .contact > div .contact_img {
+  position: absolute;
+  width: 80px;
+  transform: translate(-62px, 30px);
+  transition: 0.4s;
+  opacity: 0;
+}
+footer .contact > div .svg {
+  width: 40px;
+  cursor: pointer;
+}
+footer .contact > div .svg:hover ~ .contact_img {
+  transform: translate(-62px, -90px);
+  opacity: 1;
 }
 
 /*# sourceMappingURL=index.css.map */
