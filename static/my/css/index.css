@@ -8,7 +8,7 @@ nav {
   width: calc(100% - 240px);
   height: 60px;
   padding: 0 120px;
-  background-color: saddlebrown;
+  background-color: var(--nav-bg);
 }
 nav .left {
   width: 60%;
@@ -18,7 +18,13 @@ nav .right {
   display: flex;
   justify-content: right;
 }
+nav .right img {
+  width: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 nav a {
+  color: var(--nav-color);
   margin-right: 20px;
 }
 nav a:last-child {
@@ -26,14 +32,16 @@ nav a:last-child {
 }
 
 main {
-  min-height: 400px;
-  background-color: yellow;
+  min-height: 600px;
+  color: var(--main-color);
+  background-color: var(--main-bg);
 }
 
 footer {
   width: 100%;
   min-height: 400px;
-  background-color: pink;
+  color: var(--footer-color);
+  background-color: var(--footer-bg);
 }
 
 /*# sourceMappingURL=index.css.map */

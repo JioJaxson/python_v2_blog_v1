@@ -1,0 +1,51 @@
+#app {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 240px);
+  height: 60px;
+  padding: 0 120px;
+  background-color: var(--nav-bg);
+
+  .left {
+    width: 60%;
+  }
+
+  .right {
+    width: 40%;
+    display: flex;
+    justify-content: right;
+
+    img {
+      width: 20px;
+      margin-right:20px;
+      cursor: pointer;
+    }
+  }
+
+  a {
+    color: var(--nav-color);
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+main {
+  min-height: 600px;
+  color: var(--main-color);
+  background-color: var(--main-bg);
+
+}
+
+footer {
+  width: 100%;
+  min-height: 400px;
+  color: var(--footer-color);
+  background-color: var(--footer-bg);
+}
