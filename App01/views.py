@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 
 # 类似router
@@ -12,6 +13,9 @@ def news(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        print(request.POST)
+        return JsonResponse(request.POST)
     return render(request, 'login.html')
 
 

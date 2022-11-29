@@ -19,13 +19,13 @@
             </div>
             <div class="login_from">
                 {% block from %}
-                    <input type="text" placeholder="请输入账号:">
-                    <input type="text" placeholder="请输入密码:">
+                    <input type="text" v-model="login_from.name" placeholder="请输入账号:">
+                    <input type="text" v-model="login_from.pwd" placeholder="请输入密码:">
                     <div class="code">
-                        <input type="text" placeholder="请输入验证码">
+                        <input type="text" v-model="login_from.code" placeholder="请输入验证码">
                         <img src="/static/my/img/login/code.png">
                     </div>
-                    <button>登陆</button>
+                    <button @click="login">登陆</button>
                 {% endblock %}
             </div>
             <div class="other_login">
@@ -43,5 +43,29 @@
         </div>
     </main>
 </div>
+
+<script src="/static/jquery/jquery.min.js"></script>
+<script src="/static/vue/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            login_from: {
+                name: '',
+                pwd: '',
+                code: '',
+            }
+        },
+        methods: {
+            login() {
+                {#console.log(this.login_from);#}
+                $.post('/login/', this.login_from, (res) => {
+                    console.log(res)
+                })
+            }
+        }
+    })
+</script>
 </body>
 </html>
