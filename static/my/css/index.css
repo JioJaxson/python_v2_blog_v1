@@ -31,6 +31,24 @@ nav a:last-child {
   margin-right: 0;
 }
 
+header {
+  position: relative;
+  width: 100%;
+  height: 700px;
+}
+header > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: all 1s;
+}
+header > div img {
+  width: 100%;
+}
+
 main {
   min-height: 600px;
   color: var(--main-color);
