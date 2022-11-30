@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+import json
 
 
 # 类似router
@@ -14,7 +15,11 @@ def news(request):
 
 def login(request):
     if request.method == 'POST':
-        print(request.POST)
+        data = request.body  # 请求体
+        dict_data = json.loads(data, encoding='utf8')
+        print('data', data)
+        print('dict_data', dict_data)
+        print(dict_data.get('name'))
         return JsonResponse(request.POST)
     return render(request, 'login.html')
 

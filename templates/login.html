@@ -44,7 +44,6 @@
     </main>
 </div>
 
-<script type="text/javascript" src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>
 <script src="/static/axios/axios.min.js"></script>
 <script src="/static/vue/vue.js"></script>
 
@@ -59,17 +58,8 @@
             }
         },
         methods: {
-            login() {
-                let qs = Qs;
-                let data = qs.stringify(
-                    this.login_from
-                )
-                console.log(data)
-                axios.post('/login/', data, {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                }).then(res => {
+            login(){
+                axios.post('/login/', this.login_from).then(res => {
                     console.log(res)
                 })
 
