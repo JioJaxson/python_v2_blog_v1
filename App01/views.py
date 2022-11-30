@@ -15,14 +15,41 @@ def news(request):
 
 def login(request):
     if request.method == 'POST':
+        res = {
+            'code': 888,
+            'msg': "登陆成功",
+            'self': None
+        }
         data = request.data
+        name = data.get('name')
+        if not name:
+            res['msg'] = "请输入用户名!"
+            res['self'] = 'name'
+            return JsonResponse(res)
+        pwd = data.get('pwd')
+        if not pwd:
+            res['msg'] = "请输入密码!"
+            res['self'] = 'pwd'
+            return JsonResponse(res)
+        code = data.get('code')
+        if not code:
+            res['msg'] = "请输入验证码!"
+            res['self'] = 'code'
+            return JsonResponse(res)
         valid_code: str = request.session.get('valid_code')
         print(valid_code, data)
-        if valid_code.upper() == data.get('code').upper():
-            print('验证码输入正确')
-        else:
-            print('验证码输入错误')
-        return JsonResponse(data)
+        if valid_code.upper() != code.upper():
+            res['msg'] = '验证码输入错误!'
+            res['self'] = 'code'
+            return JsonResponse(res)
+        # 校验用户名密码
+        if name != 'mumu' or pwd != '1234':
+            res['msg'] = '用户名或密码错误!'
+            res['self'] = 'pwd'
+            return JsonResponse(res)
+
+        res['code'] = 0
+        return JsonResponse(res)
     return render(request, 'login.html')
 
 

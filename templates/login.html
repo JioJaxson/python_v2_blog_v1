@@ -5,6 +5,9 @@
     {% block title %}
         <title>沐沐博客|用户登陆</title>
     {% endblock %}
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
     <link rel="stylesheet" href="/static/my/css/reset.css">
     <link rel="stylesheet" href="/static/my/css/login.css">
 </head>
@@ -20,10 +23,10 @@
             <div class="login_from">
                 {% csrf_token %}
                 {% block from %}
-                    <input type="text" v-model="login_from.name" placeholder="请输入账号:">
-                    <input type="text" v-model="login_from.pwd" placeholder="请输入密码:">
+                    <input type="text" ref="loginFromRef_name" v-model="login_from.name" placeholder="请输入账号:">
+                    <input type="text" ref="loginFromRef_pwd" v-model="login_from.pwd" placeholder="请输入密码:">
                     <div class="code">
-                        <input type="text" v-model="login_from.code" placeholder="请输入验证码">
+                        <input ref="loginFromRef_code" type="text" v-model="login_from.code" placeholder="请输入验证码">
                         <img src="/login/random_code" alt="">
                     </div>
                     <button @click="login">登陆</button>
@@ -47,11 +50,12 @@
 
 <script src="/static/axios/axios.min.js"></script>
 <script src="/static/vue/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
 <script>
     {#请求中间件#}
     axios.interceptors.request.use(request => {
-        console.log(request)
         if (request.method === 'post') {
             let csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value
             request.headers['X-CSRFToken'] = csrftoken
@@ -60,7 +64,7 @@
         return request
     });
     axios.interceptors.response.use(response => {
-        console.log(response);
+        {#console.log(response);#}
         return response.data;
     })
     new Vue({
@@ -75,7 +79,14 @@
         methods: {
             login() {
                 axios.post('/login/', this.login_from).then(res => {
-                    console.log(res)
+                    if (res.code) {
+                        // 验证失败
+                        this.$message.error(res.msg)
+                        this.$refs[`loginFromRef_${res.self}`].focus()
+
+                        return
+                    }
+                    this.$message.success(res.msg)
                 })
 
             }
