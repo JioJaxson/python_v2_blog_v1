@@ -22,6 +22,7 @@ urlpatterns = [
     path('', views.index),
     path('news/', views.news),
     path('login/', views.login),
+    path('login/random_code/', views.get_random_code),
     path('sign/', views.sign)
 
 ]

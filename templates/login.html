@@ -18,12 +18,13 @@
                 {% endblock %}
             </div>
             <div class="login_from">
+                {% csrf_token %}
                 {% block from %}
                     <input type="text" v-model="login_from.name" placeholder="请输入账号:">
                     <input type="text" v-model="login_from.pwd" placeholder="请输入密码:">
                     <div class="code">
                         <input type="text" v-model="login_from.code" placeholder="请输入验证码">
-                        <img src="/static/my/img/login/code.png">
+                        <img src="/login/random_code" alt="">
                     </div>
                     <button @click="login">登陆</button>
                 {% endblock %}
@@ -48,6 +49,20 @@
 <script src="/static/vue/vue.js"></script>
 
 <script>
+    {#请求中间件#}
+    axios.interceptors.request.use(request => {
+        console.log(request)
+        if (request.method === 'post') {
+            let csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request.headers['X-CSRFToken'] = csrftoken
+
+        }
+        return request
+    });
+    axios.interceptors.response.use(response => {
+        console.log(response);
+        return response.data;
+    })
     new Vue({
         el: '#app',
         data: {
@@ -58,7 +73,7 @@
             }
         },
         methods: {
-            login(){
+            login() {
                 axios.post('/login/', this.login_from).then(res => {
                     console.log(res)
                 })
