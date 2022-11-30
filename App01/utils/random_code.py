@@ -15,7 +15,7 @@ str_all = string.digits + string.ascii_letters
 
 
 # 随机验证码
-def random_code(size=(200, 40), length=4, print_num=100, line_num=10):
+def random_code(size=(184, 44), length=4, print_num=100, line_num=10):
     # Image.new(颜色模式, 尺寸, 背景颜色)
     width, height = size
 

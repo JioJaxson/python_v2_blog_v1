@@ -27,7 +27,7 @@
                     <input type="text" ref="loginFromRef_pwd" v-model="login_from.pwd" placeholder="请输入密码:">
                     <div class="code">
                         <input ref="loginFromRef_code" type="text" v-model="login_from.code" placeholder="请输入验证码">
-                        <img src="/login/random_code" alt="">
+                        <img @click="get_random_code" src="/static/my/img/login/code.png" alt="">
                     </div>
                     <button @click="login">登陆</button>
                 {% endblock %}
@@ -115,6 +115,11 @@
                         location.href = '/'
                     }, 1000)
                 })
+            },
+
+            get_random_code(e) {
+                let date = new Date().getTime() //时间戳
+                e.target.src = '/login/random_code/?timestamp' + date
             }
 
         }

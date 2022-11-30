@@ -14,7 +14,8 @@
     <input ref="signFromRef_re_pwd" v-model="sign_from.re_pwd" type="text" placeholder="请输入确认密码:">
     <div class="code">
         <input ref="signFromRef_code" v-model="sign_from.code" type="text" placeholder="请输入验证码">
-        <img src="/login/random_code">
+        <img @click="get_random_code" src="/static/my/img/login/code.png" alt="">
+
     </div>
     <button @click="sign">注册</button>
 {% endblock %}

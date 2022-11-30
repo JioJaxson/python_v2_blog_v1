@@ -58,6 +58,8 @@ main .top .login_from input .code {
 main .top .login_from input .code img {
   height: 42px;
   border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #f0eeee;
 }
 main .top .login_from input button {
   border: none;
