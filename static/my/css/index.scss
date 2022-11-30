@@ -30,6 +30,7 @@
 
 #app {
   width: 100%;
+
 }
 
 nav {
@@ -45,20 +46,31 @@ nav {
   z-index: 100;
 
   .left {
-    width: 60%;
+    width: 70%;
   }
 
   .right {
-    width: 40%;
+    width: 30%;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
 
     img {
       width: 20px;
       margin-right: 20px;
       cursor: pointer;
     }
+
+    .el-dropdown {
+      color: var(--nav-color);
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+
   }
+
 
   a {
     color: white;
@@ -69,6 +81,7 @@ nav {
     }
   }
 }
+
 
 header {
   position: relative;
@@ -516,5 +529,12 @@ footer {
     }
 
 
+  }
+}
+
+
+.el-dropdown-menu {
+  a {
+    color: #131212
   }
 }

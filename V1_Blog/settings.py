@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App01.apps.App01Config',
+    'api.apps.ApiConfig',
 ]
 
 # 中间件

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
 from App01 import views
 
 urlpatterns = [
@@ -23,6 +23,11 @@ urlpatterns = [
     path('news/', views.news),
     path('login/', views.login),
     path('login/random_code/', views.get_random_code),
-    path('sign/', views.sign)
+    path('sign/', views.sign),
+    path('logout/', views.logout),
+
+
+    # 路由分发 将所有以api开头的请求分发到api中的rls.py中
+    re_path(r'^api/', include('api.urls'))
 
 ]

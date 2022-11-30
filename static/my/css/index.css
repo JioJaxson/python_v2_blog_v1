@@ -35,16 +35,22 @@ nav {
   z-index: 100;
 }
 nav .left {
-  width: 60%;
+  width: 70%;
 }
 nav .right {
-  width: 40%;
+  width: 30%;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 }
 nav .right img {
   width: 20px;
   margin-right: 20px;
+  cursor: pointer;
+}
+nav .right .el-dropdown {
+  color: var(--nav-color);
+}
+nav .right .el-dropdown span {
   cursor: pointer;
 }
 nav a {
@@ -399,6 +405,10 @@ footer .contact > div .svg {
 footer .contact > div .svg:hover ~ .contact_img {
   transform: translate(-62px, -90px);
   opacity: 1;
+}
+
+.el-dropdown-menu a {
+  color: #131212;
 }
 
 /*# sourceMappingURL=index.css.map */
