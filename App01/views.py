@@ -56,4 +56,8 @@ def logout(request):
 
 # 后台
 def backstage(request):
+    if not request.user.username:
+        # 未登录
+        return redirect('/')
+
     return render(request, 'backstage/backstage.html')

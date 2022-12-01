@@ -52,9 +52,10 @@ aside {
 }
 
 main {
-  width: calc(100% - 200px - 20px);
+  width: calc(100% - 200px);
   padding: 20px;
   height: 100vh;
+  box-sizing: border-box;
   background-color: #f0eeee;
 
   .user_info {
@@ -100,6 +101,60 @@ main {
     align-items: center;
 
 
+  }
+
+  .collection_articles {
+    background-color: #808595;
+    margin-top: 20px;
+    border-radius: 5px;
+
+    h3 {
+      font-size: 22px;
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .article_list {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      width: calc(100% - 40px);
+
+
+      .item {
+        display: flex;
+        width: 33.33%;
+        margin-bottom: 20px;
+
+        .left {
+          width: 30%;
+
+          img {
+            width: 100%;
+            border-radius: 5px;
+          }
+        }
+
+        .right {
+          width: calc(70% - 20px);
+          padding: 0 10px;
+
+          h4 {
+            margin-bottom: 10px;
+          }
+
+          p {
+            // 文字多行截断
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+
+    }
   }
 
 }

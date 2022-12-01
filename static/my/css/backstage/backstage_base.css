@@ -41,9 +41,10 @@ aside > ul li a:hover {
 }
 
 main {
-  width: calc(100% - 200px - 20px);
+  width: calc(100% - 200px);
   padding: 20px;
   height: 100vh;
+  box-sizing: border-box;
   background-color: #f0eeee;
 }
 main .user_info {
@@ -82,6 +83,48 @@ main .actions {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+main .collection_articles {
+  background-color: #808595;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+main .collection_articles h3 {
+  font-size: 22px;
+  text-align: center;
+  padding-top: 10px;
+}
+main .collection_articles .article_list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: calc(100% - 40px);
+}
+main .collection_articles .article_list .item {
+  display: flex;
+  width: 33.33%;
+  margin-bottom: 20px;
+}
+main .collection_articles .article_list .item .left {
+  width: 30%;
+}
+main .collection_articles .article_list .item .left img {
+  width: 100%;
+  border-radius: 5px;
+}
+main .collection_articles .article_list .item .right {
+  width: calc(70% - 20px);
+  padding: 0 10px;
+}
+main .collection_articles .article_list .item .right h4 {
+  margin-bottom: 10px;
+}
+main .collection_articles .article_list .item .right p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*# sourceMappingURL=backstage_base.css.map */
