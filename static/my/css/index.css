@@ -1,4 +1,7 @@
-.card .title {
+#app {
+  width: 100%;
+}
+#app .card .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,23 +10,18 @@
   background-color: white;
   border-radius: 5px 5px 0 0;
 }
-.card .title h2 {
+#app .card .title h2 {
   font-size: 20px;
 }
-.card .title > div a {
+#app .card .title > div a {
   font-size: 14px;
 }
-.card .body {
+#app .card .body {
   padding: 10px 20px 20px 20px;
   background-color: white;
   border-radius: 0 0 5px 5px;
 }
-
-#app {
-  width: 100%;
-}
-
-nav {
+#app nav {
   display: flex;
   align-items: center;
   width: calc(100% - 240px);
@@ -34,39 +32,38 @@ nav {
   left: 0;
   z-index: 100;
 }
-nav .left {
+#app nav .left {
   width: 70%;
 }
-nav .right {
+#app nav .right {
   width: 30%;
   display: flex;
   justify-content: flex-end;
 }
-nav .right img {
+#app nav .right img {
   width: 20px;
   margin-right: 20px;
   cursor: pointer;
 }
-nav .right .el-dropdown {
+#app nav .right .el-dropdown {
   color: var(--nav-color);
 }
-nav .right .el-dropdown span {
+#app nav .right .el-dropdown span {
   cursor: pointer;
 }
-nav a {
+#app nav a {
   color: white;
   margin-right: 20px;
 }
-nav a:last-child {
+#app nav a:last-child {
   margin-right: 0;
 }
-
-header {
+#app header {
   position: relative;
   width: 100%;
   height: 600px;
 }
-header > div {
+#app header > div {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,14 +73,13 @@ header > div {
   transition: all 1s;
   opacity: 0;
 }
-header > div:first-child {
+#app header > div:first-child {
   opacity: 1;
 }
-header > div img {
+#app header > div img {
   width: 100%;
 }
-
-main {
+#app main {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,67 +88,67 @@ main {
   color: var(--main-color);
   background-color: var(--main-bg);
 }
-main .main {
+#app main .main {
   display: flex;
   justify-content: space-between;
   width: 1200px;
   min-height: 400px;
 }
-main .main > div > div {
+#app main .main > div > div {
   margin-bottom: 20px;
 }
-main .main .left {
+#app main .main .left {
   width: 69%;
 }
-main .main .left .feature_articles > .title .switch_type span {
+#app main .main .left .feature_articles > .title .switch_type span {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
 }
-main .main .left .feature_articles > .title .switch_type span:hover, main .main .left .feature_articles > .title .switch_type span[active] {
+#app main .main .left .feature_articles > .title .switch_type span:hover, #app main .main .left .feature_articles > .title .switch_type span[active] {
   color: orange;
 }
-main .main .left .feature_articles > .body {
+#app main .main .left .feature_articles > .body {
   padding: 0 20px;
 }
-main .main .left .feature_articles > .body > ul {
+#app main .main .left .feature_articles > .body > ul {
   display: flex;
   flex-wrap: wrap;
 }
-main .main .left .feature_articles > .body > ul > li {
+#app main .main .left .feature_articles > .body > ul > li {
   width: 50%;
   display: flex;
   padding: 10px 0;
   box-sizing: border-box;
 }
-main .main .left .feature_articles > .body > ul > li:nth-child(2n+1) {
+#app main .main .left .feature_articles > .body > ul > li:nth-child(2n+1) {
   border-right: 1px solid #f0eeee;
 }
-main .main .left .feature_articles > .body > ul > li:nth-child(2n+1) .right {
+#app main .main .left .feature_articles > .body > ul > li:nth-child(2n+1) .right {
   padding-right: 10px;
 }
-main .main .left .feature_articles > .body > ul > li:nth-child(2n) {
+#app main .main .left .feature_articles > .body > ul > li:nth-child(2n) {
   padding: 10px;
 }
-main .main .left .feature_articles > .body > ul > li:nth-child(n+3) {
+#app main .main .left .feature_articles > .body > ul > li:nth-child(n+3) {
   border-top: 1px solid #f0eeee;
 }
-main .main .left .feature_articles > .body > ul > li .left {
+#app main .main .left .feature_articles > .body > ul > li .left {
   width: 40%;
 }
-main .main .left .feature_articles > .body > ul > li .left > div {
+#app main .main .left .feature_articles > .body > ul > li .left > div {
   width: 100%;
   height: 80px;
   overflow: hidden;
 }
-main .main .left .feature_articles > .body > ul > li .left img {
+#app main .main .left .feature_articles > .body > ul > li .left img {
   width: 100%;
   transition: all 0.3s;
 }
-main .main .left .feature_articles > .body > ul > li .left img:hover {
+#app main .main .left .feature_articles > .body > ul > li .left img:hover {
   transform: scale(1.1);
 }
-main .main .left .feature_articles > .body > ul > li .right {
+#app main .main .left .feature_articles > .body > ul > li .right {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -160,61 +156,61 @@ main .main .left .feature_articles > .body > ul > li .right {
   padding-left: 10px;
   box-sizing: border-box;
 }
-main .main .left .feature_articles > .body > ul > li .right h2 {
+#app main .main .left .feature_articles > .body > ul > li .right h2 {
   font-size: 20px;
 }
-main .main .left .feature_articles > .body > ul > li .right h2, main .main .left .feature_articles > .body > ul > li .right p {
+#app main .main .left .feature_articles > .body > ul > li .right h2, #app main .main .left .feature_articles > .body > ul > li .right p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
 }
-main .main .left .feature_articles > .body > ul > li .right span {
+#app main .main .left .feature_articles > .body > ul > li .right span {
   font-size: 14px;
   color: #555;
 }
-main .main .left .blog_articles > .body {
+#app main .main .left .blog_articles > .body {
   background-color: transparent;
   padding: 0;
 }
-main .main .left .blog_articles > .body > ul {
+#app main .main .left .blog_articles > .body > ul {
   width: 100%;
 }
-main .main .left .blog_articles > .body > ul > li {
+#app main .main .left .blog_articles > .body > ul > li {
   width: 100%;
   display: flex;
   margin-bottom: 20px;
   background-color: white;
   border-radius: 5px;
 }
-main .main .left .blog_articles > .body > ul > li:first-child {
+#app main .main .left .blog_articles > .body > ul > li:first-child {
   border-radius: 0 0 5px 5px;
 }
-main .main .left .blog_articles > .body > ul > li:first-child .left {
+#app main .main .left .blog_articles > .body > ul > li:first-child .left {
   padding: 10px 10px 20px 20px;
 }
-main .main .left .blog_articles > .body > ul > li:first-child .right {
+#app main .main .left .blog_articles > .body > ul > li:first-child .right {
   padding: 10px 20px 20px 10px;
 }
-main .main .left .blog_articles > .body > ul > li .left {
+#app main .main .left .blog_articles > .body > ul > li .left {
   width: 30%;
   padding: 20px 10px 20px 20px;
 }
-main .main .left .blog_articles > .body > ul > li .left > div {
+#app main .main .left .blog_articles > .body > ul > li .left > div {
   width: 100%;
   height: 120px;
   overflow: hidden;
   border-radius: 5px;
 }
-main .main .left .blog_articles > .body > ul > li .left img {
+#app main .main .left .blog_articles > .body > ul > li .left img {
   width: 100%;
   transition: all 0.3s;
   display: block;
 }
-main .main .left .blog_articles > .body > ul > li .left img:hover {
+#app main .main .left .blog_articles > .body > ul > li .left img:hover {
   transform: scale(1.1);
 }
-main .main .left .blog_articles > .body > ul > li .right {
+#app main .main .left .blog_articles > .body > ul > li .right {
   position: relative;
   width: 70%;
   padding: 20px 20px 20px 10px;
@@ -223,11 +219,11 @@ main .main .left .blog_articles > .body > ul > li .right {
   align-items: baseline;
   justify-content: space-between;
 }
-main .main .left .blog_articles > .body > ul > li .right > h2 {
+#app main .main .left .blog_articles > .body > ul > li .right > h2 {
   font-size: 23px;
   margin-bottom: 5px;
 }
-main .main .left .blog_articles > .body > ul > li .right p {
+#app main .main .left .blog_articles > .body > ul > li .right p {
   margin-bottom: 10px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -235,16 +231,16 @@ main .main .left .blog_articles > .body > ul > li .right p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-main .main .left .blog_articles > .body > ul > li .right .article_info {
+#app main .main .left .blog_articles > .body > ul > li .right .article_info {
   font-size: 14px;
 }
-main .main .left .blog_articles > .body > ul > li .right .article_info > span {
+#app main .main .left .blog_articles > .body > ul > li .right .article_info > span {
   margin-right: 10px;
 }
-main .main .left .blog_articles > .body > ul > li .right .article_info > span > i {
+#app main .main .left .blog_articles > .body > ul > li .right .article_info > span > i {
   margin-right: 5px;
 }
-main .main .left .blog_articles > .body > ul > li .right > a {
+#app main .main .left .blog_articles > .body > ul > li .right > a {
   position: absolute;
   right: 18px;
   bottom: 18px;
@@ -257,13 +253,13 @@ main .main .left .blog_articles > .body > ul > li .right > a {
   border-radius: 5px;
   background-color: #ff9800;
 }
-main .main .right {
+#app main .main .right {
   width: 30%;
 }
-main .main .right .tags_cloud > .body {
+#app main .main .right .tags_cloud > .body {
   position: relative;
 }
-main .main .right .tags_cloud > .body ul {
+#app main .main .right .tags_cloud > .body ul {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
@@ -290,7 +286,7 @@ main .main .right .tags_cloud > .body ul {
     left: 0;
   }
 }
-main .main .right .tags_cloud > .body ul::before {
+#app main .main .right .tags_cloud > .body ul::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -306,21 +302,21 @@ main .main .right .tags_cloud > .body ul::before {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
 }
-main .main .right .tags_cloud > .body ul li {
+#app main .main .right .tags_cloud > .body ul li {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 33.33%;
   height: 40px;
+  box-sizing: border-box;
 }
-main .main .right .tags_cloud > .body ul li:nth-child(6n+1), main .main .right .tags_cloud > .body ul li:nth-child(6n+2), main .main .right .tags_cloud > .body ul li:nth-child(6n+3) {
+#app main .main .right .tags_cloud > .body ul li:nth-child(6n+1), #app main .main .right .tags_cloud > .body ul li:nth-child(6n+2), #app main .main .right .tags_cloud > .body ul li:nth-child(6n+3) {
   background-color: #f5f5f5;
 }
-main .main .right .tags_cloud > .body ul li:nth-child(3n+1), main .main .right .tags_cloud > .body ul li:nth-child(3n+2) {
+#app main .main .right .tags_cloud > .body ul li:nth-child(3n+1), #app main .main .right .tags_cloud > .body ul li:nth-child(3n+2) {
   border-right: 1px solid #f0eeee;
 }
-
-footer {
+#app footer {
   display: flex;
   width: 100%;
   height: 180px;
@@ -328,34 +324,34 @@ footer {
   background-color: var(--footer-bg);
   font-size: 14px;
 }
-footer .left, footer .right {
+#app footer .left, #app footer .right {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-footer .thank {
+#app footer .thank {
   color: #26c6e1;
   font-size: 20px;
 }
-footer .site_info {
+#app footer .site_info {
   display: flex;
   align-items: center;
 }
-footer .site_info span {
+#app footer .site_info span {
   display: flex;
   align-items: center;
   margin-right: 10px;
 }
-footer .site_info img {
+#app footer .site_info img {
   width: 20px;
   margin-right: 5px;
 }
-footer .version {
+#app footer .version {
   display: flex;
 }
-footer .version span {
+#app footer .version span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -363,46 +359,48 @@ footer .version span {
   height: 30px;
   width: 60px;
 }
-footer .version span:nth-child(1) {
+#app footer .version span:nth-child(1) {
   background-color: #ff9800;
   border-radius: 5px 0 0 5px;
 }
-footer .version span:nth-child(2) {
+#app footer .version span:nth-child(2) {
   background-color: #26c6da;
   border-radius: 0 5px 5px 0;
 }
-footer .beian a {
+#app footer .beian a {
   display: flex;
   align-items: center;
 }
-footer .beian a img {
+#app footer .beian a img {
   display: flex;
   margin-right: 5px;
 }
-footer p {
+#app footer p {
   margin-bottom: 10px;
 }
-footer .contact {
+#app footer .contact {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-footer .contact > div {
+#app footer .contact > div {
   position: relative;
   margin-right: 40px;
 }
-footer .contact > div .contact_img {
+#app footer .contact > div .contact_img {
   position: absolute;
   width: 80px;
   transform: translate(-62px, 30px);
-  transition: 0.4s;
+  transition: all 0.4s;
   opacity: 0;
 }
-footer .contact > div .svg {
+#app footer .contact > div .svg {
   width: 40px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
-footer .contact > div .svg:hover ~ .contact_img {
+#app footer .contact > div .svg:hover ~ .contact_img {
   transform: translate(-62px, -90px);
   opacity: 1;
 }

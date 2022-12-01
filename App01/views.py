@@ -13,6 +13,11 @@ from App01.models import UserInfo
 def index(request):
     return render(request, 'index.html', {'request': request})
 
+# 文章
+def article(request,nid):
+    return  render(request,'article.html')
+
+
 
 def news(request):
     return render(request, 'news.html')

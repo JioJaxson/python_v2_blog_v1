@@ -25,7 +25,8 @@ urlpatterns = [
     path('login/random_code/', views.get_random_code),
     path('sign/', views.sign),
     path('logout/', views.logout),
-
+    # 文章详情页
+    re_path(r'^article/(?P<nid>\d+)/', views.article),
 
     # 路由分发 将所有以api开头的请求分发到api中的rls.py中
     re_path(r'^api/', include('api.urls'))
