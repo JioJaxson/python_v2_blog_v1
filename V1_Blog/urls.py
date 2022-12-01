@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from App01 import views
+from django.conf import settings
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,9 @@ urlpatterns = [
     re_path(r'^article/(?P<nid>\d+)/', views.article),
 
     # 路由分发 将所有以api开头的请求分发到api中的rls.py中
-    re_path(r'^api/', include('api.urls'))
+    re_path(r'^api/', include('api.urls')),
+
+    # 用户上传文件路由配置
+    re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 
 ]

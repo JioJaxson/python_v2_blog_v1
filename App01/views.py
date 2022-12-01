@@ -3,6 +3,7 @@ from App01.utils.random_code import random_code
 from django import forms
 from django.contrib import auth
 from App01.models import UserInfo
+from App01.models import Articles
 
 
 # from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
@@ -13,10 +14,14 @@ from App01.models import UserInfo
 def index(request):
     return render(request, 'index.html', {'request': request})
 
-# 文章
-def article(request,nid):
-    return  render(request,'article.html')
 
+# 文章
+def article(request, nid):
+    article_query = Articles.objects.filter(nid=nid)
+    if not article_query:
+        return redirect('/')
+    article= article_query.first()
+    return render(request, 'article.html', locals())
 
 
 def news(request):
