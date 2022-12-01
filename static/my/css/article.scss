@@ -1,5 +1,6 @@
 .article {
-  width: 100%;
+  //width: 100%;
+  width:1200px;
 
   .article_title {
     display: flex;
@@ -126,4 +127,129 @@
     }
 
   }
+
+  .comments_list {
+    margin-top: 20px;
+
+    > ul > li {
+      width: 100%;
+      display: flex;
+      margin-bottom: 20px;
+
+      > .left {
+        width: 60px;
+
+        img {
+          width: 40px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all .3s;
+
+          &:hover {
+            transform: scale(1.1)
+          }
+        }
+
+      }
+
+      > .right {
+        width: calc(100% - 60px);
+        background-color: white;
+        border-radius: 5px;
+        position: relative;
+        padding: 10px 20px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+
+        &::before {
+          display: block;
+          content: "";
+          position: absolute;
+          left: -20px;
+          top: 15px;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-right-color: white;
+        }
+
+        .comments_content {
+          margin: 5px 0;
+
+          img {
+            margin-top: 5px;
+            height: 120px;
+            border-radius: 5px;
+            margin-right: 5px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+          }
+        }
+
+        .comments_info {
+          display: flex;
+          justify-content: space-between;
+          font-size: 14px;
+
+          > div span {
+            cursor: pointer;
+            margin-right: 5px;
+          }
+        }
+
+        .delete {
+          color: red;
+        }
+
+
+        .sub_comments_list {
+
+          .sub_comment_item {
+            display: flex;
+            margin: 10px 0;
+
+            .left {
+              width: 60px;
+
+              img {
+                width: 30px;
+                border-radius: 60px;
+                cursor: pointer;
+                transition: all .3s;
+
+                &:hover {
+                  transform: scale(1.1)
+                }
+              }
+            }
+
+            .right {
+              width: calc(100% - 50px);
+
+              .sub_comment_content {
+                margin: 5px 0;
+              }
+
+              .sub_comment_info {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+
+                > div span {
+                  cursor: pointer;
+                  margin-right: 5px;
+                }
+
+              }
+
+
+            }
+          }
+        }
+
+
+      }
+
+
+    }
+  }
+
 }
