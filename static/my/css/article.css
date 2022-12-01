@@ -1,5 +1,6 @@
 .article {
-  width: 1200px;
+  width: 1000px;
+  position: relative;
 }
 .article .article_title {
   display: flex;
@@ -195,6 +196,38 @@
 .article .comments_list > ul > li > .right .sub_comments_list .sub_comment_item .right .sub_comment_info > div span {
   cursor: pointer;
   margin-right: 5px;
+}
+.article .slider_bar {
+  width: 160px;
+  height: 100px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: -220px;
+  padding: 20px;
+}
+.article .slider_bar .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.article .slider_bar .body {
+  font-size: 14px;
+}
+.article .slider_bar .body P {
+  margin-bottom: 5px;
+  transition: all 0.3s;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.article .slider_bar .body P:hover {
+  color: white;
+  background-color: #808595;
 }
 
 /*# sourceMappingURL=article.css.map */

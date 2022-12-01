@@ -1,6 +1,7 @@
 .article {
   //width: 100%;
-  width:1200px;
+  width: 1000px;
+  position: relative;
 
   .article_title {
     display: flex;
@@ -49,7 +50,7 @@
     margin-top: 2px;
     min-height: 200px;
     background-color: white;
-    padding:0;
+    padding: 0;
   }
 
   .article_comments {
@@ -253,4 +254,45 @@
     }
   }
 
+  .slider_bar {
+    width: calc(200px - 40px);
+    height: 100px;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: -220px;
+    padding: 20px;
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .body {
+      font-size: 14px;
+
+      P {
+        margin-bottom: 5px;
+        transition: all 0.3s;
+        height: 30px;
+        line-height: 30px;
+        cursor: pointer;
+        white-space: nowrap; //禁止换行
+        overflow: hidden;
+        text-overflow: ellipsis;//文本溢出省略号标记
+
+        &:hover {
+          color: white;
+          background-color: #808595;
+        }
+      }
+
+    }
+
+  }
+
 }
+
+
