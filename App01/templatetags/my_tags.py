@@ -16,7 +16,6 @@ def banner(menu_name, article=None):
         "http://127.0.0.1:8000/media/site_bg/29.jpg",
     ]
     if article:
-        # 是文章详情页面
         # 拿到文章封面
         cover = article.cover.url.url
         print(cover)
