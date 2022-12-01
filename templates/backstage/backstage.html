@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="/static/my/css/reset.css">
+    <link rel="stylesheet" href="/static/my/css/backstage/backstage_base.css">
+</head>
+<body>
+<div id="app">
+    <aside>
+        <div class="slogan">
+            <img src="/static/my/img/backstage/slogan.png">
+        </div>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">个人中心</a></li>
+            <li><a href="#">修改头像</a></li>
+            <li><a href="#">修改密码</a></li>
+        </ul>
+    </aside>
+    <main>
+        <div class="user_info">
+            <div class="left">
+                <img src="/media/avatars/头像_0004_25.jpg">
+            </div>
+            <div class="right">
+                <div class="item"><b>用户名:</b>mumu</div>
+                <div class="item"><b>注册时间:</b>2022-11-30</div>
+                <div class="item"><b>上次登陆时间:</b>2022-11-30 22:52</div>
+                <div class="item"><b>用户积分:</b>20</div>
+                <div class="item"><b>邮箱:</b>JioJaxson@gmail.com</div>
+                <div class="item"><b>电话号码:</b>还没有关联手机号码哦~</div>
+            </div>
+
+        </div>
+        <div class="actions">
+            <div class="item">
+                <el-button>完善信息</el-button>
+            </div>
+            <div class="item">
+                <el-button type="primary">修改头像</el-button>
+            </div>
+            <div class="item">
+                <el-button type="warning">修改密码</el-button>
+            </div>
+            <div class="item">
+                <el-button type="danger">注销退出</el-button>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+</body>
+<script src="/static/vue/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+
+    })
+</script>
+</html>

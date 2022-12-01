@@ -20,7 +20,7 @@ def article(request, nid):
     article_query = Articles.objects.filter(nid=nid)
     if not article_query:
         return redirect('/')
-    article= article_query.first()
+    article = article_query.first()
     return render(request, 'article.html', locals())
 
 
@@ -52,3 +52,8 @@ def logout(request):
     auth.logout(request)
     # 跳转
     return redirect('/')
+
+
+# 后台
+def backstage(request):
+    return render(request, 'backstage/backstage.html')

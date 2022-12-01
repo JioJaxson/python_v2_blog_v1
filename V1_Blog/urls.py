@@ -27,6 +27,7 @@ urlpatterns = [
     path('login/random_code/', views.get_random_code),
     path('sign/', views.sign),
     path('logout/', views.logout),
+    path('backstage/', views.backstage),
     # 文章详情页
     re_path(r'^article/(?P<nid>\d+)/', views.article),
 

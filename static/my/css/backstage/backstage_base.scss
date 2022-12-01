@@ -1,0 +1,105 @@
+#app {
+  display: flex;
+}
+
+aside {
+  width: 200px;
+  height: 100vh;
+  background-color: #304156;
+
+  .slogan {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  > ul {
+    width: 100%;
+    margin-top: 40px;
+
+    li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+
+      &:hover {
+
+        background-color: rgba(0, 0, 0, .2);
+      }
+
+      a {
+        color: white;
+        transition: all 0.3s;
+
+
+        &:hover {
+          color: #3f70ac;
+        }
+
+      }
+    }
+  }
+
+}
+
+main {
+  width: calc(100% - 200px - 20px);
+  padding: 20px;
+  height: 100vh;
+  background-color: #f0eeee;
+
+  .user_info {
+    width: 100%;
+    display: flex;
+    background-color: #808595;
+    border-radius: 5px;
+
+    .left {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 80px;
+        border-radius: 50%;
+      }
+    }
+
+    .right {
+      width: 80%;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        height: 35px;
+      }
+    }
+  }
+
+  .actions {
+    height: 80px;
+    width: 100%;
+    background-color: #808595;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+
+  }
+
+}
