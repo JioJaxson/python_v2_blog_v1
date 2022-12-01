@@ -1,0 +1,163 @@
+nav {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 240px);
+  height: 60px;
+  padding: 0 120px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+nav .left {
+  width: 70%;
+}
+nav .right {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+nav .right img {
+  width: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+nav .right .el-dropdown {
+  color: var(--nav-color);
+}
+nav .right .el-dropdown span {
+  cursor: pointer;
+}
+nav a {
+  color: white;
+  margin-right: 20px;
+}
+nav a:last-child {
+  margin-right: 0;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+header > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: all 1s;
+  opacity: 0;
+}
+header > div:first-child {
+  opacity: 1;
+}
+header > div img {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 20px 120px;
+  min-height: 600px;
+  color: var(--main-color);
+  background-color: var(--main-bg);
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  height: 180px;
+  color: var(--footer-color);
+  background-color: var(--footer-bg);
+  font-size: 14px;
+}
+footer .left, footer .right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer .thank {
+  color: #26c6e1;
+  font-size: 20px;
+}
+footer .site_info {
+  display: flex;
+  align-items: center;
+}
+footer .site_info span {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+footer .site_info img {
+  width: 20px;
+  margin-right: 5px;
+}
+footer .version {
+  display: flex;
+}
+footer .version span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 30px;
+  width: 60px;
+}
+footer .version span:nth-child(1) {
+  background-color: #ff9800;
+  border-radius: 5px 0 0 5px;
+}
+footer .version span:nth-child(2) {
+  background-color: #26c6da;
+  border-radius: 0 5px 5px 0;
+}
+footer .beian a {
+  display: flex;
+  align-items: center;
+}
+footer .beian a img {
+  display: flex;
+  margin-right: 5px;
+}
+footer p {
+  margin-bottom: 10px;
+}
+footer .contact {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+footer .contact > div {
+  position: relative;
+  margin-right: 40px;
+}
+footer .contact > div .contact_img {
+  position: absolute;
+  width: 80px;
+  transform: translate(-62px, 30px);
+  transition: all 0.4s;
+  opacity: 0;
+}
+footer .contact > div .svg {
+  width: 40px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+footer .contact > div .svg:hover ~ .contact_img {
+  transform: translate(-62px, -90px);
+  opacity: 1;
+}
+
+.el-dropdown-menu a {
+  color: #131212;
+}
+
+/*# sourceMappingURL=base.css.map */

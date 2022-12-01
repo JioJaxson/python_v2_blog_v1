@@ -1,5 +1,42 @@
 {% extends 'index.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/my/css/article.css">
+
+{% endblock %}
 
 {% block main %}
+    <div class="article">
+        <div class="article_title">
+            <h2>md文档笔记</h2>
+            <p>
+                <span>发布时间: <i>2022-11-11</i></span>
+                <span>作者: <i>沐沐</i></span>
+                <span>来源: <i>沐沐个人博客</i></span>
+            </p>
+            <div>
+                <i title="文章标题" class="fas fa-tags"></i>
+                <i>HTML</i>
+                <i>CSS</i>
+            </div>
+        </div>
+
+        <div class="article_content">
+            内容区域待完成....
+        </div>
+        <div class="article_comments">
+            <div class="title">
+                你觉得文章怎么样
+            </div>
+            <div class="body">
+                <textarea name="" id="" rows="10" placeholder="写下你想问的话,开始我们的对话。"></textarea>
+                <button class="submit_btn">发布评论</button>
+            </div>
+            <div class="footer">
+                <p><span>49</span>人参与,<span>3</span>条评论</p>
+            </div>
+        </div>
+        <div class="comments_list"></div>
+    </div>
+
 
 {% endblock %}
