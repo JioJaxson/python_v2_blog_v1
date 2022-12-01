@@ -60,4 +60,19 @@ def backstage(request):
         # 未登录
         return redirect('/')
 
-    return render(request, 'backstage/backstage.html')
+    return render(request, 'backstage/backstage.html', locals())
+
+
+# 添加文章
+def add_article(request):
+    return render(request, 'backstage/add_article.html', locals())
+
+
+# 修改头像
+def edit_avatar(request):
+    return render(request, 'backstage/edit_avatar.html', locals())
+
+
+# 重置密码
+def reset_password(request):
+    return render(request, 'backstage/reset_password.html', locals())

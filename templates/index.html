@@ -42,9 +42,9 @@
     {{ request.user.username }}<i class="el-icon-arrow-down el-icon--right"></i>
   </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item><a href="">个人中心</a></el-dropdown-item>
-                        <el-dropdown-item><a href="">文章管理</a></el-dropdown-item>
-                        <el-dropdown-item><a href="">后台管理</a></el-dropdown-item>
+                        <el-dropdown-item><a href="/backstage/">个人中心</a></el-dropdown-item>
+                        <el-dropdown-item><a href="/backstage/add_article/">发布文章</a></el-dropdown-item>
+                        <el-dropdown-item><a href="/admin/">后台管理</a></el-dropdown-item>
                         <el-dropdown-item><a href="/logout/">注销退出</a></el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>

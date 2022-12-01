@@ -27,14 +27,12 @@ urlpatterns = [
     path('login/random_code/', views.get_random_code),
     path('sign/', views.sign),
     path('logout/', views.logout),
-    path('backstage/', views.backstage),
-    # 文章详情页
-    re_path(r'^article/(?P<nid>\d+)/', views.article),
-
-    # 路由分发 将所有以api开头的请求分发到api中的rls.py中
-    re_path(r'^api/', include('api.urls')),
-
-    # 用户上传文件路由配置
-    re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('backstage/', views.backstage),  # 后台个人中心
+    path('backstage/add_article/', views.add_article),  # 后台添加文章
+    path('backstage/edit_avatar/', views.edit_avatar),  # 后台修改头像
+    path('backstage/reset_password/', views.reset_password),  # 后台重置密码
+    re_path(r'^article/(?P<nid>\d+)/', views.article),  # 文章详情页
+    re_path(r'^api/', include('api.urls')),  # 路由分发 将所有以api开头的请求分发到api中的rls.py中
+    re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),  # 用户上传文件路由配置
 
 ]
