@@ -38,6 +38,7 @@
   margin-top: 2px;
   min-height: 200px;
   background-color: white;
+  padding: 0;
 }
 .article .article_comments {
   margin-top: 20px;

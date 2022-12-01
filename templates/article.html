@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
+
 {% load my_tags %}
 
 {% block css %}
+    <link rel="stylesheet" href="/static/editor-md/css/editormd.css"/>
+
     <link rel="stylesheet" href="/static/my/css/article.css">
 
 {% endblock %}
@@ -22,14 +25,14 @@
             <div>
                 <i title="文章标题" class="fas fa-tags"></i>
                 {% for tag in article.tag.all %}
-                <i>{{ tag.title }}</i>
+                    <i>{{ tag.title }}</i>
                 {% endfor %}
 
             </div>
         </div>
 
-        <div class="article_content">
-            内容区域待完成....
+        <div class="article_content" id="article_content">
+            <textarea style="display: none;">{{ article.content }}</textarea>
         </div>
         <div class="article_comments">
             <div class="title">
@@ -189,5 +192,30 @@
         </div>
     </div>
 
+
+{% endblock %}
+
+
+
+
+{% block js %}
+    <script src="/static/editor-md/lib/marked.min.js"></script>
+    <script src="/static/editor-md/lib/prettify.min.js"></script>
+    <script src="/static/jquery/jquery.min.js"></script>
+    <script src="/static/editor-md/editormd.min.js"></script>
+    {#    <script src="/static/viewer/js/viewer.js"></script>#}
+    {#    <script src="/static/emoji/sina.js"></script>#}
+    <script type="text/javascript">
+
+        $(function () {
+            let editor = editormd.markdownToHTML("article_content", {
+                width: "100%",
+                height: "100%",
+                path: "/static/editor-md/lib/",
+                {#htmlDecode: true,#}
+                {#codeFold: true,#}
+            });
+        })
+    </script>
 
 {% endblock %}
