@@ -83,3 +83,10 @@ def edit_avatar(request):
 # 重置密码
 def reset_password(request):
     return render(request, 'backstage/reset_password.html', locals())
+
+
+# 编辑文章
+def edit_article(request, nid):
+    article_obj = Articles.objects.get(nid=nid)
+
+    return render(request, 'backstage/edit_article.html', locals())
