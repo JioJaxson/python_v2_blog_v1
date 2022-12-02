@@ -88,5 +88,16 @@ def reset_password(request):
 # 编辑文章
 def edit_article(request, nid):
     article_obj = Articles.objects.get(nid=nid)
+    tags = [str(tag.nid) for tag in article_obj.tag.all()]
+    # 拿到所有的分类,标签,封面
+    tag_list = Tags.objects.all()
+    category_list = Articles.category_choice
+    cover_list = Cover.objects.all()
+    c_l = []
+    for cover in cover_list:
+        c_l.append({
+            'url': cover.url.url,
+            'nid': cover.nid,
+        })
 
     return render(request, 'backstage/edit_article.html', locals())

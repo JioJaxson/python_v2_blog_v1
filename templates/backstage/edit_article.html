@@ -1,7 +1,18 @@
 {% extends 'backstage/add_article.html' %}
 
 {% block btn %}
-    <el-button @click="add_drawer=true" type="danger">编辑文章信息</el-button>
+    <el-button id="edit_info"
+               data_title="{{ article_obj.title }}"
+               data_abstract="{{ article_obj.abstract }}"
+               data_pwd="{{ article_obj.pwd }}"
+               data_category="{{ article_obj.category }}"
+               data_tags="{{ tags }}"
+               data_recommend="{{ article_obj.recommend }}"
+               data_cover_id="{{ article_obj.cover.nid }}"
+               data_cover_url="{{ article_obj.cover.url.url }}"
+               @click="add_drawer=true"
+               type="danger">编辑文章信息
+    </el-button>
 {% endblock %}
 {% block textarea %}
     <textarea style="display:none;">{{ article_obj.content }}</textarea>
