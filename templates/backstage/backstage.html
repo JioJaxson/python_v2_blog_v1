@@ -158,19 +158,27 @@
 
     new Vue({
         el: '#app',
-        data() {
-            return {
-                add_drawer: false,
-                add_article_activeNames: ['1'],
-                title: '',
-                category_id: '',
-                tags: [],
-                recommend: true,//默认上推荐
-                pwdactive: false,//默认不加密
-                pwd: '',// 文章加密密码
-                cover_id: '',  //封面id
-                abstract: '',//文章简介
-            }
+        data: {
+            add_drawer: false,
+            add_article_activeNames: ['1'],
+            title: '',
+            category_id: '',
+            tags: [],
+            recommend: true,//默认上推荐
+            pwdactive: false,//默认不加密
+            pwd: '',// 文章加密密码
+            cover_id: '',  //封面id
+            abstract: '',//文章简介
+        },
+        created() {
+            let img = document.getElementById('cover_img')
+            let cover_list = eval(img.getAttribute('data'))
+            let item = cover_list[Math.floor(Math.random() * cover_list.length)]
+            console.log(item)
+            img.setAttribute('src', item.url)
+            this.cover_id = item.nid.toString();
+
+
         },
         methods: {
             add_handleClose(done) {
