@@ -59,12 +59,16 @@ class ArticleView(View):
         }
         data = request.data
         data['status'] = 1
+
         form = AddArticleForm(data)
         if not form.is_valid():
             # 验证不通过
             res['self'], res['msg'] = clean_form(form)
             return JsonResponse(res)
         # 校验通过
+        # 默认作者和来源
+        form.cleaned_data['author'] = '沐沐'
+        form.cleaned_data['source'] = '前端沐沐个人博客'
         article_obj = Articles.objects.create(**form.cleaned_data)
         tags = data.get('tags')
         print(tags)
