@@ -197,9 +197,8 @@
                         return
                     }
                     this.$message.success(res.msg)
-                    console.log(res)
                     setTimeout(() => {
-                        location.href = `/static/${res.data}/`
+                        location.href = `/article/${res.data}/`
                     }, 1000)
                 })
             },
