@@ -22,13 +22,12 @@ class AddArticleForm(forms.Form):
     # 全局钩子 校验分类和密码
     def clean(self):
         category = self.cleaned_data['category']
-        if category:
-            return category
-        self.cleaned_data.pop('category')
+        if not category:
+            self.cleaned_data.pop('category')
+
         pwd = self.cleaned_data['pwd']
-        if pwd:
-            return pwd
-        self.cleaned_data.pop('pwd')
+        if not pwd:
+            self.cleaned_data.pop('pwd')
 
     # 文章简介
     def clean_abstract(self):
@@ -70,13 +69,13 @@ class ArticleView(View):
         tags = data.get('tags')
         print(tags)
         for tag in tags:
-            tag_query = Tags.objects.filter(nid=tag)
-            if tag_query:
+            # for 循环就表明tag存在
+            if tag.isdigit():
                 # 存在 直接关联
                 article_obj.tag.add(tag)
             else:
                 # 不存在 先创建 再关联
-                tag_obj = Tags.objects.create(tag)
+                tag_obj = Tags.objects.create(title=tag)
                 article_obj.tag.add(tag_obj.nid)
         res['code'] = 0
         res['data'] = article_obj.nid
