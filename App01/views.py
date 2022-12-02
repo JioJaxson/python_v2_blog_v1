@@ -3,7 +3,7 @@ from App01.utils.random_code import random_code
 from django import forms
 from django.contrib import auth
 from App01.models import UserInfo
-from App01.models import Articles
+from App01.models import Articles, Tags, Cover
 
 
 # from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
@@ -34,9 +34,6 @@ def login(request):
 
 # 获取随机验证码
 def get_random_code(request):
-    # fp = open(r'E:\code\V1_Blog\App01\utils\new_img.png', 'rb')
-    # data = fp.read()
-    # fp.close()
     data, valid_code = random_code()
     # 将random_code返回的验证码写入session
     request.session['valid_code'] = valid_code
@@ -65,6 +62,10 @@ def backstage(request):
 
 # 添加文章
 def add_article(request):
+    # 拿到所有的分类,标签,封面
+    category_list = Articles.category_choice
+    tag_list = Tags.objects.all()
+    cover_list = Cover.objects.all()
     return render(request, 'backstage/add_article.html', locals())
 
 
