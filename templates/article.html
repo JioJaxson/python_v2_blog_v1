@@ -61,7 +61,7 @@
             <div class="body">
                 <textarea name="" id="" rows="10" ref="comment_content" v-model="comment_content"
                           placeholder="写下你想问的话,开始我们的对话。"></textarea>
-                <button class="submit_btn" @click="add_comment({{ article.nid }})">发布评论</button>
+                <button class="submit_btn" @click="add_comment('{{ article.nid }}')">发布评论</button>
             </div>
             <div class="footer">
                 <p><span>49</span>人参与,<span>3</span>条评论</p>
@@ -84,7 +84,7 @@
 
                                 <div>
                                     <span>点赞({{ comment.digg_count }})</span>
-                                    <span>回复({{ comment.comment_count }})</span>
+                                    <span @click="show_sub_comment_list($event,'{{ comment.user.username }}')">回复({{ comment.comment_count }})</span>
                                     <span class="delete">删除</span>
                                 </div>
                             </div>
@@ -111,6 +111,14 @@
                                         </div>
                                     </div>
                                 {% endfor %}
+
+                                <div class="sub_comment_textarea">
+                                    <textarea cols="30" rows="10" ref="sub_comment_content"
+                                              placeholder="@MUMU"></textarea>
+                                    <button @click="add_sub_comment($event,'{{ article.nid }}','{{ comment.cid }}')">
+                                        回复
+                                    </button>
+                                </div>
 
                             </div>
                         </div>

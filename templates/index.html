@@ -295,6 +295,7 @@
 <!-- 引入组件库 -->
 <script src="/static/elementui/index.js"></script>
 <script src="/static/axios/axios.min.js"></script>
+<script src="/static/jquery/jquery.min.js"></script>
 
 <script>
     {#请求中间件#}
@@ -359,7 +360,7 @@
                 axios.post(`/api/article/comment/${nid}/`, {content: this.comment_content}).then(res => {
                     if (res.code) {
                         if (res.self) {
-                            this.$refs[`comment_${res.self}`].focus()
+                            this.$refs[`comment_${res.self}`].focus();
                         }
                         this.$message.error(res.msg)
                         return
@@ -368,9 +369,37 @@
                     setTimeout(() => {
                         location.reload()
                     }, 600)
-
                 })
+            },
+
+            {#展示子评论回复列表#}
+            show_sub_comment_list(e, username) {
+                let div = $(e.target).parent().parent().next()
+                $(div).slideToggle()
+                $(div).find('textarea').attr('placeholder', `@${username}`)
+            },
+
+            add_sub_comment(e, nid, cid) {
+                // nid 文章id   cid 评论id
+                axios.post(`/api/article/comment/${nid}/`, {
+                    content: $(e.target).prev().val(),
+                    pid: cid,
+                }).then(res => {
+                    if (res.code) {
+                        if (res.self) {
+                            this.$refs[`sub_comment_${res.self}`].focus();
+                        }
+                        this.$message.error(res.msg)
+                        return
+                    }
+                    this.$message.success(res.msg)
+                    setTimeout(() => {
+                        location.reload()
+                    }, 600)
+                })
+
             }
+
         }
 
     })
