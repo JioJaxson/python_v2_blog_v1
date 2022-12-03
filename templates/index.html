@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>个人博客</title>
     <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="/static/elementui/theme-chalk/index.css">
     <link rel="stylesheet" href="/static/my/css/reset.css">
     <link rel="stylesheet" href="/static/my/css/base.css">
 
@@ -293,8 +293,23 @@
     </footer>
 </div>
 <!-- 引入组件库 -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="/static/elementui/index.js"></script>
+<script src="/static/axios/axios.min.js"></script>
+
 <script>
+    {#请求中间件#}
+    axios.interceptors.request.use(request => {
+        if (request.method === 'post') {
+            let csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request.headers['X-CSRFToken'] = csrftoken
+
+        }
+        return request
+    });
+    axios.interceptors.response.use(response => {
+        {#console.log(response);#}
+        return response.data;
+    })
     new Vue({
         el: '#app',
         delimiters: ["[[", "]]"],
@@ -302,6 +317,7 @@
         data: {
             theme: 'light',//默认主题
             checked_type: 'font_end',// 选中文章类型 默认前端
+            comment_content: '',//评论内容
         },
         created() {
             this.init_theme();
@@ -337,10 +353,29 @@
                     this.checked_type = checked_type
                 }
 
+            },
+            //发布评论
+            add_comment(nid) {
+                axios.post(`/api/article/comment/${nid}/`, {content: this.comment_content}).then(res => {
+                    if (res.code) {
+                        if (res.self) {
+                            this.$refs[`comment_${res.self}`].focus()
+                        }
+                        this.$message.error(res.msg)
+                        return
+                    }
+                    this.$message.success(res.msg)
+                    setTimeout(() => {
+                        location.reload()
+                    }, 600)
+
+                })
             }
         }
 
     })
+
+
     // 轮播图
     let banner_list = document.querySelectorAll('.header_banner')
     {#console.log(banner_list)#}

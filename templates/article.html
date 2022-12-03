@@ -57,9 +57,11 @@
             <div class="title">
                 你觉得文章怎么样
             </div>
+            {% csrf_token %}
             <div class="body">
-                <textarea name="" id="" rows="10" placeholder="写下你想问的话,开始我们的对话。"></textarea>
-                <button class="submit_btn">发布评论</button>
+                <textarea name="" id="" rows="10" ref="comment_content" v-model="comment_content"
+                          placeholder="写下你想问的话,开始我们的对话。"></textarea>
+                <button class="submit_btn" @click="add_comment({{ article.nid }})">发布评论</button>
             </div>
             <div class="footer">
                 <p><span>49</span>人参与,<span>3</span>条评论</p>

@@ -12,8 +12,8 @@ def find_root_sub_comment(root_comment, sub_comment_list):
 
 
 def sub_comment_list(nid):
-    # 找到某个文章的所有评论
-    comment_query = Comment.objects.filter(article_id=nid).order_by('create_time')
+    # 找到某个文章的所有评论 排序 最新评论在前
+    comment_query = Comment.objects.filter(article_id=nid).order_by('-create_time')
     # 把评论存储到列表
     comment_list = []
 
