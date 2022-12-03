@@ -64,7 +64,7 @@
                 <button class="submit_btn" @click="add_comment('{{ article.nid }}')">发布评论</button>
             </div>
             <div class="footer">
-                <p><span>49</span>人参与,<span>3</span>条评论</p>
+                <p><span>{{ article.look_count }}</span>人参与,<span>{{ article.comment_count }}</span>条评论</p>
             </div>
         </div>
         <div class="comments_list">
