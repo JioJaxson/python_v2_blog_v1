@@ -26,6 +26,7 @@ class AddArticleForm(forms.Form):
             self.cleaned_data.pop('category')
 
         pwd = self.cleaned_data['pwd']
+
         if not pwd:
             self.cleaned_data.pop('pwd')
 
@@ -71,7 +72,6 @@ class ArticleView(View):
         form.cleaned_data['source'] = '前端沐沐个人博客'
         article_obj = Articles.objects.create(**form.cleaned_data)
         tags = data.get('tags')
-        print(tags)
         for tag in tags:
             # for 循环就表明tag存在
             if tag.isdigit():
@@ -84,6 +84,10 @@ class ArticleView(View):
         res['code'] = 0
         res['data'] = article_obj.nid
         return JsonResponse(res)
+
+    def put(self, request, nid):
+        print(request.data, nid)
+        return JsonResponse({})
 
 # class ArticleView(View):
 #     # 发布文章

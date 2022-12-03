@@ -73,182 +73,40 @@
                         </div>
                         <div class="body">
                             <ul v-show="checked_type==='font_end'" class="font_end">
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/28.jpg" alt="">
+                                {% for frontend in frontend_list %}
+                                    <li>
+                                        <div class="left">
+                                            <div>
+                                                <img src="{{ frontend.cover.url.url }}" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>【项目相关】0208--文章搜索</h2>
-                                        <p>前端的一些必备知识
-                                            判断类属性是否存在与节点中
-                                            JavaScript let box = document.querySelector('.search') box.classLi</p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/28.jpg" alt="">
+                                        <div class="right">
+                                            <h2><a href="/article/{{ frontend.nid }}/">{{ frontend.title }}</a></h2>
+                                            <p> {{ frontend.abstract }}</p>
+                                            <p>{{ frontend.create_date }}</p>
                                         </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>【项目相关】0208--文章搜索</h2>
-                                        <p>前端的一些必备知识
-                                            判断类属性是否存在与节点中
-                                            JavaScript let box = document.querySelector('.search') box.classLi</p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/28.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>【项目相关】0208--文章搜索</h2>
-                                        <p>前端的一些必备知识
-                                            判断类属性是否存在与节点中
-                                            JavaScript let box = document.querySelector('.search') box.classLi</p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/28.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>【项目相关】0208--文章搜索</h2>
-                                        <p>前端的一些必备知识
-                                            判断类属性是否存在与节点中
-                                            JavaScript let box = document.querySelector('.search') box.classLi</p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/28.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>【项目相关】0208--文章搜索</h2>
-                                        <p>前端的一些必备知识
-                                            判断类属性是否存在与节点中
-                                            JavaScript let box = document.querySelector('.search') box.classLi</p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/28.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>【项目相关】0208--文章搜索</h2>
-                                        <p>前端的一些必备知识
-                                            判断类属性是否存在与节点中
-                                            JavaScript let box = document.querySelector('.search') box.classLi</p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
+                                    </li>
+                                {% endfor %}
+
+
                             </ul>
                             <ul v-show="checked_type==='back_end'" class="back_end">
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/40.jpg" alt="">
+                                {% for backend in backend_list %}
+                                    <li>
+                                        <div class="left">
+                                            <div>
+                                                <img src="{{ backend.cover.url.url }}" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>React全系列课程</h2>
-                                        <p>
-                                            安装react包Python npm i react react-dom使用react```HTMLreact基本使用// 2.创建react元素 //
-                                            参数一：元素名称
-                                        </p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/40.jpg" alt="">
+                                        <div class="right">
+                                            <h2><a href="/article/{{ backend.nid }}/">{{ backend.title }}</a></h2>
+                                            <p> {{ backend.abstract }}</p>
+                                            <p>{{ backend.create_date }}</p>
                                         </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>React全系列课程</h2>
-                                        <p>
-                                            安装react包Python npm i react react-dom使用react```HTMLreact基本使用// 2.创建react元素 //
-                                            参数一：元素名称
-                                        </p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/40.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>React全系列课程</h2>
-                                        <p>
-                                            安装react包Python npm i react react-dom使用react```HTMLreact基本使用// 2.创建react元素 //
-                                            参数一：元素名称
-                                        </p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/40.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>React全系列课程</h2>
-                                        <p>
-                                            安装react包Python npm i react react-dom使用react```HTMLreact基本使用// 2.创建react元素 //
-                                            参数一：元素名称
-                                        </p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/40.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>React全系列课程</h2>
-                                        <p>
-                                            安装react包Python npm i react react-dom使用react```HTMLreact基本使用// 2.创建react元素 //
-                                            参数一：元素名称
-                                        </p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/40.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2>React全系列课程</h2>
-                                        <p>
-                                            安装react包Python npm i react react-dom使用react```HTMLreact基本使用// 2.创建react元素 //
-                                            参数一：元素名称
-                                        </p>
-                                        <p>2天前</p>
-                                    </div>
-                                </li>
+                                    </li>
+                                {% endfor %}
+
+
                             </ul>
                         </div>
                     </div>
@@ -288,105 +146,37 @@
                         </div>
                         <div class="body">
                             <ul>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/24.jpg" alt="">
+                                {% for article in article_list %}
+                                    <li>
+                                        <div class="left">
+                                            <div>
+                                                <img src="{{ article.cover.url.url }}" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2><a href="#">Scrapy爬虫框架</a></h2>
-                                        <p>
-                                            安装与创建项目
-                                            Vue pip install scrapy
-                                            创建项目
-                                            Vue scrapy startproject demo
-                                            Vue scrapy genspider doub
-                                        </p>
-                                        <div class="article_info">
+                                        <div class="right">
+                                            <h2><a href="/article/{{ article.nid }}/">{{ article.title }}</a></h2>
+                                            <p>{{ article.abstract }}</p>
+                                            <div class="article_info">
                                             <span>
-                                                <i class="far fa-clock"></i>2022-11-04
+                                                <i class="far fa-clock"></i>{{ article.create_date |date:'Y-m-d' }}
                                             </span>
-                                            <span>
-                                                <i class="far fa-thumbs-up"></i>23
+                                                <span>
+                                                <i class="far fa-thumbs-up"></i>{{ article.digg_count }}
                                             </span>
-                                            <span>
-                                                <i class="far fa-eye"></i>259
+                                                <span>
+                                                <i class="far fa-eye"></i>{{ article.look_count }}
                                             </span>
-                                            <span>
-                                                <i class="far fa-comments"></i>2
+                                                <span>
+                                                <i class="far fa-comments"></i>{{ article.comment_count }}
                                             </span>
 
+                                            </div>
+                                            <a href="/article/{{ article.nid }}/" target="_blank">查看详情</a>
                                         </div>
-                                        <a href="#">查看详情</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/24.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2><a href="#">Scrapy爬虫框架</a></h2>
-                                        <p>
-                                            安装与创建项目
-                                            Vue pip install scrapy
-                                            创建项目
-                                            Vue scrapy startproject demo
-                                            Vue scrapy genspider doub
-                                        </p>
-                                        <div class="article_info">
-                                            <span>
-                                                <i class="far fa-clock"></i>2022-11-04
-                                            </span>
-                                            <span>
-                                                <i class="far fa-thumbs-up"></i>23
-                                            </span>
-                                            <span>
-                                                <i class="far fa-eye"></i>259
-                                            </span>
-                                            <span>
-                                                <i class="far fa-comments"></i>2
-                                            </span>
+                                    </li>
+                                {% endfor %}
 
-                                        </div>
-                                        <a href="#">查看详情</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="left">
-                                        <div>
-                                            <img src="http://127.0.0.1:8000/media/article_img/24.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <h2><a href="#">Scrapy爬虫框架</a></h2>
-                                        <p>
-                                            安装与创建项目
-                                            Vue pip install scrapy
-                                            创建项目
-                                            Vue scrapy startproject demo
-                                            Vue scrapy genspider doub
-                                        </p>
-                                        <div class="article_info">
-                                            <span>
-                                                <i class="far fa-clock"></i>2022-11-04
-                                            </span>
-                                            <span>
-                                                <i class="far fa-thumbs-up"></i>23
-                                            </span>
-                                            <span>
-                                                <i class="far fa-eye"></i>259
-                                            </span>
-                                            <span>
-                                                <i class="far fa-comments"></i>2
-                                            </span>
 
-                                        </div>
-                                        <a href="#">查看详情</a>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
 

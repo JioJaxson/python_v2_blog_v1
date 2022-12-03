@@ -12,7 +12,10 @@ from App01.models import Articles, Tags, Cover
 # 类似router
 # Create your views here.
 def index(request):
-    return render(request, 'index.html', {'request': request})
+    article_list = Articles.objects.filter(status=1).order_by('-change_date')
+    frontend_list = Articles.objects.filter(category=1)[:6]
+    backend_list = Articles.objects.filter(category=2)[:6]
+    return render(request, 'index.html', locals())
 
 
 # 文章

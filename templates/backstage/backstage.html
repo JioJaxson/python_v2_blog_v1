@@ -142,7 +142,7 @@
     {#配置中间件(拦截器)#}
     {#请求中间件#}
     axios.interceptors.request.use(request => {
-        if (request.method === 'post') {
+        if (request.method !== 'get') {
             let csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value
             request.headers['X-CSRFToken'] = csrftoken
 
@@ -172,11 +172,10 @@
         },
         created() {
             let img = document.getElementById('cover_img')
-            {#let cover_list = eval(img.getAttribute('data'))#}
-            {#let item = cover_list[Math.floor(Math.random() * cover_list.length)]#}
-            {#console.log(item)#}
-            {#img.setAttribute('src', item.url)#}
-            {#this.cover_id = item.nid.toString();#}
+            let cover_list = eval(img.getAttribute('data'))
+            let item = cover_list[Math.floor(Math.random() * cover_list.length)]
+            img.setAttribute('src', item.url)
+            this.cover_id = item.nid.toString();
 
             let box = document.getElementById('edit_info')
             this.title = box.getAttribute('data_title')
@@ -221,17 +220,17 @@
                     cover_id: this.cover_id,
                     recommend: this.recommend,
                     title: this.title,
-                    category_id: this.category_id,
+                    category: this.category_id,
                     abstract: this.abstract,
                     content: editor.querySelector('.editormd-markdown-textarea').value,
                 }
-
 
                 axios.post('/api/article/', data).then(res => {
                     if (res.code) {
                         this.$message.error(res.msg)
                         return
                     }
+                    console.log(res)
                     this.$message.success(res.msg)
                     setTimeout(() => {
                         location.href = `/article/${res.data}/`
@@ -247,6 +246,35 @@
                     cover.src = v
                 }, 1)
             },
+
+            submit_edit_article(nid) {
+                let data = {
+                    pwd: this.pwd,
+                    tags: this.tags,
+                    cover_id: this.cover_id,
+                    recommend: this.recommend,
+                    title: this.title,
+                    category: this.category_id,
+                    abstract: this.abstract,
+                    content: editor.querySelector('.editormd-markdown-textarea').value,
+                }
+                {#console.log(data, nid)#}
+
+                axios.put(`/api/article/${nid}/`, data).then(res => {
+                    console.log(res)
+                    {#if (res.code) {#}
+                    {#    this.$message.error(res.msg)#}
+                    {#    return#}
+                    {# }#}
+                    {#console.log(res)#}
+                    {#this.$message.success(res.msg)#}
+                    {#setTimeout(() => {#}
+                    {#    location.href = `/article/${res.data}/`#}
+                    {# }, 1000)#}
+                })
+
+
+            }
 
 
         }

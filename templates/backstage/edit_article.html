@@ -101,7 +101,7 @@
             </el-collapse>
 
             <div class="submit_article_btn">
-                <el-button type="danger">确认修改</el-button>
+                <el-button type="danger" @click="submit_edit_article('{{ article_obj.nid }}')">确认修改</el-button>
             </div>
         </div>
     </el-drawer>
