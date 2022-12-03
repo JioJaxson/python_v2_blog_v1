@@ -67,146 +67,56 @@
         </div>
         <div class="comments_list">
             <ul>
-                <li>
-                    <div class="left">
-                        <img src="http://127.0.0.1:8000/media/avatars/头像_0001_20.jpg">
-                    </div>
-                    <div class="right">
-                        <h4>沐沐</h4>
-                        <div class="comments_content">
-                            <p>你好呀</p>
-                            <div>
-                                <img src="http://127.0.0.1:8000/media/article_img/22.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/21.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/28.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/28.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/28.jpg">
-
-                            </div>
-
+                {% for comment in comment_list %}
+                    <li>
+                        <div class="left">
+                            <img src="{{ comment.user.avatar.url.url }}">
                         </div>
-                        <div class="comments_info">
-                            <span>刚刚</span>
-
-                            <div>
-                                <span>点赞(0)</span>
-                                <span>回复(0)</span>
-                                <span class="delete">删除</span>
+                        <div class="right">
+                            <h4>{{ comment.user.username }}</h4>
+                            <div class="comments_content">
+                                {{ comment.content }}
                             </div>
-                        </div>
-                        <div class="sub_comments_list">
-                            <div class="sub_comment_item">
-                                <div class="left">
-                                    <img src="http://127.0.0.1:8000/media/avatars/头像_0002_27.jpg">
+                            <div class="comments_info">
+                                <span>{{ comment.create_time }}</span>
+
+                                <div>
+                                    <span>点赞({{ comment.digg_count }})</span>
+                                    <span>回复({{ comment.comment_count }})</span>
+                                    <span class="delete">删除</span>
                                 </div>
-                                <div class="right">
-                                    <h4>张三 @ 沐沐</h4>
-                                    <div class="sub_comment_content">
-                                        你好
-                                    </div>
-                                    <div class="sub_comment_info">
-                                        <span>1分钟前</span>
-                                        <div>
-                                            <span>点赞(0)</span>
-                                            <span>回复(0)</span>
-                                            <span class="delete">删除</span>
+                            </div>
+                            <div class="sub_comments_list">
+                                {% for sub in comment.sub_comment %}
+                                    <div class="sub_comment_item">
+                                        <div class="left">
+                                            <img src="{{ sub.user.avatar.url.url }}">
+                                        </div>
+                                        <div class="right">
+                                            <h4>{{ sub.user.username }} @ {{ sub.parent_comment.user.username }}</h4>
+                                            <div class="sub_comment_content">
+                                                {{ sub.content }}
+                                            </div>
+                                            <div class="sub_comment_info">
+                                                <span>{{ sub.create_time }}</span>
+
+                                                <div>
+                                                    <span>点赞({{ sub.digg_count }})</span>
+                                                    <span>回复</span>
+                                                    <span class="delete">删除</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="sub_comment_item">
-                                <div class="left">
-                                    <img src="http://127.0.0.1:8000/media/avatars/头像_0002_27.jpg">
-                                </div>
-                                <div class="right">
-                                    <h4>张三 @ 沐沐</h4>
-                                    <div class="sub_comment_content">
-                                        你好
-                                    </div>
-                                    <div class="sub_comment_info">
-                                        <span>1分钟前</span>
-                                        <div>
-                                            <span>点赞(0)</span>
-                                            <span>回复(0)</span>
-                                            <span class="delete">删除</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
+
                             </div>
                         </div>
-                    </div>
 
-                </li>
-                <li>
-                    <div class="left">
-                        <img src="http://127.0.0.1:8000/media/avatars/头像_0001_20.jpg">
-                    </div>
-                    <div class="right">
-                        <h4>沐沐</h4>
-                        <div class="comments_content">
-                            <p>你好呀</p>
-                            <div>
-                                <img src="http://127.0.0.1:8000/media/article_img/22.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/21.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/28.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/28.jpg">
-                                <img src="http://127.0.0.1:8000/media/article_img/28.jpg">
+                    </li>
+                {% endfor %}
 
-                            </div>
 
-                        </div>
-                        <div class="comments_info">
-                            <span>刚刚</span>
-
-                            <div>
-                                <span>点赞(0)</span>
-                                <span>回复(0)</span>
-                                <span class="delete">删除</span>
-                            </div>
-                        </div>
-                        <div class="sub_comments_list">
-                            <div class="sub_comment_item">
-                                <div class="left">
-                                    <img src="http://127.0.0.1:8000/media/avatars/头像_0002_27.jpg">
-                                </div>
-                                <div class="right">
-                                    <h4>张三 @ 沐沐</h4>
-                                    <div class="sub_comment_content">
-                                        你好
-                                    </div>
-                                    <div class="sub_comment_info">
-                                        <span>1分钟前</span>
-                                        <div>
-                                            <span>点赞(0)</span>
-                                            <span>回复(0)</span>
-                                            <span class="delete">删除</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sub_comment_item">
-                                <div class="left">
-                                    <img src="http://127.0.0.1:8000/media/avatars/头像_0002_27.jpg">
-                                </div>
-                                <div class="right">
-                                    <h4>张三 @ 沐沐</h4>
-                                    <div class="sub_comment_content">
-                                        你好
-                                    </div>
-                                    <div class="sub_comment_info">
-                                        <span>1分钟前</span>
-                                        <div>
-                                            <span>点赞(0)</span>
-                                            <span>回复(0)</span>
-                                            <span class="delete">删除</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
             </ul>
         </div>
     </div>
