@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib import auth
-from App01.models import UserInfo
+from App01.models import UserInfo, Avatars
 from django.views import View
 from django.http import JsonResponse
+import random
 
 
 # CBV 模式  => class
@@ -120,6 +121,10 @@ class SignView(View):
             username=request.data.get('name'),
             password=request.data.get('pwd')
         )
+        # 随机选择头像
+        avatar_list = [i.nid for i in Avatars.objects.all()]
+        user.avatar_id = random.choice(avatar_list)
+        user.save()
         # 注册之后直接登陆
         auth.login(request, user)
         res['code'] = 0
