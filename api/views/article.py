@@ -8,7 +8,7 @@ from App01.models import Articles, Tags, Cover
 from django import forms
 from api.views.login import clean_form
 
-
+# 添加文章编辑文章的验证
 class AddArticleForm(forms.Form):
     title = forms.CharField(error_messages={'required': '请输入文章标题!'})
     content = forms.CharField(error_messages={'required': '请输入文章内容!'})
@@ -51,7 +51,22 @@ class AddArticleForm(forms.Form):
         return cover_id
 
 
+# 给文章添加标签
+def add_article_tags(tags, article_obj):
+    for tag in tags:
+        # for 循环就表明tag存在
+        if tag.isdigit():
+            # 存在 直接关联
+            article_obj.tag.add(tag)
+        else:
+            # 不存在 先创建 再关联
+            tag_obj = Tags.objects.create(title=tag)
+            article_obj.tag.add(tag_obj.nid)
+
+
+# 文章
 class ArticleView(View):
+    # 添加文章
     def post(self, request):
         res = {
             'msg': '文章发布成功!',
@@ -72,19 +87,13 @@ class ArticleView(View):
         form.cleaned_data['source'] = '前端沐沐个人博客'
         article_obj = Articles.objects.create(**form.cleaned_data)
         tags = data.get('tags')
-        for tag in tags:
-            # for 循环就表明tag存在
-            if tag.isdigit():
-                # 存在 直接关联
-                article_obj.tag.add(tag)
-            else:
-                # 不存在 先创建 再关联
-                tag_obj = Tags.objects.create(title=tag)
-                article_obj.tag.add(tag_obj.nid)
+        # 调用添加标签
+        add_article_tags(tags, article_obj)
         res['code'] = 0
         res['data'] = article_obj.nid
         return JsonResponse(res)
 
+    # 编辑文章
     def put(self, request, nid):
         res = {
             'msg': '文章编辑成功!',
@@ -112,15 +121,8 @@ class ArticleView(View):
         # 标签修改
         # 清空所有标签
         article_query.first().tag.clear()
-        for tag in tags:
-            # for 循环就表明tag存在
-            if tag.isdigit():
-                # 存在 直接关联
-                article_query.first().tag.add(tag)
-            else:
-                # 不存在 先创建 再关联
-                tag_obj = Tags.objects.create(title=tag)
-                article_query.first().tag.add(tag_obj.nid)
+        # 调用添加标签
+        add_article_tags(tags, article_query.first())
         res['code'] = 0
         res['data'] = article_query.first().nid
         return JsonResponse(res)
