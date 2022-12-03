@@ -300,7 +300,7 @@
 <script>
     {#请求中间件#}
     axios.interceptors.request.use(request => {
-        if (request.method === 'post') {
+        if (request.method !== 'get') {
             let csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value
             request.headers['X-CSRFToken'] = csrftoken
 
@@ -414,6 +414,21 @@
                     }, 600)
                 })
 
+            },
+
+
+            {#删除子评论#}
+            delete_sub_comment(nid) {
+                axios.delete(`/api/article/comment/${nid}/`).then((res) => {
+                    if (res.code) {
+                        this.$message.error(res.msg)
+                        return
+                    }
+                    this.$message.success(res.msg)
+                    setTimeout(() => {
+                        location.reload()
+                    }, 600)
+                })
             }
 
         }

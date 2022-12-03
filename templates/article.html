@@ -105,7 +105,10 @@
                                                 <div>
                                                     <span>点赞({{ sub.digg_count }})</span>
                                                     <span @click="sub_comment_set_placeholder($event,'{{ sub.user.username }}','{{ sub.nid }}')">回复</span>
-                                                    <span class="delete">删除</span>
+                                                    {% if sub.user == request.user or request.user.is_superuser %}
+                                                        <span class="delete" @click="delete_sub_comment('{{ sub.nid }}')">删除</span>
+                                                    {% endif %}
+
                                                 </div>
                                             </div>
                                         </div>

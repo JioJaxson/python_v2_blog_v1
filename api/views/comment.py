@@ -31,7 +31,7 @@ class CommentView(View):
 
         pid = data.get('pid')
         # 文章评论数加1
-        Articles.objects.filter(nid=pid).update(comment_count=F('comment_count') + 1)
+        Articles.objects.filter(nid=nid).update(comment_count=F('comment_count') + 1)
         if pid:
             # 不是根评论
             comment_obj = Comment.objects.create(
@@ -54,4 +54,25 @@ class CommentView(View):
                 article_id=nid
             )
         res['code'] = 0
+        return JsonResponse(res)
+
+    # 删除评论
+    def delete(self, request, nid):
+        res = {
+            'msg': '评论删除成功！',
+            'code': 412,
+        }
+        # 登陆人
+        login_user = request.user
+        comment_query = Comment.objects.filter(nid=nid)
+        # 评论人
+        comment_user = comment_query.first().user
+
+        if login_user == comment_user or login_user.is_superuser:
+            # 登陆人是评论人或登陆人是超级管理员
+            # 可以删除
+            comment_query.delete()
+            res['code'] = 0
+            return JsonResponse(res)
+        res['msg'] = '用户验证失败！'
         return JsonResponse(res)
