@@ -372,18 +372,34 @@
                 })
             },
 
-            {#展示子评论回复列表#}
-            show_sub_comment_list(e, username) {
-                let div = $(e.target).parent().parent().next()
-                $(div).slideToggle()
+            {#将被评论人名字写到placeholder#}
+            set_sub_placeholder(div, username, cid) {
                 $(div).find('textarea').attr('placeholder', `@${username}`)
+                $(div).find('textarea').attr('cid', cid)
+
             },
 
-            add_sub_comment(e, nid, cid) {
+
+            {#展示子评论回复列表#}
+            show_sub_comment_list(e, username, cid) {
+                let div = $(e.target).parent().parent().next()
+                $(div).slideToggle()
+                this.set_sub_placeholder(div, username, cid)
+            },
+
+            {#子评论回复显示#}
+            sub_comment_set_placeholder(e, username, cid) {
+                let div = $(e.target).parents('.sub_comments_list')
+                this.set_sub_placeholder(div, username, cid)
+
+            },
+
+            {#添加子评论#}
+            add_sub_comment(e, nid) {
                 // nid 文章id   cid 评论id
                 axios.post(`/api/article/comment/${nid}/`, {
                     content: $(e.target).prev().val(),
-                    pid: cid,
+                    pid: $(e.target).prev().attr('cid'),
                 }).then(res => {
                     if (res.code) {
                         if (res.self) {

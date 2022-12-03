@@ -27,7 +27,7 @@ class CommentView(View):
             res['self'] = 'content'
             return JsonResponse(res)
 
-        pid = data.get('pid'),
+        pid = data.get('pid')
         if pid:
             Comment.objects.create(
                 content=content,
