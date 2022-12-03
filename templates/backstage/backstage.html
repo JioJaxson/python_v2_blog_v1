@@ -172,37 +172,15 @@
         },
         created() {
             let img = document.getElementById('cover_img')
-            let cover_list = eval(img.getAttribute('data'))
-            let item = cover_list[Math.floor(Math.random() * cover_list.length)]
-            img.setAttribute('src', item.url)
-            this.cover_id = item.nid.toString();
+            let path = location.pathname
+            let index = path.indexOf('add_article')
+            if (index !== -1) {
+                {#添加文章#}
+                this.init_add_article(img)
 
-            let box = document.getElementById('edit_info')
-            this.title = box.getAttribute('data_title')
-            this.abstract = box.getAttribute('data_abstract')
-            this.cover_id = box.getAttribute('data_cover_id')
-
-            let recommend = box.getAttribute('data_recommend')
-            if (recommend === 'True') {
-                this.recommend = true
             } else {
-                this.recommend = false
-
-            }
-
-            let cover_url = box.getAttribute('data_cover_url')
-            img.setAttribute('src', cover_url)
-
-            let category_id = box.getAttribute('data_category')
-            if (category_id !== 'None') {
-                this.category_id = category_id
-            }
-            this.tags = eval(box.getAttribute('data_tags'))
-
-            let pwd = box.getAttribute('data_pwd')
-            if (pwd !== 'None') {
-                this.pwd = pwd
-                this.pwdactive = true
+                {#编辑文章#}
+                this.init_edit_article(img)
             }
 
 
@@ -212,8 +190,8 @@
                 done()
 
             },
-            {#发布文章#}
-            submit_article() {
+            {## 添加编辑的公共参数#}
+            add_edit_article_query() {
                 let data = {
                     pwd: this.pwd,
                     tags: this.tags,
@@ -224,18 +202,35 @@
                     abstract: this.abstract,
                     content: editor.querySelector('.editormd-markdown-textarea').value,
                 }
+                return data
+            },
+            {#添加文章编辑文章的回调#}
+            add_edit_article_callback(res) {
+                if (res.code) {
+                    this.$message.error(res.msg)
+                    return
+                }
+                console.log(res)
+                this.$message.success(res.msg)
+                setTimeout(() => {
+                    console.log('aaaa')
+                    location.href = `/article/${res.data}/`
+                }, 1000)
+            },
 
+            {#发布文章#}
+            submit_article() {
+                let data = this.add_edit_article_query()
                 axios.post('/api/article/', data).then(res => {
-                    if (res.code) {
-                        this.$message.error(res.msg)
-                        return
-                    }
-                    console.log(res)
-                    this.$message.success(res.msg)
-                    setTimeout(() => {
-                        location.href = `/article/${res.data}/`
-                    }, 1000)
+                    this.add_edit_article_callback(res)
                 })
+            },
+            {#添加文章初始化#}
+            init_add_article(img) {
+                let cover_list = eval(img.getAttribute('data'))
+                let item = cover_list[Math.floor(Math.random() * cover_list.length)]
+                img.setAttribute('src', item.url)
+                this.cover_id = item.nid.toString();
             },
             {#选择封面#}
             select_cover(val) {
@@ -246,34 +241,47 @@
                     cover.src = v
                 }, 1)
             },
-
+            {#编辑文章#}
             submit_edit_article(nid) {
-                let data = {
-                    pwd: this.pwd,
-                    tags: this.tags,
-                    cover_id: this.cover_id,
-                    recommend: this.recommend,
-                    title: this.title,
-                    category: this.category_id,
-                    abstract: this.abstract,
-                    content: editor.querySelector('.editormd-markdown-textarea').value,
-                }
+                let data = this.add_edit_article_query()
                 {#console.log(data, nid)#}
 
                 axios.put(`/api/article/${nid}/`, data).then(res => {
-                    if (res.code) {
-                        this.$message.error(res.msg)
-                        return
-                    }
-                    console.log(res)
-                    this.$message.success(res.msg)
-                    setTimeout(() => {
-                        console.log('aaaa')
-                        location.href = `/article/${res.data}/`
-                    }, 1000)
+                    this.add_edit_article_callback(res)
                 })
 
 
+            },
+
+            {#编辑文章初始化#}
+            init_edit_article(img) {
+                {#编辑文章#}
+                let box = document.getElementById('edit_info')
+                this.title = box.getAttribute('data_title')
+                this.abstract = box.getAttribute('data_abstract')
+                this.cover_id = box.getAttribute('data_cover_id')
+
+                let recommend = box.getAttribute('data_recommend')
+                if (recommend === 'True') {
+                    this.recommend = true
+                } else {
+                    this.recommend = false
+                }
+
+                let cover_url = box.getAttribute('data_cover_url')
+                img.setAttribute('src', cover_url)
+
+                let category_id = box.getAttribute('data_category')
+                if (category_id !== 'None') {
+                    this.category_id = category_id
+                }
+                this.tags = eval(box.getAttribute('data_tags'))
+
+                let pwd = box.getAttribute('data_pwd')
+                if (pwd !== 'None') {
+                    this.pwd = pwd
+                    this.pwdactive = true
+                }
             }
 
 
