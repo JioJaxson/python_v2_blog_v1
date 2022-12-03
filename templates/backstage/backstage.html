@@ -261,16 +261,16 @@
                 {#console.log(data, nid)#}
 
                 axios.put(`/api/article/${nid}/`, data).then(res => {
+                    if (res.code) {
+                        this.$message.error(res.msg)
+                        return
+                    }
                     console.log(res)
-                    {#if (res.code) {#}
-                    {#    this.$message.error(res.msg)#}
-                    {#    return#}
-                    {# }#}
-                    {#console.log(res)#}
-                    {#this.$message.success(res.msg)#}
-                    {#setTimeout(() => {#}
-                    {#    location.href = `/article/${res.data}/`#}
-                    {# }, 1000)#}
+                    this.$message.success(res.msg)
+                    setTimeout(() => {
+                        console.log('aaaa')
+                        location.href = `/article/${res.data}/`
+                    }, 1000)
                 })
 
 

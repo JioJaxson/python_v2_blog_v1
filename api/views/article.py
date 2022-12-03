@@ -86,8 +86,44 @@ class ArticleView(View):
         return JsonResponse(res)
 
     def put(self, request, nid):
-        print(request.data, nid)
-        return JsonResponse({})
+        res = {
+            'msg': '文章编辑成功!',
+            'code': 412,
+            'data': None,
+        }
+        article_query = Articles.objects.filter(nid=nid)
+        if not article_query:
+            res['msg'] = '请求错误!'
+            return JsonResponse(res)
+        data = request.data
+        data['status'] = 1
+
+        form = AddArticleForm(data)
+        if not form.is_valid():
+            # 验证不通过
+            res['self'], res['msg'] = clean_form(form)
+            return JsonResponse(res)
+        # 校验通过
+        # 默认作者和来源
+        form.cleaned_data['author'] = '沐沐'
+        form.cleaned_data['source'] = '前端沐沐个人博客'
+        article_query.update(**form.cleaned_data)
+        tags = data.get('tags')
+        # 标签修改
+        # 清空所有标签
+        article_query.first().tag.clear()
+        for tag in tags:
+            # for 循环就表明tag存在
+            if tag.isdigit():
+                # 存在 直接关联
+                article_query.first().tag.add(tag)
+            else:
+                # 不存在 先创建 再关联
+                tag_obj = Tags.objects.create(title=tag)
+                article_query.first().tag.add(tag_obj.nid)
+        res['code'] = 0
+        res['data'] = article_query.first().nid
+        return JsonResponse(res)
 
 # class ArticleView(View):
 #     # 发布文章
