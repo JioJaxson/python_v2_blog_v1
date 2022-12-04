@@ -85,8 +85,11 @@
                                 <div>
                                     <span>点赞({{ comment.digg_count }})</span>
                                     <span @click="show_sub_comment_list($event,'{{ comment.user.username }}','{{ comment.nid }}')">回复({{ comment.comment_count }})</span>
-                                    <span class="delete"
-                                          @click="delete_sub_comment('{{ comment.nid }}','{{ article.nid }}',null)">删除</span>
+                                    {% if comment.user == request.user or request.user.is_superuser %}
+                                        <span class="delete"
+                                              @click="delete_sub_comment('{{ comment.nid }}','{{ article.nid }}',null)">删除</span>
+                                    {% endif %}
+
                                 </div>
                             </div>
                             <div class="sub_comments_list">

@@ -77,21 +77,12 @@ class CommentView(View):
             # 登陆人不是评论人并且登陆人不是超级管理员
             res['msg'] = '用户验证失败！'
             return JsonResponse(res)
-
-        if not pid:
-            # 删除的是根评论
-            # 算子评论数量
-            lis = []
-            find_root_sub_comment(comment_query.first(), lis)
-            Articles.objects.filter(nid=aid).update(comment_count=F('comment_count') - len(lis)-1)
-
-            pass
-        else:
-            # 可以删除
-            # 一级根评论数同步
-            Comment.objects.filter(nid=pid).update(comment_count=F('comment_count') - 1)
-            # 文章总评论数-1
-            Articles.objects.filter(nid=aid).update(comment_count=F('comment_count') - 1)
+        lis = []
+        find_root_sub_comment(comment_query.first(), lis)
+        Articles.objects.filter(nid=aid).update(comment_count=F('comment_count') - len(lis) - 1)
+        if pid:
+            # 有pid 删除的是子评论
+            Comment.objects.filter(nid=pid).update(comment_count=F('comment_count') - len(lis) - 1)
         comment_query.delete()
         res['code'] = 0
 
