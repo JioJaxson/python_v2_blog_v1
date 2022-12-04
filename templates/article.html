@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 
-{% load my_tags %}
+{#导入自定义过滤器 新增过滤器或标签 需要重启项目#}
+{% load my_tags my_filter %}
 
 {% block css %}
     <link rel="stylesheet" href="/static/editor-md/css/editormd.css"/>
@@ -26,19 +27,20 @@
             </div>
         </div>
         <div class="article_actions">
-            <div class="item">
+            <div class="item" title="点赞该文章">
                 <i class="fas fa-thumbs-up " @click="article_digg($event,'{{ article.nid }}')"></i>
                 <span>{{ article.digg_count }}</span>
 
             </div>
-            <div class="item">
-                <i class="fas fa-star " @click="article_collects($event,'{{ article.nid }}')"></i>
+            <div class="item" title="收藏该文章">
+                <i class="fas fa-star {{ article|is_user_collects:request }} "
+                   @click="article_collects($event,'{{ article.nid }}')"></i>
                 <span>{{ article.collects_count }}</span>
 
 
             </div>
-            <div class="item">
-                <i class="fa fa-angle-double-up"></i>
+            <div class="item" title="返回顶部">
+                <i class="fa fa-angle-double-up" @click="go_to_top"></i>
 
             </div>
         </div>
