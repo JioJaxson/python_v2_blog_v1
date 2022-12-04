@@ -87,3 +87,23 @@ class CommentView(View):
         res['code'] = 0
 
         return JsonResponse(res)
+
+
+class CommentDiggView(View):
+    def post(self, request, nid):
+        # nid评论id
+        res = {
+            'msg': '点赞成功！',
+            'code': 412,
+            'data': 0,
+        }
+        if not request.user.username:
+            res['msg'] = '请登陆后操作！'
+            return JsonResponse(res)
+        comment_query = Comment.objects.filter(nid=nid)
+        comment_query.update(digg_count=F('digg_count') + 1)
+        digg_count = comment_query.first().digg_count
+
+        res['code'] = 0
+        res['data'] = digg_count
+        return JsonResponse(res)

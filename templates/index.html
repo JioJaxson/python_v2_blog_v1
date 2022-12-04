@@ -447,6 +447,19 @@
                     });
                 });
 
+            },
+
+
+            {#评论点赞#}
+            comment_digg(e, nid) {
+                axios.post(`/api/comment/digg/${nid}`).then(res => {
+                    if (res.code) {
+                        this.$message.error(res.msg)
+                        return
+                    }
+                    e.target.innerHTML = `点赞（${res.data}）`
+                    this.$message.success(res.msg)
+                })
             }
 
         }
