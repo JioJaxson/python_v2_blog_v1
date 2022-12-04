@@ -1,7 +1,13 @@
+main {
+  position: relative;
+  justify-content: initial;
+}
+
 .article {
   //width: 100%;
-  width: 1000px;
+  width: calc(100% - 200px);
   position: relative;
+  transition: all 0.3s;
 
   .article_title {
     display: flex;
@@ -285,44 +291,6 @@
     }
   }
 
-  .slider_bar {
-    width: calc(200px - 40px);
-    height: 100px;
-    background-color: white;
-    border-radius: 5px;
-    position: absolute;
-    top: 0;
-    left: -220px;
-    padding: 20px;
-
-    .title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .body {
-      font-size: 14px;
-
-      P {
-        margin-bottom: 5px;
-        transition: all 0.3s;
-        height: 30px;
-        line-height: 30px;
-        cursor: pointer;
-        white-space: nowrap; //禁止换行
-        overflow: hidden;
-        text-overflow: ellipsis; //文本溢出省略号标记
-
-        &:hover {
-          color: white;
-          background-color: #808595;
-        }
-      }
-
-    }
-
-  }
 
   .article_actions {
     position: fixed;
@@ -358,6 +326,94 @@
     }
   }
 
+}
+
+.slider_bar {
+  width: 180px;
+  border-radius: 5px;
+  position: absolute;
+  right: 122px;
+  transition: all 0.3s;
+
+  .title {
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #f0eeee;
+
+    span {
+      margin-right: 6px;
+    }
+
+  }
+
+  .body {
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    background-color: white;
+    transition: all 0.3s;
+    height: 0;
+    border-radius: 0 0 5px 5px;
+
+
+    P {
+      //margin-bottom: 5px;
+      transition: all 0.3s;
+      height: 25px;
+      line-height: 25px;
+      padding: 10px;
+      color: #333;
+
+      cursor: pointer;
+      white-space: nowrap; //禁止换行
+      overflow: hidden;
+      text-overflow: ellipsis; //文本溢出省略号标记
+      &:hover {
+        color: white;
+        background-color: rgba(0, 0, 0, .2);
+      }
+    }
+
+    p[tagName='H1'] {
+    }
+
+    p[tagName='H2'] {
+      padding-left: 20px;
+    }
+
+    p[tagName='H3'] {
+      padding-left: 25px;
+    }
+
+    p[tagName='H4'] {
+      padding-left: 30px;
+    }
+
+  }
+
+}
+
+.slider_bar.show {
+  width: 250px;
+
+  & ~ .article {
+    width: calc(100% - 270px);
+  }
+
+  .body {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+  }
+}
+
+.slider_bar.fixed {
+  position: fixed;
+  top: 80px;
 }
 
 

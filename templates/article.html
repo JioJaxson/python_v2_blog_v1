@@ -15,17 +15,26 @@
 {% endblock %}
 
 {% block main %}
+    <div class="slider_bar" ref="slider">
+        <div class="title">
+            <span>[[slide_text]]</span>
+            <el-switch
+                    v-model="isShowSlider"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949"
+                    @change="sliderChange"
+            >
+            </el-switch>
+        </div>
+        <div class="body">
+            <p :tagName="item.tagName" @click="go_slide_bar(item.pos,$event)" v-for="(item,index) in slide_list"
+               :key='index'>
+                [[item.c]]
+            </p>
+        </div>
+    </div>
 
     <div class="article">
-        <div class="slider_bar">
-            <div class="title">
-                悬浮目录
-            </div>
-            <div class="body">
-                <p>Vue面试技巧Vue面试技巧Vue面试技巧Vue面试技巧Vue面试技巧</p>
-                <p>Python爬虫</p>
-            </div>
-        </div>
         <div class="article_actions">
             <div class="item" title="点赞该文章">
                 <i class="fas fa-thumbs-up " @click="article_digg($event,'{{ article.nid }}')"></i>

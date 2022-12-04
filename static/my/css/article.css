@@ -1,6 +1,12 @@
-.article {
-  width: 1000px;
+main {
   position: relative;
+  justify-content: initial;
+}
+
+.article {
+  width: calc(100% - 200px);
+  position: relative;
+  transition: all 0.3s;
 }
 .article .article_title {
   display: flex;
@@ -226,38 +232,6 @@
   border: none;
   cursor: pointer;
 }
-.article .slider_bar {
-  width: 160px;
-  height: 100px;
-  background-color: white;
-  border-radius: 5px;
-  position: absolute;
-  top: 0;
-  left: -220px;
-  padding: 20px;
-}
-.article .slider_bar .title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.article .slider_bar .body {
-  font-size: 14px;
-}
-.article .slider_bar .body P {
-  margin-bottom: 5px;
-  transition: all 0.3s;
-  height: 30px;
-  line-height: 30px;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.article .slider_bar .body P:hover {
-  color: white;
-  background-color: #808595;
-}
 .article .article_actions {
   position: fixed;
   bottom: 200px;
@@ -284,6 +258,76 @@
 }
 .article .article_actions .item i.show {
   color: orange;
+}
+
+.slider_bar {
+  width: 180px;
+  border-radius: 5px;
+  position: absolute;
+  right: 122px;
+  transition: all 0.3s;
+}
+.slider_bar .title {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #f0eeee;
+}
+.slider_bar .title span {
+  margin-right: 6px;
+}
+.slider_bar .body {
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  background-color: white;
+  transition: all 0.3s;
+  height: 0;
+  border-radius: 0 0 5px 5px;
+}
+.slider_bar .body P {
+  transition: all 0.3s;
+  height: 25px;
+  line-height: 25px;
+  padding: 10px;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slider_bar .body P:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.slider_bar .body p[tagName=H2] {
+  padding-left: 20px;
+}
+.slider_bar .body p[tagName=H3] {
+  padding-left: 25px;
+}
+.slider_bar .body p[tagName=H4] {
+  padding-left: 30px;
+}
+
+.slider_bar.show {
+  width: 250px;
+}
+.slider_bar.show ~ .article {
+  width: calc(100% - 270px);
+}
+.slider_bar.show .body {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+.slider_bar.fixed {
+  position: fixed;
+  top: 80px;
 }
 
 /*# sourceMappingURL=article.css.map */

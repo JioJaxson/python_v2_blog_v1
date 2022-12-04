@@ -319,10 +319,21 @@
             theme: 'light',//默认主题
             checked_type: 'font_end',// 选中文章类型 默认前端
             comment_content: '',//评论内容
+            isShowSlider: false, //显示测边目录
+            slide_list: [],
+            slide_text: '显示悬浮目录'
         },
         created() {
             this.init_theme();
             this.init_switch_type();
+            let path = location.pathname
+            if (path.indexOf('article') !== -1) {
+                this.init_slider();
+            }
+            setTimeout(() => {
+                this.get_sidebar();
+
+            }, 200)
         },
         methods: {
             // 设置主题
@@ -512,6 +523,75 @@
                 $('html,body').animate({
                     scrollTop: 0
                 }, 1000)
+            },
+
+            init_slider() {
+                let flag = localStorage.getItem('isShowSlider')
+                if (flag) {
+
+                    flag = eval(flag)
+                    if (flag) {
+                        this.isShowSlider = true
+                        this.$nextTick(() => {
+                            this.sliderChange(true)
+                        })
+                    }
+                    return
+                }
+                this.flag = false
+            },
+
+            {#悬浮目录的显隐#}
+            sliderChange(val) {
+                let dom = this.$refs.slider
+                localStorage.setItem('isShowSlider', val)
+                if (val) {
+                    dom.classList.add('show')
+                    this.slide_text = '关闭悬浮目录'
+
+                    return
+                }
+                dom.classList.remove('show')
+                this.slide_text = '显示悬浮目录'
+
+            },
+
+            {#悬浮目录#}
+            get_sidebar() {
+                let content = $('#article_content')
+                let h_list = content.children('h1,h2,h3,h4')
+                let lis = []
+                for (let i = 0; i < h_list.length; i++) {
+                    let c = h_list[i].innerText
+                    let tagName = h_list[i].tagName
+                    let tagId = h_list[i].id
+                    let ele = {
+                        tagName,
+                        c,
+                        pos: '#' + tagId
+                    }
+                    lis.push(ele)
+                }
+
+                lis.push({
+                    tagName: 'H1',
+                    c: '去评论吧!',
+                    pos: '.comment_submit'
+                })
+
+                this.slide_list = lis
+            },
+
+            go_slide_bar(selector, e) {
+                $('.slider_bar .body>p').css('color', '')
+                e.target.style.color = 'orange'
+                let box = $(selector)
+                let pos = box.offset()
+                pos.top = pos.top - 80
+                $('html,body').animate({
+                    scrollTop: pos.top
+                }, 600)
+
             }
         }
 
@@ -537,8 +617,17 @@
         }
         banner_list[index].style.opacity = 1
     }, 2000)
+
     {#动态导航条#}
     let nav = document.querySelector('.nav_bg')
+    let slider
+    slider = document.querySelector('.slider_bar')
+    let top1 = 0;
+    let path = location.pathname
+    if (path.indexOf('article') !== -1) {
+        top1 = $(slider).offset().top - 80
+    }
+
     window.addEventListener('scroll', () => {
         let top = document.documentElement.scrollTop
         if (top >= 200) {
@@ -546,6 +635,15 @@
         } else {
             nav.classList.remove('show')
         }
+        if (slider) {
+            if (top >= top1) {
+                slider.classList.add('fixed')
+            } else {
+                slider.classList.remove('fixed')
+
+            }
+        }
+
     })
 </script>
 {% block js %}
