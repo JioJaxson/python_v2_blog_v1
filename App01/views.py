@@ -26,7 +26,6 @@ def article(request, nid):
         return redirect('/')
     article = article_query.first()
     comment_list = sub_comment_list(nid)
-    print(comment_list)
 
     return render(request, 'article.html', locals())
 

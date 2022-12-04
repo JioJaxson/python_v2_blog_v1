@@ -49,7 +49,7 @@ def random_code(size=(184, 44), length=4, print_num=100, line_num=10):
     img.save(f, 'PNG')
     # 读取内存句柄
     data = f.getvalue()
-    print(data)
+    # print(data)
     return (data, vaild_code)
 
 

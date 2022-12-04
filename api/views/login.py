@@ -40,7 +40,6 @@ class LoginForm(LoginBaseForm):
         pwd = self.cleaned_data.get("pwd")
 
         user = auth.authenticate(username=name, password=pwd)
-        print(user)
         # 校验用户密码
         if not user:
             self.add_error('name', '用户名或密码错误')
@@ -111,7 +110,7 @@ class SignView(View):
             'self': None
         }
         form = SignForm(request.data, request=request)
-        print(request.data)
+        # print(request.data)
         if not form.is_valid():
             # 验证不通过
             res['self'], res['msg'] = clean_form(form)

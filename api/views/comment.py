@@ -5,6 +5,7 @@ from api.views.login import clean_form
 from App01.models import Comment, Articles
 from django.db.models import F
 from App01.utils.find_root_comment import find_root_comment
+from App01.utils.sub_comment import find_root_sub_comment
 
 
 class CommentView(View):
@@ -45,7 +46,6 @@ class CommentView(View):
             root_comment_obj = find_root_comment(comment_obj)
             root_comment_obj.comment_count += 1
             root_comment_obj.save()
-            # Comment.objects.filter(nid=pid).update(comment_count=F('comment_count') + 1)
         else:
             # 文章评论成功！
             Comment.objects.create(
@@ -65,14 +65,34 @@ class CommentView(View):
         # 登陆人
         login_user = request.user
         comment_query = Comment.objects.filter(nid=nid)
+
         # 评论人
         comment_user = comment_query.first().user
-
-        if login_user == comment_user or login_user.is_superuser:
-            # 登陆人是评论人或登陆人是超级管理员
-            # 可以删除
-            comment_query.delete()
-            res['code'] = 0
+        # 文章id
+        aid = request.data.get('aid')
+        # 子评论的最终根id
+        pid = request.data.get('pid')
+        print(aid, pid, nid)
+        if not (login_user == comment_user or login_user.is_superuser):
+            # 登陆人不是评论人并且登陆人不是超级管理员
+            res['msg'] = '用户验证失败！'
             return JsonResponse(res)
-        res['msg'] = '用户验证失败！'
+
+        if not pid:
+            # 删除的是根评论
+            # 算子评论数量
+            lis = []
+            find_root_sub_comment(comment_query.first(), lis)
+            Articles.objects.filter(nid=aid).update(comment_count=F('comment_count') - len(lis)-1)
+
+            pass
+        else:
+            # 可以删除
+            # 一级根评论数同步
+            Comment.objects.filter(nid=pid).update(comment_count=F('comment_count') - 1)
+            # 文章总评论数-1
+            Articles.objects.filter(nid=aid).update(comment_count=F('comment_count') - 1)
+        comment_query.delete()
+        res['code'] = 0
+
         return JsonResponse(res)
