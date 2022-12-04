@@ -22,7 +22,7 @@
 <div id="app">
     <link rel="stylesheet" :href="'/static/my/css/theme/'+ theme +'.css'">
 
-    <nav>
+    <nav class="nav_bg">
         <div class="left">
             <a href="/">首页</a>
             <a href="/news">新闻</a>
@@ -418,7 +418,7 @@
 
 
             {#删除子评论#}
-            delete_sub_comment(nid, aid,root_comment_id) {
+            delete_sub_comment(nid, aid, root_comment_id) {
                 this.$confirm('此操作将永久删除该评论, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
@@ -427,7 +427,7 @@
                     axios.delete(`/api/article/comment/${nid}/`, {
                         data: {
                             aid,
-                            pid:root_comment_id,
+                            pid: root_comment_id,
                         }
                     }).then((res) => {
                         if (res.code) {
@@ -473,6 +473,16 @@
         }
         banner_list[index].style.opacity = 1
     }, 2000)
+    {#动态导航条#}
+    let nav = document.querySelector('.nav_bg')
+    window.addEventListener('scroll', () => {
+        let top = document.documentElement.scrollTop
+        if (top >= 200) {
+            nav.classList.add('show')
+        } else {
+            nav.classList.remove('show')
+        }
+    })
 </script>
 {% block js %}
 
