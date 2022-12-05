@@ -111,7 +111,7 @@
                                 <span>{{ comment.create_time }}</span>
 
                                 <div>
-                                    <span @click="comment_digg('{{ comment.nid }}')">点赞({{ comment.digg_count }})</span>
+                                    <span @click="comment_digg($event,'{{ comment.nid }}')">点赞({{ comment.digg_count }})</span>
                                     <span @click="show_sub_comment_list($event,'{{ comment.user.username }}','{{ comment.nid }}')">回复({{ comment.comment_count }})</span>
                                     {% if comment.user == request.user or request.user.is_superuser %}
                                         <span class="delete"
@@ -135,7 +135,7 @@
                                                 <span>{{ sub.create_time }}</span>
 
                                                 <div>
-                                                    <span @click="comment_digg('{{ sub.nid }}')">点赞({{ sub.digg_count }})</span>
+                                                    <span @click="comment_digg($event,'{{ sub.nid }}')">点赞({{ sub.digg_count }})</span>
                                                     <span @click="sub_comment_set_placeholder($event,'{{ sub.user.username }}','{{ sub.nid }}')">回复</span>
                                                     {% if sub.user == request.user or request.user.is_superuser %}
                                                         <span class="delete"

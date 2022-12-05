@@ -5,6 +5,7 @@ from django.contrib import auth
 from App01.models import UserInfo
 from App01.models import Articles, Tags, Cover
 from App01.utils.sub_comment import sub_comment_list
+from App01.utils.pagination import Pagination
 
 
 # from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
@@ -16,6 +17,18 @@ def index(request):
     article_list = Articles.objects.filter(status=1).order_by('-change_date')
     frontend_list = Articles.objects.filter(category=1)[:6]
     backend_list = Articles.objects.filter(category=2)[:6]
+    query_params = request.GET.copy()
+    pager = Pagination(
+        current_page=request.GET.get('page'),
+        all_count=article_list.count(),
+        base_url=request.path_info,
+        query_params=query_params,
+        per_page=1,
+        pager_page_count=5
+    )
+    print(pager.start, pager.end, pager.page_html())
+    # 切片
+    article_list = article_list[pager.start:pager.end]
     return render(request, 'index.html', locals())
 
 

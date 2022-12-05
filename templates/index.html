@@ -175,9 +175,9 @@
                                         </div>
                                     </li>
                                 {% endfor %}
-
-
-                            </ul>
+                        <ul class="pager">
+                            {{ pager.page_html|safe }}
+                        </ul>
                         </div>
 
                     </div>
@@ -332,7 +332,6 @@
             }
             setTimeout(() => {
                 this.get_sidebar();
-
             }, 200)
         },
         methods: {
@@ -462,7 +461,7 @@
 
 
             {#评论点赞#}
-            comment_digg(nid) {
+            comment_digg(e, nid) {
                 axios.post(`/api/comment/digg/${nid}`).then(res => {
                     if (res.code) {
                         this.$message.error(res.msg)
