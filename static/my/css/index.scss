@@ -31,6 +31,35 @@
 #app {
   width: 100%;
 
+  .video_banner {
+    width: 100%;
+    height: 540px;
+    //background-color: pink;
+    //margin-top: 80px;
+
+    .video_banner_text {
+      position: relative;
+      top: 160px;
+      left: 0;
+      color: #fff;
+      text-align: center;
+
+      > div {
+        width: 100%;
+        height: 88px;
+        font-size: 60px;
+        z-index: 500;
+      }
+
+      h3 {
+        margin-top: 18px;
+        font-size: 24px;
+
+      }
+    }
+
+  }
+
   .main {
     > div > div {
       margin-bottom: 20px;

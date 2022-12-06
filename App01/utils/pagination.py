@@ -27,7 +27,7 @@ class Pagination:
         self.query_params = query_params
         self.pager_page_count = pager_page_count
 
-        print('当前页面:', self.current_page, '当前总页数:', self.current_count)
+        # print('当前页面:', self.current_page, '当前总页数:', self.current_count)
 
         # 分页 的中值
         self.half_pager_count = int(self.pager_page_count / 2)
@@ -47,7 +47,7 @@ class Pagination:
             # 在最右侧
             start = self.current_count - self.pager_page_count
             end = self.current_count
-        print(start, end)
+        # print(start, end)
 
         # 生成分页
         page_list = []
@@ -96,4 +96,4 @@ if __name__ == '__main__':
         pager_page_count=10
     )
     # print('页面开始索引值:', pager.start, '页面结束索引值:', pager.end)
-    print(pager.page_html())
+    pager.page_html()

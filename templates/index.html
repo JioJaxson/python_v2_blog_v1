@@ -13,8 +13,10 @@
         <link rel="stylesheet" href="/static/my/css/index.css">
     {% endblock %}
     <link rel="stylesheet" href="/static/fontawesome-free-5/css/all.min.css">
-
+    {#    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>#}
+    <script src="/static/echarts/echarts.min.js"></script>
     <script src="/static/vue/vue.js"></script>
+    <script src="/static/jquery/jquery.min.js"></script>
 
 
 </head>
@@ -55,8 +57,15 @@
 
         </div>
     </nav>
+
     {% block banner %}
-        {% banner 'index' %}
+        <div class="video_banner">
+            <div class="video_banner_text ">
+                <div id="blog_info">前端沐沐</div>
+                <h3>欢迎来到沐沐个人博客!</h3>
+            </div>
+        </div>
+        {#        {% banner 'index' %}#}
     {% endblock %}
 
     <main>
@@ -175,9 +184,10 @@
                                         </div>
                                     </li>
                                 {% endfor %}
-                        <ul class="pager">
-                            {{ pager.page_html|safe }}
-                        </ul>
+                            </ul>
+                            <ul class="pager">
+                                {{ pager.page_html|safe }}
+                            </ul>
                         </div>
 
                     </div>
@@ -295,7 +305,8 @@
 <!-- 引入组件库 -->
 <script src="/static/elementui/index.js"></script>
 <script src="/static/axios/axios.min.js"></script>
-<script src="/static/jquery/jquery.min.js"></script>
+<script src="/static/utils/banner_title.js"></script>
+
 
 <script>
     {#请求中间件#}
@@ -599,7 +610,6 @@
 
     // 轮播图
     let banner_list = document.querySelectorAll('.header_banner')
-    {#console.log(banner_list)#}
 
     let banner_list_length = banner_list.length
     let index = 0
@@ -614,13 +624,18 @@
         for (let i of banner_list) {
             i.style.opacity = 0
         }
-        banner_list[index].style.opacity = 1
+        let path = location.pathname
+        if (path.indexOf('article') !== -1) {
+            banner_list[index].style.opacity = 1
+
+        }
+
     }, 2000)
 
     {#动态导航条#}
     let nav = document.querySelector('.nav_bg')
-    let slider
-    slider = document.querySelector('.slider_bar')
+    let slider = document.querySelector('.slider_bar')
+    let box = document.querySelector('.article_actions')
     let top1 = 0;
     let path = location.pathname
     if (path.indexOf('article') !== -1) {
@@ -634,6 +649,16 @@
         } else {
             nav.classList.remove('show')
         }
+        let path = location.pathname
+        if (path.indexOf('article') !== -1) {
+            if (top >= 500) {
+                box.style.opacity = 1
+
+            } else {
+                box.style.opacity = 0
+            }
+        }
+
         if (slider) {
             if (top >= top1) {
                 slider.classList.add('fixed')
@@ -645,6 +670,22 @@
 
     })
 </script>
+
+<script src="/static/utils/vidbg.js"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('.video_banner').vidbg({
+            'mp4': '../media/video_bg/story.mp4',
+            {#'poster': 'media/fallback.jpg',#}
+        }, {
+            // Options
+            muted: true,
+            loop: true,
+            overlay: true,
+        });
+    });
+</script>
+
 {% block js %}
 
 {% endblock %}

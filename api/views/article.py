@@ -149,6 +149,7 @@ class ArticleDiggView(View):
         return JsonResponse(res)
 
 
+# 文章收藏
 class ArticleCollectsView(View):
     def post(self, request, nid):
         res = {

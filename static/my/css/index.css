@@ -1,3 +1,27 @@
+.pager {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pager > li {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.pager > li.active {
+  background-color: orange;
+}
+.pager > li.active a {
+  color: white;
+}
+
 .card .title {
   display: flex;
   justify-content: space-between;
@@ -21,6 +45,27 @@
 
 #app {
   width: 100%;
+}
+#app .video_banner {
+  width: 100%;
+  height: 540px;
+}
+#app .video_banner .video_banner_text {
+  position: relative;
+  top: 160px;
+  left: 0;
+  color: #fff;
+  text-align: center;
+}
+#app .video_banner .video_banner_text > div {
+  width: 100%;
+  height: 88px;
+  font-size: 60px;
+  z-index: 500;
+}
+#app .video_banner .video_banner_text h3 {
+  margin-top: 18px;
+  font-size: 24px;
 }
 #app .main {
   display: flex;

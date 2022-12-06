@@ -297,6 +297,8 @@ main {
     bottom: 200px;
     right: 12%;
     z-index: 2;
+    opacity: 0;
+    transition: all 0.3s;
 
     .item {
       width: 60px;
