@@ -23,7 +23,7 @@ def index(request):
         all_count=article_list.count(),
         base_url=request.path_info,
         query_params=query_params,
-        per_page=1,
+        per_page=2,
         pager_page_count=5
     )
     print(pager.start, pager.end, pager.page_html())

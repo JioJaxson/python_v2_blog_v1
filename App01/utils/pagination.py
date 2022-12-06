@@ -2,9 +2,11 @@ import math
 
 
 class Pagination:
-    def __init__(self, current_page, all_count, base_url, query_params, per_page=20, pager_page_count=11):
+    def __init__(self, current_page, all_count, base_url, query_params, per_page=20, pager_page_count=11,
+                 position='pos'):
         self.all_count = all_count
         self.per_page = per_page
+        self.position = position
         # 计算一共有多少页码
         # 1: 取余
         # div, p = divmod(all_count, per_page)
@@ -45,7 +47,7 @@ class Pagination:
             end = self.pager_page_count
         if self.current_page + self.half_pager_count >= self.current_count:
             # 在最右侧
-            start = self.current_count - self.pager_page_count
+            start = self.current_count - self.pager_page_count+1
             end = self.current_count
         # print(start, end)
 
@@ -55,21 +57,21 @@ class Pagination:
         # 上一页
         if self.current_page != 1:
             self.query_params['page'] = self.current_page - 1
-            page_list.append(f'<li><a href="{self.base_url}?{self.query_encode}">上一页</a></li>')
+            page_list.append(f'<li><a href="{self.base_url}?{self.query_encode}#{self.position}">上一页</a></li>')
 
         # 数字部分
         for i in range(start, end + 1):
             self.query_params['page'] = i
             if self.current_page == i:
-                li = f'<li class="active"><a href="{self.base_url}?{self.query_encode}">{i}</a></li>'
+                li = f'<li class="active"><a href="{self.base_url}?{self.query_encode}#{self.position}">{i}</a></li>'
             else:
-                li = f'<li><a href="{self.base_url}?{self.query_encode}">{i}</a></li>'
+                li = f'<li><a href="{self.base_url}?{self.query_encode}#{self.position}">{i}</a></li>'
             page_list.append(li)
 
         # 下一页
         if self.current_page != self.current_count:
             self.query_params['page'] = self.current_page + 1
-            page_list.append(f'<li><a href="{self.base_url}?{self.query_encode}">下一页</a></li>')
+            page_list.append(f'<li><a href="{self.base_url}?{self.query_encode}#{self.position}">下一页</a></li>')
         return ''.join(page_list)
 
     @property
