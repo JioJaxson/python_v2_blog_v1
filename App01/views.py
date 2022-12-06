@@ -23,13 +23,18 @@ def index(request):
         all_count=article_list.count(),
         base_url=request.path_info,
         query_params=query_params,
-        per_page=2,
-        pager_page_count=5
+        per_page=1,
+        pager_page_count=9
     )
     print(pager.start, pager.end, pager.page_html())
     # 切片
     article_list = article_list[pager.start:pager.end]
     return render(request, 'index.html', locals())
+
+
+# 搜索
+def search(request):
+    return render(request, 'search.html', locals())
 
 
 # 文章

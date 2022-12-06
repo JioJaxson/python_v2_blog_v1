@@ -1,0 +1,80 @@
+.main {
+  width: 1200px;
+  min-height: 1000px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main .search_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.main .search_box > div {
+  margin-right: 10px;
+}
+.main .search_box > div:last-child {
+  margin-right: 0;
+}
+.main .search_box input {
+  width: 200px;
+  height: 40px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #777;
+}
+.main .search_box button {
+  width: 100px;
+  height: 40px;
+  background-color: #00a1d6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.main .search_criteria {
+  width: 100%;
+  min-height: 400px;
+  font-size: 12px;
+}
+.main .search_criteria::before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #808595;
+  margin: 20px 0 10px 0;
+}
+.main .search_criteria::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #808595;
+  margin: 10px 0 20px 0;
+}
+.main .search_criteria > ul {
+  display: flex;
+}
+.main .search_criteria > ul li {
+  padding: 5px 8px;
+  margin: 8px 10px 8px 0;
+}
+.main .search_criteria > ul li a {
+  color: #333;
+}
+.main .search_criteria > ul li a:hover {
+  color: #00a1d6;
+}
+.main .search_criteria > ul li.active {
+  background-color: #00a1d6;
+  border-radius: 5px;
+}
+.main .search_criteria > ul li.active a {
+  color: white;
+}
+
+/*# sourceMappingURL=search.css.map */
