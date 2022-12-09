@@ -33,6 +33,10 @@
             <a href="#">关于</a>
             <a href="/search/">文章搜索</a>
             <a href="#">网站导航</a>
+            <div class="search">
+                <input type="text" class="search_box" placeholder="请输入搜索内容">
+                <button @click="search"><i class="fa fa-search"></i></button>
+            </div>
 
         </div>
         <div class="right">
@@ -602,6 +606,16 @@
                 $('html,body').animate({
                     scrollTop: pos.top
                 }, 600)
+
+            },
+            {#// 点击搜索#}
+            search() {
+                let box = document.querySelector('.search')
+                if (!box.classList.contains('show_search')) {
+                    box.classList.add('show_search')
+                    return
+                }
+                box.classList.remove('show_search')
 
             }
         }
