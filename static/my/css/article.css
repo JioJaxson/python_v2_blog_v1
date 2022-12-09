@@ -262,6 +262,21 @@ main {
   color: orange;
 }
 
+pre {
+  position: relative;
+}
+pre:hover .code_copy {
+  opacity: 1;
+}
+pre .code_copy {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
 .slider_bar {
   width: 180px;
   border-radius: 5px;

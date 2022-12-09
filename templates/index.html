@@ -342,12 +342,15 @@
             let path = location.pathname
             if (path.indexOf('article') !== -1) {
                 this.init_slider();
+
             }
             if (path.indexOf('search') !== -1) {
                 this.init_search_key()
             }
             setTimeout(() => {
                 this.get_sidebar();
+                this.code_copy();
+
             }, 200)
         },
         methods: {
@@ -607,6 +610,31 @@
                     scrollTop: pos.top
                 }, 600)
 
+            },
+
+
+            {#代码一键复制#}
+            code_copy() {
+                $('pre').each(function () {
+                    let copy = $(`<i title='copy' class="el-icon-document-copy code_copy"></i>`)
+                    $(this).append(copy)
+                })
+
+                $('pre i.code_copy').click(e => {
+                    let text_list = $(e.target).prev().find('code')
+                    let text = ''
+                    text_list.each(function () {
+                        text += $(this).text() + '\n'
+                    })
+                    let element = $('<textarea>' + text + '</textarea>')
+                    $('body').append(element)
+                    element[0].select()
+                    document.execCommand('Copy')
+                    element.remove()
+                    // 自定义消息通知组件
+                    this.$message.success('复制成功!')
+                })
+                {#console.log($('pre'))#}
             },
             {#// 点击搜索#}
             search() {
