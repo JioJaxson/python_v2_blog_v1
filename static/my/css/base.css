@@ -30,7 +30,7 @@ nav .right .el-dropdown span {
   cursor: pointer;
 }
 nav a {
-  color: white;
+  color: var(--nav-color);
   margin-right: 20px;
 }
 nav a:last-child {
@@ -197,7 +197,7 @@ nav .search input {
   transition: all 0.3s;
 }
 nav .search button {
-  color: white;
+  color: var(--nav-color);
   border: none;
   background-color: transparent;
   transition: all 0.3s;

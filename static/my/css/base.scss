@@ -37,7 +37,7 @@ nav {
 
 
   a {
-    color: white;
+    color: var(--nav-color);
     margin-right: 20px;
 
     &:last-child {
@@ -249,7 +249,7 @@ nav .search {
   }
 
   button {
-    color: white;
+    color: var(--nav-color);
     border: none;
     background-color: transparent;
     transition: all 0.3s;

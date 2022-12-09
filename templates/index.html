@@ -13,8 +13,6 @@
         <link rel="stylesheet" href="/static/my/css/index.css">
     {% endblock %}
     <link rel="stylesheet" href="/static/fontawesome-free-5/css/all.min.css">
-    {#    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>#}
-    <script src="/static/echarts/echarts.min.js"></script>
     <script src="/static/vue/vue.js"></script>
     <script src="/static/jquery/jquery.min.js"></script>
 
@@ -310,8 +308,6 @@
 <!-- 引入组件库 -->
 <script src="/static/elementui/index.js"></script>
 <script src="/static/axios/axios.min.js"></script>
-<script src="/static/utils/banner_title.js"></script>
-
 
 <script>
     {#请求中间件#}
@@ -625,26 +621,30 @@
 
 </script>
 
-<script src="/static/utils/vidbg.js"></script>
-<script type="text/javascript">
-    jQuery(function ($) {
-        $('.video_banner').vidbg({
-            'mp4': '../media/video_bg/story.mp4',
-            {#'poster': 'media/fallback.jpg',#}
-        }, {
-            // Options
-            muted: true,
-            loop: true,
-            overlay: true,
+{% block video_banner %}
+    <script src="/static/utils/vidbg.js"></script>
+    <script src="/static/echarts/echarts.min.js"></script>
+    <script src="/static/utils/banner_title.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.video_banner').vidbg({
+                'mp4': '../media/video_bg/story.mp4',
+                {#'poster': 'media/fallback.jpg',#}
+            }, {
+                // Options
+                muted: true,
+                loop: true,
+                overlay: true,
+            });
         });
-    });
-</script>
+    </script>
+{% endblock %}
+
 
 {% block js %}
     <script>
         // 轮播图
         let banner_list = document.querySelectorAll('.header_banner')
-
         let banner_list_length = banner_list.length
         let index = 0
         let timer = null;
@@ -661,7 +661,6 @@
             let path = location.pathname
             if (path.indexOf('article') !== -1) {
                 banner_list[index].style.opacity = 1
-
             }
 
         }, 2000)
