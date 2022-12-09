@@ -32,7 +32,7 @@
             <a href="/search/">文章搜索</a>
             <a href="#">网站导航</a>
             <div class="search">
-                <input type="text" class="search_box" placeholder="请输入搜索内容">
+                <input type="text" v-model="search_key" class="search_box" placeholder="请输入搜索内容">
                 <button @click="search"><i class="fa fa-search"></i></button>
             </div>
 
@@ -333,7 +333,8 @@
             comment_content: '',//评论内容
             isShowSlider: false, //显示测边目录
             slide_list: [],
-            slide_text: '显示悬浮目录'
+            slide_text: '显示悬浮目录',
+            search_key: ''
         },
         created() {
             this.init_theme();
@@ -341,6 +342,9 @@
             let path = location.pathname
             if (path.indexOf('article') !== -1) {
                 this.init_slider();
+            }
+            if (path.indexOf('search') !== -1) {
+                this.init_search_key()
             }
             setTimeout(() => {
                 this.get_sidebar();
@@ -611,8 +615,21 @@
                     box.classList.add('show_search')
                     return
                 }
-                box.classList.remove('show_search')
+                if (!this.search_key) {
+                    box.classList.remove('show_search')
+                    return
+                }
+                // 打开标签页
+                window.open('/search/?key=' + this.search_key)
 
+
+            },
+
+            {#初始化搜素词#}
+            init_search_key() {
+                let dom = document.querySelector('.search_key_input')
+                let key = dom.getAttribute('data-search-key')
+                this.search_key = key
             }
         }
 

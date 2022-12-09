@@ -8,17 +8,18 @@
     <link rel="stylesheet" href="/static/my/css/search.css">
 {% endblock %}
 {% block main %}
-    <div class="main">
-        <div class="search_box">
+    <div action="" class="main">
+        <form class="search_box">
             <div>沐沐博客|搜索</div>
-            <div><input type="text" placeholder="搜索你想要的内容"></div>
+            <div><input name="key" class="search_key_input" type="text" placeholder="搜索你想要的内容" data-search-key="{{ search_key }} "
+                        v-model="search_key "></div>
             <div>
                 <button>
                     <i class="fa fa-search"></i>
                     搜索
                 </button>
             </div>
-        </div>
+        </form>
         <div class="search_criteria">
             <ul>
                 <li class="active"><a href="">综合排序</a></li>
@@ -260,9 +261,13 @@
 
 {% block js %}
     <script>
-        {#动态导航条#}
+        {#固定导航条#}
         let nav = document.querySelector('.nav_bg')
         nav.classList.add('show')
     </script>
+
+{% endblock %}
+
+{% block video_banner %}
 
 {% endblock %}

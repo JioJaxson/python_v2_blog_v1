@@ -34,6 +34,7 @@ def index(request):
 
 # 搜索
 def search(request):
+    search_key = request.GET.get('key', '')
     return render(request, 'search.html', locals())
 
 
