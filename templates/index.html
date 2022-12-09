@@ -31,6 +31,7 @@
             <a href="#">心情</a>
             <a href="#">回忆录</a>
             <a href="#">关于</a>
+            <a href="/search/">文章搜索</a>
             <a href="#">网站导航</a>
 
         </div>
@@ -608,67 +609,6 @@
     })
 
 
-    // 轮播图
-    let banner_list = document.querySelectorAll('.header_banner')
-
-    let banner_list_length = banner_list.length
-    let index = 0
-    let timer = null;
-    clearInterval(timer);
-    timer = setInterval(() => {
-        index++
-        if (index === banner_list_length) {
-            index = 0
-        }
-        // 样式复位操作 (排他思想)
-        for (let i of banner_list) {
-            i.style.opacity = 0
-        }
-        let path = location.pathname
-        if (path.indexOf('article') !== -1) {
-            banner_list[index].style.opacity = 1
-
-        }
-
-    }, 2000)
-
-    {#动态导航条#}
-    let nav = document.querySelector('.nav_bg')
-    let slider = document.querySelector('.slider_bar')
-    let box = document.querySelector('.article_actions')
-    let top1 = 0;
-    let path = location.pathname
-    if (path.indexOf('article') !== -1) {
-        top1 = $(slider).offset().top - 80
-    }
-
-    window.addEventListener('scroll', () => {
-        let top = document.documentElement.scrollTop
-        if (top >= 200) {
-            nav.classList.add('show')
-        } else {
-            nav.classList.remove('show')
-        }
-        let path = location.pathname
-        if (path.indexOf('article') !== -1) {
-            if (top >= 500) {
-                box.style.opacity = 1
-
-            } else {
-                box.style.opacity = 0
-            }
-        }
-
-        if (slider) {
-            if (top >= top1) {
-                slider.classList.add('fixed')
-            } else {
-                slider.classList.remove('fixed')
-
-            }
-        }
-
-    })
 </script>
 
 <script src="/static/utils/vidbg.js"></script>
@@ -687,7 +627,69 @@
 </script>
 
 {% block js %}
+    <script>
+        // 轮播图
+        let banner_list = document.querySelectorAll('.header_banner')
 
+        let banner_list_length = banner_list.length
+        let index = 0
+        let timer = null;
+        clearInterval(timer);
+        timer = setInterval(() => {
+            index++
+            if (index === banner_list_length) {
+                index = 0
+            }
+            // 样式复位操作 (排他思想)
+            for (let i of banner_list) {
+                i.style.opacity = 0
+            }
+            let path = location.pathname
+            if (path.indexOf('article') !== -1) {
+                banner_list[index].style.opacity = 1
+
+            }
+
+        }, 2000)
+
+        {#动态导航条#}
+        let nav = document.querySelector('.nav_bg')
+        let slider = document.querySelector('.slider_bar')
+        let box = document.querySelector('.article_actions')
+        let top1 = 0;
+        let path = location.pathname
+        if (path.indexOf('article') !== -1) {
+            top1 = $(slider).offset().top - 80
+        }
+
+        window.addEventListener('scroll', () => {
+            let top = document.documentElement.scrollTop
+            if (top >= 200) {
+                nav.classList.add('show')
+            } else {
+                nav.classList.remove('show')
+            }
+            let path = location.pathname
+            if (path.indexOf('article') !== -1) {
+                if (top >= 500) {
+                    box.style.opacity = 1
+
+                } else {
+                    box.style.opacity = 0
+                }
+            }
+
+            if (slider) {
+                if (top >= top1) {
+                    slider.classList.add('fixed')
+                } else {
+                    slider.classList.remove('fixed')
+
+                }
+            }
+
+        })
+    </script>
 {% endblock %}
 </body>
 </html>
