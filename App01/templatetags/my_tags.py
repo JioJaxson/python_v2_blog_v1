@@ -1,6 +1,7 @@
 from django import template
 from App01.utils.search import Search
 from django.utils.safestring import mark_safe
+from App01.models import Tags
 
 register = template.Library()
 
@@ -53,12 +54,10 @@ def generate_order_html(request, key):
             (['10000'], '10000字以上'),
         ]
     elif key == 'tag':
-        order_list = [
-            ('', '全部标签'),
-            ('python', 'python'),
-            ('JavaScript', 'JavaScript'),
-            ('Vue', 'Vue'),
-        ]
+        tag_list = Tags.objects.exclude(articles__isnull=True)
+        order_list.append(('', '全部标签'))
+        for tag in tag_list:
+            order_list.append((tag.title, tag.title))
     query_params = request.GET.copy()
 
 
