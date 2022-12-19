@@ -32,7 +32,8 @@
             <a href="/search/">文章搜索</a>
             <a href="#">网站导航</a>
             <div class="search">
-                <input type="text" v-model="search_key" class="search_box" placeholder="请输入搜索内容">
+                <input type="text" @keydown.enter="search" v-model="search_key" class="search_box"
+                       placeholder="请输入搜索内容">
                 <button @click="search"><i class="fa fa-search"></i></button>
             </div>
 

@@ -17,6 +17,7 @@ def index(request):
     article_list = Articles.objects.filter(status=1).order_by('-change_date')
     frontend_list = Articles.objects.filter(category=1)[:6]
     backend_list = Articles.objects.filter(category=2)[:6]
+    # 分页器
     query_params = request.GET.copy()
     pager = Pagination(
         current_page=request.GET.get('page'),
@@ -29,12 +30,28 @@ def index(request):
     print(pager.start, pager.end, pager.page_html())
     # 切片
     article_list = article_list[pager.start:pager.end]
+
     return render(request, 'index.html', locals())
 
 
 # 搜索
 def search(request):
     search_key = request.GET.get('key', '')
+    article_list = Articles.objects.filter(title__contains=search_key)
+
+    # 分页器
+    query_params = request.GET.copy()
+    pager = Pagination(
+        current_page=request.GET.get('page'),
+        all_count=article_list.count(),
+        base_url=request.path_info,
+        query_params=query_params,
+        per_page=5,
+        pager_page_count=7
+    )
+    print(pager.start, pager.end, pager.page_html())
+    # 切片
+    article_list = article_list[pager.start:pager.end]
     return render(request, 'search.html', locals())
 
 

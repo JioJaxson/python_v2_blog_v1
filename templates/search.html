@@ -14,7 +14,7 @@
             <div><input name="key" class="search_key_input" type="text" placeholder="搜索你想要的内容" data-search-key="{{ search_key }} "
                         v-model="search_key "></div>
             <div>
-                <button>
+                <button @keydown.enter="search" >
                     <i class="fa fa-search"></i>
                     搜索
                 </button>
@@ -44,216 +44,33 @@
             </ul>
         </div>
         <ul class="search_content">
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
+            {% for article in article_list %}
+             <li>
+                <a href="/article/{{ article.nid }}" target="_blank" class="img">
+                    <img src='{{ article.cover.url.url }}'>
                 </a>
                 <div class="info">
                     <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
+                        <a href="/article/{{ article.nid }}" target="_blank">{{ article.title }}</a>
                     </div>
                     <div class="icon">
                         <span>
                             <i class="fa fa-lock"></i>
-                            155
+                            {{ article.look_count }}
                         </span>
                         <span>
                             <i class="fa fa-clock"></i>
-                            2022-12-6
+                            {{ article.change_date|date:'Y-m-d' }}
                         </span>
                     </div>
                 </div>
             </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="" class="img">
-                    <img src='/media/article_img/28.jpg'>
-                </a>
-                <div class="info">
-                    <div class="title">
-                        <a href="http://">
-                            到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复到女方家人回复
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <span>
-                            <i class="fa fa-lock"></i>
-                            155
-                        </span>
-                        <span>
-                            <i class="fa fa-clock"></i>
-                            2022-12-6
-                        </span>
-                    </div>
-                </div>
-            </li>
+            {% endfor %}
 
 
         </ul>
         <ul class="pager">
-            <li><a href="">上一页</a></li>
-            <li><a href="">1</a></li>
-            <li class="active"><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-            <li><a href="">下一页</a></li>
-
+         {{ pager.page_html |safe}}
         </ul>
     </div>
 {% endblock %}
