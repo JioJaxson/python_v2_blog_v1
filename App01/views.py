@@ -46,7 +46,6 @@ def search(request):
     # 字数搜索
     if len(word) == 2:
         article_list = article_list.filter(word__range=word)
-
     if tag:
         article_list = article_list.filter(tag__title=tag)
     if order:
