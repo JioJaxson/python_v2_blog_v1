@@ -68,3 +68,22 @@ def generate_order_html(request, key):
         query_params=query_params
     )
     return mark_safe(order.order_html())
+
+
+# 生成广告
+@register.simple_tag
+def generate_advert(advert_list):
+    html_list = []
+    for i in advert_list:
+        if i.img:
+            #上传文件
+            html_list.append(f'<div><a href="{i.href}" title="{i.title}" target="_blank"><img src="{i.img.url}"></a></div>')
+            continue
+        html_s: str = i.img_list
+        html_new = html_s.replace(':', ';').replace('\n', ';')
+        img_list = html_new.split(';')
+        for url in img_list:
+            html_list.append(
+                f'<div><a href="{i.href}" title="{i.title}" target="_blank"><img src="{url}"></a></div>'
+            )
+    return mark_safe(''.join(html_list))

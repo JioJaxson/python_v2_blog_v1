@@ -3,7 +3,7 @@ from App01.utils.random_code import random_code
 from django import forms
 from django.contrib import auth
 from App01.models import UserInfo
-from App01.models import Articles, Tags, Cover
+from App01.models import *
 from App01.utils.sub_comment import sub_comment_list
 from App01.utils.pagination import Pagination
 from django.db.models import F
@@ -31,6 +31,8 @@ def index(request):
     print(pager.start, pager.end, pager.page_html())
     # 切片
     article_list = article_list[pager.start:pager.end]
+
+    advert_list = Advert.objects.filter(is_show=True)
 
     return render(request, 'index.html', locals())
 

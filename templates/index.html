@@ -197,7 +197,8 @@
                     </div>
                 </div>
                 <div class="right">
-                    <div class="card advertisement">
+                    {% if advert_list.count %}
+                        <div class="card advertisement">
                         <div class="title">
                             <h2>独家广告</h2>
                             <div>
@@ -206,19 +207,12 @@
 
                         </div>
                         <div class="body">
-                            <div>
-                                <a href="http://www.fengfengzhidao.com">
-                                    <img src="http://python.fengfengzhidao.com/pic/20221112205133.png">
-                                </a>
-                            </div>
-                             <div>
-                                <a href="http://www.fengfengzhidao.com">
-                                    <img src="http://python.fengfengzhidao.com/pic/20221112205133.png">
-                                </a>
-                            </div>
+                         {% generate_advert advert_list %}
                         </div>
 
                     </div>
+                    {% endif %}
+
                     <div class="card tags_cloud ">
                         <div class="title">
                             <h2>标签云</h2>
