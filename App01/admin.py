@@ -23,12 +23,22 @@ class ArticleAdmin(admin.ModelAdmin):
     get_title.short_description ='文章'
 
     def get_edit_delete_btn(self):
-        return mark_safe("""
-        <a href="/backstage/edit_article/{self.nid}" target="_blank">编辑</a>
+        return mark_safe(f"""
+        <a href="/backstage/edit_article/{self.nid}/" target="_blank">编辑</a>
         <a href="/admin/App01/articles/{self.nid}/delete/">删除</a>
         """)
 
     get_edit_delete_btn.short_description = '操作'
+
+    def action_word(self,request,queryset):
+        for obj in queryset:
+            word = len(obj.content)
+            obj.word = word
+            obj.save()
+
+    action_word.short_description='获取文章字数'
+    actions = [action_word]
+
 
     list_display = [get_title, get_cover, get_tags, 'category',
                     'look_count', 'digg_count', 'comment_count',
