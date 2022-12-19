@@ -353,6 +353,35 @@
 
 
       }
+      // 广告
+      .advertisement> .body{
+      padding:0;
+        background:none;
+        >div{
+          width:calc(100% - 20px);
+          padding:10px;
+          margin-bottom: 20px;
+          background-color: white;
+          border-radius:5px;
+          &:first-child {
+            border-radius: 0 0 5px 5px;
+          }
+          >a{
+            width:100%;
+            height:100%;
+            display: block;
+            overflow: hidden;
+            >img{
+               width:100% ;
+              transition: all .3s;
+              &:hover{
+                transform: scale(1.1);
+              }
+            }
+          }
+
+        }
+      }
 
     }
   }

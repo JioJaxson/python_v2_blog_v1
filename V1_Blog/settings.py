@@ -151,13 +151,13 @@ AUTH_USER_MODEL = "App01.UserInfo"
 
 
 #### SimpleUI ####
-SIMPLEUI_HOME_INFO = False #关闭服务器信息
-SIMPLEUI_HOME_QUICK = False #关闭快捷操作
-SIMPLEUI_HOME_ACTION = False #关闭最近动作
+# SIMPLEUI_HOME_INFO = False #关闭服务器信息
+# SIMPLEUI_HOME_QUICK = False #关闭快捷操作
+# SIMPLEUI_HOME_ACTION = False #关闭最近动作
 
 
-SIMPLEUI_HOME_PAGE = '/admin_home/'
-SIMPLEUI_HOME_TITLE = '首页'
-SIMPLEUI_HOME_ICON = 'fa fa-user'
+# SIMPLEUI_HOME_PAGE = '/admin_home/'
+# SIMPLEUI_HOME_TITLE = '首页'
+# SIMPLEUI_HOME_ICON = 'fa fa-user'
 
 
