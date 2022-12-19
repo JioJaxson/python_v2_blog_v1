@@ -37,7 +37,13 @@ def index(request):
 # 搜索
 def search(request):
     search_key = request.GET.get('key', '')
+    order=request.GET.get('order', '')
     article_list = Articles.objects.filter(title__contains=search_key)
+    if order:
+        try:
+            article_list = article_list.order_by(order)
+        except Exception:
+            pass
 
     # 分页器
     query_params = request.GET.copy()
@@ -52,6 +58,10 @@ def search(request):
     print(pager.start, pager.end, pager.page_html())
     # 切片
     article_list = article_list[pager.start:pager.end]
+
+    # 文章搜索条件
+    query_params.urlencode()
+
     return render(request, 'search.html', locals())
 
 
