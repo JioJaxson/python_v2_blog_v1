@@ -162,3 +162,7 @@ def edit_article(request, nid):
         })
 
     return render(request, 'backstage/edit_article.html', locals())
+
+
+def admin_home(request):
+    return render(request, 'admin_home.html')

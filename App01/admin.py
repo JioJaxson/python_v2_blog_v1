@@ -36,7 +36,8 @@ class ArticleAdmin(admin.ModelAdmin):
             obj.word = word
             obj.save()
 
-    action_word.short_description='获取文章字数'
+    action_word.short_description ='获取文章字数'
+    action_word.type ='success'
     actions = [action_word]
 
 
