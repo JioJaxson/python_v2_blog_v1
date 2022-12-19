@@ -8,7 +8,14 @@ from App01.models import UserInfo  # 导入头像表
 
 # Register your models here.
 # 注册
-admin.site.register(Articles)
+
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['title', 'category', 'look_count', 'digg_count', 'comment_count', 'collects_count', 'word', 'change_date']
+
+
+
+
+admin.site.register(Articles,ArticleAdmin)
 admin.site.register(Tags)
 admin.site.register(Cover)
 admin.site.register(Comment)
