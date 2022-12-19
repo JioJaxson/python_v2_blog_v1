@@ -2,10 +2,13 @@ from urllib.parse import urlencode
 
 
 class Search:
-    def __init__(self, order, order_list, query_params):
+    def __init__(self, key, order, order_list, query_params):
+        self.key = key
         self.order = order
         self.order_list = order_list
-        self.query_params = query_params
+        self.query_params = {}
+        for i in query_params:
+            self.query_params[i] = query_params.getlist(i)
 
     def order_html(self):
         order_list = []
@@ -13,7 +16,7 @@ class Search:
         # order_list.append(f'<li ><a href="?{self.query_encode}">综合排序</a></li>')
 
         for li in self.order_list:
-            self.query_params['order'] = li[0]
+            self.query_params[self.key] = li[0]
 
             if self.order == li[0]:
                 li = f'<li class="active"><a href="?{self.query_encode}">{li[1]}</a></li>'
@@ -29,23 +32,23 @@ class Search:
 
     @property
     def query_encode(self):
-        # return urlencode(self.query_params) #本文件测试
-        return self.query_params.urlencode()
+        return urlencode(self.query_params, doseq=True) #本文件测试
+        # return self.query_params.urlencode()
 
 
 
-if __name__ == '__main__':
-    order = Search(
-        order='look_count',
-        order_list=[
-            ('-create_date','最新发布'),
-            ('look_count','最多浏览'),
-            ('digg_count','最多点赞'),
-            ('collects_count','最多收藏'),
-            ('comment_count','最多评论')
-        ],
-        query_params={'key':'python'}
-    )
-    print(order.order_html())
+# if __name__ == '__main__':
+#     order = Search(
+#         order='look_count',
+#         order_list=[
+#             ('-create_date','最新发布'),
+#             ('look_count','最多浏览'),
+#             ('digg_count','最多点赞'),
+#             ('collects_count','最多收藏'),
+#             ('comment_count','最多评论')
+#         ],
+#         query_params={'key':'python'}
+#     )
+#     print(order.order_html())
 
 

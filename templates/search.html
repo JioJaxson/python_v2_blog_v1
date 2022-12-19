@@ -29,15 +29,12 @@
 {#                <li><a href="?order=digg_count">最多点赞</a></li>#}
 {#                <li><a href="?order=collects_count">最多收藏</a></li>#}
 {#                <li><a href="?order=comment_content">最多评论</a></li>#}
-                {%  generate_order_html request %}
+                {%  generate_order_html request 'order' %}
 
             </ul>
             <ul>
-                <li class="active"><a href="">全部文章</a></li>
-                <li><a href="">100字左右</a></li>
-                <li><a href="">500字左右</a></li>
-                <li><a href="">2000字左右</a></li>
-                <li><a href="">3000字以上</a></li>
+                {%  generate_order_html request 'word' %}
+
             </ul>
             <ul>
                 <li class="active"><a href="">全部标签</a></li>

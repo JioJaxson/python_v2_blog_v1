@@ -26,19 +26,39 @@ def banner(menu_name, article=None):
     return {'img_list': img_list}
 
 @register.simple_tag
-def generate_order_html(request):
-    order = request.GET.get('order', '')
-    query_params = request.GET.copy()
-    order = Search(
-        order=order,
-        order_list=[
-            ('-change_date', '综合排序'),
+def generate_order_html(request, key):
+    order = request.GET.get(key, '')
+    order_list = []
+    if key == 'order':
+        order_list = [
+            ('', '综合排序'),
             ('-create_date', '最新发布'),
             ('-look_count', '最多浏览'),
             ('-digg_count', '最多点赞'),
             ('-collects_count', '最多收藏'),
             ('-comment_count', '最多评论')
-        ],
+        ]
+    elif key == 'word':
+        order = request.GET.getlist(key, '')
+        if order == '':
+            order = ['']
+        order_list = [
+            ([''], '全部文章'),
+            (['0', '100'], '100字以内'),
+            (['100', '500'], '500字以内'),
+            (['500', '1000'], '1000字以内'),
+            (['1000', '3000'], '3000字以内'),
+            (['3000', '5000'], '5000字以内'),
+            (['5000', '1000'], '10000字以内'),
+            (['10000'], '10000字以上'),
+        ]
+    query_params = request.GET.copy()
+
+
+    order = Search(
+        key=key,
+        order=order,
+        order_list=order_list,
         query_params=query_params
     )
     return mark_safe(order.order_html())
