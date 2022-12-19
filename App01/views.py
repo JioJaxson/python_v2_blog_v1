@@ -39,12 +39,16 @@ def index(request):
 def search(request):
     search_key = request.GET.get('key', '')
     order = request.GET.get('order', '')
+    tag = request.GET.get('tag', '')
     word = request.GET.getlist('word')
     query_params = request.GET.copy()
     article_list = Articles.objects.filter(title__contains=search_key)
     # 字数搜索
     if len(word) == 2:
         article_list = article_list.filter(word__range=word)
+
+    if tag:
+        article_list = article_list.filter(tag__title=tag)
     if order:
         try:
             article_list = article_list.order_by(order)

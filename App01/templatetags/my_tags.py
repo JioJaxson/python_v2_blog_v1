@@ -52,6 +52,13 @@ def generate_order_html(request, key):
             (['5000', '1000'], '10000字以内'),
             (['10000'], '10000字以上'),
         ]
+    elif key == 'tag':
+        order_list = [
+            ('', '全部标签'),
+            ('python', 'python'),
+            ('JavaScript', 'JavaScript'),
+            ('Vue', 'Vue'),
+        ]
     query_params = request.GET.copy()
 
 
