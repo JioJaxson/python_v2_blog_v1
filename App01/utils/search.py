@@ -9,8 +9,8 @@ class Search:
 
     def order_html(self):
         order_list = []
-        self.query_params['order'] = '-change_date'
-        order_list.append(f'<li class="active"><a href="?{self.query_encode}">综合排序</a></li>')
+        # self.query_params['order'] = '-change_date'
+        # order_list.append(f'<li ><a href="?{self.query_encode}">综合排序</a></li>')
 
         for li in self.order_list:
             self.query_params['order'] = li[0]
@@ -23,8 +23,8 @@ class Search:
 
     @property
     def query_encode(self):
-        return urlencode(self.query_params) #本文件测试
-        # return self.query_params.urlencode()
+        # return urlencode(self.query_params) #本文件测试
+        return self.query_params.urlencode()
 
 
 
