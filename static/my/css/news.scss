@@ -1,0 +1,15 @@
+.main{
+  width:1200px;
+  .news_content{
+    display:flex;
+    min-height:800px;
+    border-radius:5px;
+    background-color:white;
+    .left{
+      width:20%
+    }
+    .right{
+      width:80%
+    }
+  }
+}

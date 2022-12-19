@@ -65,7 +65,8 @@ class AdvertAdmin(admin.ModelAdmin):
 
     def get_img_list(self):
         html_s : str = self.img_list
-        html_new = html_s.replace(':', ';').replace('\n', ';')
+        # html_new = html_s.replace(':', ';').replace('\n', ';')
+        html_new = html_s.replace('\n', ';')
         img_list = html_new.split(';')
 
         html_str = ''
@@ -77,7 +78,7 @@ class AdvertAdmin(admin.ModelAdmin):
 
     def get_img(self):
         if self.img:
-            return mark_safe(f'<img src="{self.img.url}" style="height:60px; border-radius:5px>')
+            return mark_safe(f'<img src="{self.img.url}" style="height:60px; border-radius:5px margin-right:20px>')
 
     get_img.short_description = '用户上传'
 

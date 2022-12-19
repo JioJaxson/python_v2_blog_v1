@@ -1,5 +1,12 @@
 {% extends 'index.html' %}
-
+{% block css %}
+<link rel="stylesheet" href="/static/my/css/news.css">
+{% endblock %}
 {% block main %}
-    新闻界面
+    <div class="main">
+        <div class="news_content">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
 {% endblock %}

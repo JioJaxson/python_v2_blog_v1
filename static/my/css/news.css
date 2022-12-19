@@ -1,0 +1,17 @@
+.main {
+  width: 1200px;
+}
+.main .news_content {
+  display: flex;
+  min-height: 800px;
+  border-radius: 5px;
+  background-color: white;
+}
+.main .news_content .left {
+  width: 20%;
+}
+.main .news_content .right {
+  width: 80%;
+}
+
+/*# sourceMappingURL=news.css.map */
