@@ -1,16 +1,39 @@
 from django.contrib import admin
-from App01.models import Articles  # 导入文章表
-from App01.models import Tags  # 导入标签表
-from App01.models import Cover  # 导入封面表
-from App01.models import Comment  # 导入封面表
-from App01.models import Avatars  # 导入头像表
-from App01.models import UserInfo  # 导入头像表
+from App01.models import *
+from django.utils.safestring import mark_safe
+
 
 # Register your models here.
 # 注册
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'look_count', 'digg_count', 'comment_count', 'collects_count', 'word', 'change_date']
+    def get_cover(self):
+        if self.cover:
+            return  mark_safe(f'<img src="{self.cover.url.url}" style="height:60px; width:100px; border-radius:5px">')
+        return
+    get_cover.short_description ='文章封面'
+
+    def get_tags(self):
+        tag_list = ', '.join([i.title for i in self.tag.all()])
+        return tag_list
+    get_tags.short_description ='文章标签'
+
+    def get_title(self):
+        return mark_safe(f'<a href="/article/{self.nid}/" target="_blank">{self.title}</a>')
+    get_title.short_description ='文章'
+
+    def get_edit_delete_btn(self):
+        return mark_safe("""
+        <a href="/backstage/edit_article/{self.nid}" target="_blank">编辑</a>
+        <a href="/admin/App01/articles/{self.nid}/delete/">删除</a>
+        """)
+
+    get_edit_delete_btn.short_description = '操作'
+
+    list_display = [get_title, get_cover, get_tags, 'category',
+                    'look_count', 'digg_count', 'comment_count',
+                    'collects_count', 'word', 'change_date',
+                    get_edit_delete_btn]
 
 
 
