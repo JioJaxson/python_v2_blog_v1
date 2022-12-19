@@ -34,10 +34,10 @@ def generate_order_html(request):
         order_list=[
             ('-change_date', '综合排序'),
             ('-create_date', '最新发布'),
-            ('look_count', '最多浏览'),
-            ('digg_count', '最多点赞'),
-            ('collects_count', '最多收藏'),
-            ('comment_count', '最多评论')
+            ('-look_count', '最多浏览'),
+            ('-digg_count', '最多点赞'),
+            ('-collects_count', '最多收藏'),
+            ('-comment_count', '最多评论')
         ],
         query_params=query_params
     )

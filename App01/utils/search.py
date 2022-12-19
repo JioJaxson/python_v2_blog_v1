@@ -14,11 +14,17 @@ class Search:
 
         for li in self.order_list:
             self.query_params['order'] = li[0]
+
             if self.order == li[0]:
                 li = f'<li class="active"><a href="?{self.query_encode}">{li[1]}</a></li>'
             else:
                 li = f'<li><a href="?{self.query_encode}">{li[1]}</a></li>'
             order_list.append(li)
+        if not self.order:
+            # 没有传递order
+            str_li = order_list[0]
+            new_str = str_li[0:3] + ' class="active"' + str_li[3:]
+            order_list[0] = new_str
         return ''.join(order_list)
 
     @property

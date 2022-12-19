@@ -6,6 +6,7 @@ from App01.models import UserInfo
 from App01.models import Articles, Tags, Cover
 from App01.utils.sub_comment import sub_comment_list
 from App01.utils.pagination import Pagination
+from django.db.models import F
 
 
 # from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
@@ -47,6 +48,7 @@ def search(request):
         except Exception:
             pass
 
+
     # 分页器
     pager = Pagination(
         current_page=request.GET.get('page'),
@@ -71,6 +73,7 @@ def search(request):
 # 文章
 def article(request, nid):
     article_query = Articles.objects.filter(nid=nid)
+    article_query.update(look_count=F('look_count')+1) #浏览文章次数加1
     if not article_query:
         return redirect('/')
     article = article_query.first()
