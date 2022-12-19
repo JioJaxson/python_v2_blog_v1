@@ -39,8 +39,12 @@ def index(request):
 def search(request):
     search_key = request.GET.get('key', '')
     order = request.GET.get('order', '')
+    word = request.GET.getlist('word')
     query_params = request.GET.copy()
     article_list = Articles.objects.filter(title__contains=search_key)
+    # 字数搜索
+    if len(word) == 2:
+        article_list = article_list.filter(word__range=word)
     if order:
         try:
             article_list = article_list.order_by(order)
@@ -61,10 +65,6 @@ def search(request):
     print(pager.start, pager.end, pager.page_html())
     # 切片
     article_list = article_list[pager.start:pager.end]
-
-
-
-    # 文章搜索条件
     query_params.urlencode()
 
     return render(request, 'search.html', locals())
