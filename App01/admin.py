@@ -55,3 +55,32 @@ admin.site.register(Cover)
 admin.site.register(Comment)
 admin.site.register(Avatars)
 admin.site.register(UserInfo)
+
+
+class AdvertAdmin(admin.ModelAdmin):
+    def get_href(self):
+        return mark_safe(f"""<a href="http={self.href}" target="_blank">跳转链接</a>""")
+
+    get_href.short_description = '跳转链接'
+
+    def get_img_list(self):
+        html_s : str = self.img_list
+        html_new = html_s.replace(':', ';').replace('\n', ';')
+        img_list = html_new.split(';')
+
+        html_str = ''
+        for i in img_list:
+            html_str += f'<img src="{i}" style="height:60px; border-radius:5px; margin-right:10px">'
+        return mark_safe(html_str)
+
+    get_img_list.short_description = '广告图组'
+
+    def get_img(self):
+        if self.img:
+            return mark_safe(f'<img src="{self.img.url}" style="height:60px; border-radius:5px>')
+
+    get_img.short_description = '用户上传'
+
+    list_display = ['title', get_img, 'is_show', 'author', get_img_list, get_href,]
+
+admin.site.register(Advert, AdvertAdmin)
