@@ -16,9 +16,10 @@
 {% block main %}
     <div class="main">
         <div class="news_content">
+            {% csrf_token %}
             <div class="left">
                 <ul>
-                     <li active="true">
+                     <li active="true" @click="get_new_data('KqndgxeLl9','微博')">
                         <img src="/static/my/img/news/weibo.png"> 微博
                     </li>
                      <li class="active">

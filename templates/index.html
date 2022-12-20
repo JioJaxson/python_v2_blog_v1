@@ -675,6 +675,16 @@
                 let dom = document.querySelector('.search_key_input')
                 let key = dom.getAttribute('data-search-key')
                 this.search_key = key
+            },
+
+            {#获取热搜数据#}
+            get_new_data(id,name){
+                {#axios.post('http://www.fengfengzhidao.com/api/news/',{id}).then(res=>{#}
+                {#    console.log(res)#}
+                {# })#}
+                  axios.post('https://api.codelife.cc/api/top/list',{id}).then(res=>{
+                    console.log(res)
+                })
             }
         }
 
