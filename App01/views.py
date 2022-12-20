@@ -86,11 +86,16 @@ def article(request, nid):
 
     return render(request, 'article.html', locals())
 
-
+# 新闻
 def news(request):
     return render(request, 'news.html')
 
+# 心情
+def moods(request):
+    return render(request, 'moods.html')
 
+
+# 登陆
 def login(request):
     return render(request, 'login.html')
 

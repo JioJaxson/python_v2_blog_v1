@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin_home/', views.admin_home),
     path('', views.index),
     path('news/', views.news),
+    path('moods/', views.moods),
     path('search/', views.search),
     path('login/', views.login),
     path('login/random_code/', views.get_random_code),

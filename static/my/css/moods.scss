@@ -1,0 +1,26 @@
+.main{
+  width:1200px;
+  .add_mood{
+    width:100%;
+    border-radius: 5px;
+  }
+  .mood{
+    display:flex;
+    margin-top:20px;
+    .left{
+      width:80px;
+      img{
+        width:60px;
+        height:60px;
+        border-radius:10px;
+      }
+    }
+    .right{
+      width:calc(100% - 50px);
+      height: 100px;
+      background-color:pink;
+      border-radius:5px;
+
+    }
+  }
+}

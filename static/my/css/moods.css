@@ -1,0 +1,27 @@
+.main {
+  width: 1200px;
+}
+.main .add_mood {
+  width: 100%;
+  border-radius: 5px;
+}
+.main .mood {
+  display: flex;
+  margin-top: 20px;
+}
+.main .mood .left {
+  width: 80px;
+}
+.main .mood .left img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
+.main .mood .right {
+  width: calc(100% - 50px);
+  height: 100px;
+  background-color: pink;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=moods.css.map */
