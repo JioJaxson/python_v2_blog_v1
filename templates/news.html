@@ -2,11 +2,47 @@
 {% block css %}
 <link rel="stylesheet" href="/static/my/css/news.css">
 {% endblock %}
+
+ {% block banner %}
+    <div class="video_banner">
+        <div class="video_banner_text ">
+            <div id="blog_info">前端沐沐</div>
+            <h3>关注实时动态,读取最新新闻!</h3>
+        </div>
+    </div>
+{#             {% banner 'index' %}#}
+ {% endblock %}
+
 {% block main %}
     <div class="main">
         <div class="news_content">
-            <div class="left"></div>
-            <div class="right"></div>
+            <div class="left">
+                <ul>
+                     <li active="true">
+                        <img src="/static/my/img/news/weibo.png"> 微博
+                    </li>
+                     <li class="active">
+                        <img src="/static/my/img/news/weixin.png"> 微信
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="title">
+                    <img src="/static/my/img/news/weibo.png">
+                    <h2>微博 热搜榜</h2>
+                </div>
+                <div class="body">
+                    <ul>
+                        <li >
+                            <span class="index">1</span><a>张艺谋台东了</a><span class="num">973.7万</span>
+                        </li>
+                         <li>
+                            <span class="index">2</span><a>中南海相对</a><span class="num">878.6万</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
+

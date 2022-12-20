@@ -65,7 +65,7 @@
 }
 #app .video_banner {
   width: 100%;
-  height: 540px;
+  height: 540px !important;
 }
 #app .video_banner .video_banner_text {
   position: relative;
