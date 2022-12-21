@@ -76,6 +76,9 @@
   margin-top: 10px;
   width: 100%;
 }
+.main .el-dialog__body {
+  padding: 10px 20px;
+}
 .main .add_mood_content > div {
   margin-bottom: 20px;
 }

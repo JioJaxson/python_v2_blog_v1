@@ -694,10 +694,16 @@
                 {# })#}
             },
 
-
+            // 心情子级评论显示
             mood_show_comment_list(e){
                 let div = $(e.target).parent().parent().next()
                 div.slideToggle()
+            },
+            // 添加心情
+            mood_add_method(){
+                axios.post('/api/moods/',this.mood_add).then(res=>{
+                    console.log(res)
+                })
             }
         }
 

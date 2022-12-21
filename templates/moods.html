@@ -8,8 +8,9 @@
 
 {% block main %}
     <div class="main">
+     {% csrf_token %}
         <el-dialog
-          title="提示"
+          title="发布心情"
           :visible.sync="mood_dialogVisible"
           width="50%">
           <div class="add_mood_content body">
@@ -41,7 +42,7 @@
           </div>
           <span slot="footer" class="dialog-footer">
             <el-button @click="mood_dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="mood_dialogVisible = false">确 定</el-button>
+            <el-button type="primary"  @click="mood_add_method">确 定</el-button>
           </span>
         </el-dialog>
         <el-button class="add_mood" @click="mood_dialogVisible =true">发布心情</el-button>

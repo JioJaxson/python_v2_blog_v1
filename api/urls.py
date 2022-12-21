@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, re_path
-from api.views import login, article, comment
+from api.views import login, article, comment,mood
 
 urlpatterns = [
     path('login/', login.LoginView.as_view()),  # 登陆
@@ -11,5 +11,7 @@ urlpatterns = [
     re_path('comment/digg/(?P<nid>\d+)', comment.CommentDiggView.as_view()),  # 评论点赞
     re_path('article/digg/(?P<nid>\d+)', article.ArticleDiggView.as_view()),  # 文章点赞
     re_path('article/collects/(?P<nid>\d+)', article.ArticleCollectsView.as_view()),  # 文章收藏
+
+    path('moods/', mood.AddMoodsView.as_view()),  # 发布心情
 
 ]
