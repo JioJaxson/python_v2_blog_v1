@@ -702,7 +702,15 @@
             // 添加心情
             mood_add_method(){
                 axios.post('/api/moods/',this.mood_add).then(res=>{
-                    console.log(res)
+                    if(res.code){
+                        this.$message.error(res.msg)
+                        this.$refs[`mood_add_${res.self}_ref`].focus()
+                        return
+                    }
+                    this.$message.success(res.msg)
+                    setTimeout(()=>{
+                        location.reload()
+                    },1000)
                 })
             }
         }

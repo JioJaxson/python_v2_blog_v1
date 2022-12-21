@@ -16,7 +16,7 @@
           <div class="add_mood_content body">
               <div>
                   <label for="mood_add_name">用户名</label>
-                  <el-input id="mood_add_name" v-model="mood_add.name" placeholder="请输入用户名" />
+                  <el-input id="mood_add_name" ref="mood_add_name_ref" v-model="mood_add.name" placeholder="请输入用户名" />
               </div>
                <div>
                   <label for="">头像</label>
@@ -32,11 +32,11 @@
               </div>
               <div>
                   <label for="mood_add_content">心情内容</label>
-                  <el-input id="mood_add_content" v-model="mood_add.content" type="textarea" resize="none" :row="2" placeholder="请输入心情内容" />
+                  <el-input id="mood_add_content" ref="mood_add_content_ref" v-model="mood_add.content" type="textarea" resize="none" :row="2" placeholder="请输入心情内容" />
               </div>
                <div>
                   <label for="mood_add_drawing">配图</label>
-                  <el-input id="mood_add_drawing" v-model="mood_add.drawing" type="textarea" resize="none" :row="4" placeholder="请输入配图" />
+                  <el-input id="mood_add_drawing" v-model="mood_add.drawing" type="textarea" resize="none" :row="4" placeholder="请输入配图,多个配图使用: 隔开" />
               </div>
 
           </div>
@@ -46,18 +46,24 @@
           </span>
         </el-dialog>
         <el-button class="add_mood" @click="mood_dialogVisible =true">发布心情</el-button>
-        <div class="mood">
+    {% for mood in moods_list %}
+       <div class="mood">
             <div class="left">
-                <img src="/media/avatars/头像_0001_20.jpg">
+                <img src="{{ mood.avatar.url.url }}">
             </div>
             <div class="right">
-                <h3 class='name'>沐沐前端</h3>
-                <p class="content">欢迎大家!</p>
+                <h3 class='name'>{{ mood.name }}</h3>
+                <p class="content">{{ mood.content }}</p>
+                <div class="drawing">
+                    {% if mood.drawing %}
+                        <img src="{{ mood.drawing}}" alt="">
+                    {% endif %} 
+                </div>
                 <div class="info">
-                    <span class="date">5小时前</span>
+                    <span class="date">{{ mood.create_date }}</span>
                     <span class="sub_info">
-                        <span>点赞(1)</span>
-                        <span @click="mood_show_comment_list($event)">评论(1)</span>
+                        <span>点赞({{ mood.digg_count }})</span>
+                        <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>
                         <span class="delete">删除</span>
                     </span>
                 </div>
@@ -84,22 +90,8 @@
                 </ul>
             </div>
         </div>
-     <div class="mood">
-            <div class="left">
-                <img src="/media/avatars/头像_0001_20.jpg">
-            </div>
-            <div class="right">
-                <h3 class='name'>沐沐前端</h3>
-                <p class="content">欢迎大家!</p>
-                <div class="info">
-                    <span class="date">5小时前</span>
-                    <span class="sub_info">
-                        <span>点赞(1)</span>
-                        <span>评论(1)</span>
-                        <span class="delete">删除</span>
-                    </span>
-                </div>
-            </div>
-        </div>
+    {% endfor %}
+    
+
     </div>
 {% endblock %}

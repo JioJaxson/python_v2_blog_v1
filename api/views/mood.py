@@ -10,7 +10,8 @@ import random
 class AddAMoodsForm(forms.Form):
     name = forms.CharField(error_messages={'required': '请输入用户名!'})
     content = forms.CharField(error_messages={'required': '请输入心情内容!'})
-    avatar_id = forms.IntegerField(required=False)  # 不进行为空验证
+    avatar_id = forms.CharField(required=False)  # 不进行为空验证
+    drawing = forms.CharField(required=False)  # 不进行为空验证
 
     def clean_avatar_id(self):
         avatar_id = self.cleaned_data.get('avatar_id')

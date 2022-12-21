@@ -41,6 +41,12 @@
 .main .mood > .right .content {
   margin-bottom: 5px;
 }
+.main .mood > .right .drawing img {
+  height: 120px;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 .main .mood > .right .info {
   font-size: 14px;
   display: flex;
