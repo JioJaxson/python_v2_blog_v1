@@ -11,14 +11,23 @@
         <el-dialog
           title="提示"
           :visible.sync="mood_dialogVisible"
-          width="30%">
-          <div class="add_mood body">
+          width="50%">
+          <div class="add_mood_content body">
               <div>
                   <label for="mood_add_name">用户名</label>
                   <el-input id="mood_add_name" v-model="mood_add.name" placeholder="请输入用户名" />
               </div>
                <div>
                   <label for="">头像</label>
+                   <ul class="avatar_list">
+                       {% for avatar in avatar_list %}
+                          <li >
+                            <el-radio v-model="mood_add.avatar_id" label="{{ avatar.nid }}">
+                                <img src="{{ avatar.url.url }}" alt="">
+                            </el-radio>
+                           </li>
+                       {% endfor %}
+                   </ul>
               </div>
               <div>
                   <label for="mood_add_content">心情内容</label>

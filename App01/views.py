@@ -92,7 +92,10 @@ def news(request):
 
 # 心情
 def moods(request):
-    return render(request, 'moods.html')
+    # 查询所有头像
+    avatar_list = Avatars.objects.all()
+    print(avatar_list)
+    return render(request, 'moods.html', locals())
 
 
 # 登陆
