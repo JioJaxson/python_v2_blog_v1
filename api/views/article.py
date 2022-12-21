@@ -20,6 +20,7 @@ class AddArticleForm(forms.Form):
     status = forms.IntegerField(required=False)  # 不进行为空验证
     pwd = forms.CharField(required=False)  # 不进行为空验证
     recommend = forms.BooleanField(required=False)  # 不进行为空验证
+    word = forms.IntegerField(required=False)  # 文章字数
 
     # 全局钩子 校验分类和密码
     def clean(self):

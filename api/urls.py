@@ -12,6 +12,6 @@ urlpatterns = [
     re_path('article/digg/(?P<nid>\d+)', article.ArticleDiggView.as_view()),  # 文章点赞
     re_path('article/collects/(?P<nid>\d+)', article.ArticleCollectsView.as_view()),  # 文章收藏
 
-    path('moods/', mood.AddMoodsView.as_view()),  # 发布心情
+    path('moods/', mood.MoodsView.as_view()),  # 发布心情
 
 ]
