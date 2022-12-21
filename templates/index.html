@@ -328,7 +328,7 @@
         return response.data;
     });
 
-    {#动态导航栏#}
+    //动态导航栏
     function  dynamic_navigation(){
         let a_list = document.querySelectorAll('#dynamic_nav>a')
         let path = location.pathname
@@ -418,7 +418,7 @@
                 })
             },
 
-            {#将被评论人名字写到placeholder#}
+            //将被评论人名字写到placeholder
             set_sub_placeholder(div, username, cid) {
                 $(div).find('textarea').attr('placeholder', `@${username}`)
                 $(div).find('textarea').attr('cid', cid)
@@ -426,21 +426,21 @@
             },
 
 
-            {#展示子评论回复列表#}
+            //展示子评论回复列表
             show_sub_comment_list(e, username, cid) {
                 let div = $(e.target).parent().parent().next()
                 $(div).slideToggle()
                 this.set_sub_placeholder(div, username, cid)
             },
 
-            {#子评论回复显示#}
+            //子评论回复显示
             sub_comment_set_placeholder(e, username, cid) {
                 let div = $(e.target).parents('.sub_comments_list')
                 this.set_sub_placeholder(div, username, cid)
 
             },
 
-            {#添加子评论#}
+            //添加子评论
             add_sub_comment(e, nid) {
                 // nid 文章id   cid 评论id
                 axios.post(`/api/article/comment/${nid}/`, {
@@ -463,7 +463,7 @@
             },
 
 
-            {#删除子评论#}
+            //删除子评论
             delete_sub_comment(nid, aid, root_comment_id) {
                 this.$confirm('此操作将永久删除该评论, 是否继续?', '提示', {
                     confirmButtonText: '确定',
@@ -496,7 +496,7 @@
             },
 
 
-            {#评论点赞#}
+            //评论点赞
             comment_digg(e, nid) {
                 axios.post(`/api/comment/digg/${nid}`).then(res => {
                     if (res.code) {
@@ -509,7 +509,7 @@
             },
 
 
-            {#文章点赞#}
+            //文章点赞
             article_digg(e, nid) {
                 let dom = e.target
                 axios.post(`/api/article/digg/${nid}`).then(res => {
@@ -531,7 +531,7 @@
             },
 
 
-            {#文章收藏#}
+            //文章收藏
             article_collects(e, nid) {
                 let dom = e.target
                 axios.post(`/api/article/collects/${nid}`).then(res => {
@@ -553,7 +553,7 @@
 
             },
 
-            {#返回顶部#}
+            //返回顶部
             go_to_top() {
                 $('html,body').animate({
                     scrollTop: 0
@@ -576,7 +576,7 @@
                 this.flag = false
             },
 
-            {#悬浮目录的显隐#}
+            //悬浮目录的显隐
             sliderChange(val) {
                 let dom = this.$refs.slider
                 localStorage.setItem('isShowSlider', val)
@@ -591,7 +591,7 @@
 
             },
 
-            {#悬浮目录#}
+            //悬浮目录
             get_sidebar() {
                 let content = $('#article_content')
                 let h_list = content.children('h1,h2,h3,h4')
@@ -630,7 +630,7 @@
             },
 
 
-            {#代码一键复制#}
+            //代码一键复制
             code_copy() {
                 $('pre').each(function () {
                     let copy = $(`<i title='copy' class="el-icon-document-copy code_copy"></i>`)
@@ -653,7 +653,7 @@
                 })
                 {#console.log($('pre'))#}
             },
-            {#// 点击搜索#}
+            // 点击搜索
             search() {
                 let box = document.querySelector('.search')
                 if (!box.classList.contains('show_search')) {
@@ -670,21 +670,21 @@
 
             },
 
-            {#初始化搜素词#}
+            //初始化搜素词
             init_search_key() {
                 let dom = document.querySelector('.search_key_input')
                 let key = dom.getAttribute('data-search-key')
                 this.search_key = key
             },
 
-            {#获取热搜数据#}
+            //获取热搜数据
             get_new_data(id,name){
-                {#axios.post('http://www.fengfengzhidao.com/api/news/',{id}).then(res=>{#}
+                axios.post('http://www.fengfengzhidao.com/api/news/',{id}).then(res=>{
+                    console.log(res)
+                 })
+                {#  axios.post('https://api.codelife.cc/api/top/list',{id}).then(res=>{#}
                 {#    console.log(res)#}
                 {# })#}
-                  axios.post('https://api.codelife.cc/api/top/list',{id}).then(res=>{
-                    console.log(res)
-                })
             }
         }
 

@@ -7,21 +7,70 @@
 }
 .main .mood {
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
 }
-.main .mood .left {
-  width: 80px;
+.main .mood > .left {
+  width: 90px;
 }
-.main .mood .left img {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-}
-.main .mood .right {
-  width: calc(100% - 50px);
-  height: 100px;
-  background-color: pink;
+.main .mood > .left img {
+  width: 70px;
+  height: 70px;
   border-radius: 5px;
+}
+.main .mood > .right {
+  width: calc(100% - 90px);
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+.main .mood > .right::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -20px;
+  top: 23px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+.main .mood > .right .name {
+  margin-bottom: 5px;
+}
+.main .mood > .right .content {
+  margin-bottom: 5px;
+}
+.main .mood > .right .info {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+.main .mood > .right .info .sub_info > span {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.main .mood > .right .info .delete {
+  color: red;
+}
+.main .mood > .right .sub_comment_list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.main .mood > .right .sub_comment_list li {
+  display: flex;
+}
+.main .mood > .right .sub_comment_list li .left {
+  width: 70px;
+}
+.main .mood > .right .sub_comment_list li .left img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #f0eeee;
+}
+.main .mood > .right .sub_comment_list li .right {
+  width: calc(100% - 70px);
 }
 
 /*# sourceMappingURL=moods.css.map */
