@@ -685,6 +685,12 @@
                 {#  axios.post('https://api.codelife.cc/api/top/list',{id}).then(res=>{#}
                 {#    console.log(res)#}
                 {# })#}
+            },
+
+
+            mood_show_comment_list(e){
+                let div = $(e.target).parent().parent().next()
+                div.slideToggle()
             }
         }
 

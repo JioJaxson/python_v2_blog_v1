@@ -20,7 +20,7 @@
                     <span class="date">5小时前</span>
                     <span class="sub_info">
                         <span>点赞(1)</span>
-                        <span>评论(1)</span>
+                        <span @click="mood_show_comment_list($event)">评论(1)</span>
                         <span class="delete">删除</span>
                     </span>
                 </div>
@@ -33,15 +33,17 @@
                             <h4 class="name">张三</h4>
                             <p class="content">回复你的</p>
                             <div class="info">
-                    <span class="date">5小时前</span>
-                    <span class="sub_info">
-                        <span>点赞(1)</span>
-                        <span>评论(1)</span>
-                        <span class="delete">删除</span>
-                    </span>
-                </div>
+                                <span class="date">5小时前</span>
+                                <span class="sub_info">
+                                    <span>点赞(1)</span>
+
+                                    <span class="delete">删除</span>
+                                </span>
+                            </div>
                         </div>
                     </li>
+                    <el-button  type="primary" class="reply_mood">回复这条心情</el-button>
+
                 </ul>
             </div>
         </div>

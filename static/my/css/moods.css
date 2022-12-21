@@ -23,7 +23,7 @@
   border-radius: 5px;
   position: relative;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+  padding: 10px 20px;
 }
 .main .mood > .right::after {
   content: "";
@@ -71,6 +71,10 @@
 }
 .main .mood > .right .sub_comment_list li .right {
   width: calc(100% - 70px);
+}
+.main .mood > .right .reply_mood {
+  margin-top: 10px;
+  width: 100%;
 }
 
 /*# sourceMappingURL=moods.css.map */
