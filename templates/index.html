@@ -351,7 +351,14 @@
             isShowSlider: false, //显示测边目录
             slide_list: [],
             slide_text: '显示悬浮目录',
-            search_key: ''
+            search_key: '',
+            mood_dialogVisible:false,
+            mood_add:{
+                name:'',
+                avatar_nid:null,
+                content:'',
+                drawing:'',
+            }
         },
         created() {
             this.init_theme();

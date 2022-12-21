@@ -8,7 +8,34 @@
 
 {% block main %}
     <div class="main">
-        <el-button class="add_mood">发布心情</el-button>
+        <el-dialog
+          title="提示"
+          :visible.sync="mood_dialogVisible"
+          width="30%">
+          <div class="add_mood body">
+              <div>
+                  <label for="mood_add_name">用户名</label>
+                  <el-input id="mood_add_name" v-model="mood_add.name" placeholder="请输入用户名" />
+              </div>
+               <div>
+                  <label for="">头像</label>
+              </div>
+              <div>
+                  <label for="mood_add_content">心情内容</label>
+                  <el-input id="mood_add_content" v-model="mood_add.content" type="textarea" resize="none" :row="2" placeholder="请输入心情内容" />
+              </div>
+               <div>
+                  <label for="mood_add_drawing">配图</label>
+                  <el-input id="mood_add_drawing" v-model="mood_add.drawing" type="textarea" resize="none" :row="4" placeholder="请输入配图" />
+              </div>
+
+          </div>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="mood_dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="mood_dialogVisible = false">确 定</el-button>
+          </span>
+        </el-dialog>
+        <el-button class="add_mood" @click="mood_dialogVisible =true">发布心情</el-button>
         <div class="mood">
             <div class="left">
                 <img src="/media/avatars/头像_0001_20.jpg">
