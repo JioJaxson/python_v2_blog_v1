@@ -46,7 +46,7 @@
           </span>
         </el-dialog>
         <el-button class="add_mood" @click="mood_dialogVisible =true">发布心情</el-button>
-    {% for mood in moods_list %}
+    {% for mood in mood_list %}
        <div class="mood">
             <div class="left">
                 <img src="{{ mood.avatar.url.url }}">
@@ -58,7 +58,7 @@
                     {% generate_drawing mood.drawing %}
                 </div>
                 <div class="info">
-                    <span class="date">{{ mood.create_date }}</span>
+                    <span class="date">{{ mood.create_date }} ({{ mood.addr.prov }}-{{ mood.addr.city }})</span>
                     <span class="sub_info">
                         <span>点赞({{ mood.digg_count }})</span>
                         <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>

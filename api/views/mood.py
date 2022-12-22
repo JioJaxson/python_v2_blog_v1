@@ -5,6 +5,7 @@ from django.db.models import F
 from django import forms
 from App01.models import Avatars, Moods, MoodComment
 import random
+from api.utils.get_user_info import get_ip, get_address_info
 
 # 添加文章编辑文章的验证
 class AddAMoodsForm(forms.Form):
@@ -22,6 +23,7 @@ class AddAMoodsForm(forms.Form):
         avatar_id = random.choice(avatar_list)
         return avatar_id
 
+# 心情
 class MoodsView(View):
     def post(self, request):
         res = {
@@ -36,6 +38,13 @@ class MoodsView(View):
             # 验证不通过
             res['self'], res['msg'] = clean_form(form)
             return JsonResponse(res)
+
+        ip = get_ip(request)
+        addr = get_address_info(ip)
+        print(ip)
+        print(addr)
+        form.cleaned_data['ip'] = ip
+        form.cleaned_data['addr'] = addr
         Moods.objects.create(**form.cleaned_data)
         res['code'] = 0
         return JsonResponse(res)

@@ -267,7 +267,7 @@ class Moods(models.Model):
     nid = models.AutoField(primary_key=True)
     name = models.CharField(verbose_name='发布人', max_length=16)
     ip = models.GenericIPAddressField(verbose_name='ip地址', default='120.228.2.238')
-    addr = models.TextField(verbose_name='用户地址信息', null=True)
+    addr = models.JSONField(verbose_name='用户地址信息', null=True)
     create_date = models.DateTimeField(verbose_name='发布时间', auto_now=True)
     content = models.TextField(verbose_name='心情内容')
     drawing = models.TextField(verbose_name='配图组，以;隔开', null=True, blank=True)
