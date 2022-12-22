@@ -48,3 +48,21 @@ class MoodsView(View):
         Moods.objects.create(**form.cleaned_data)
         res['code'] = 0
         return JsonResponse(res)
+
+    def delete(self,request,nid):
+        res = {
+            'msg': '心情删除成功!',
+            'code': 412,
+        }
+        if not (request.user.is_superuser):
+            # 登陆人不是评论人并且登陆人不是超级管理员
+            res['msg'] = '用户验证失败！'
+            return JsonResponse(res)
+        mood_query = Moods.objects.filter(nid=nid)
+        if not mood_query:
+            res['msg'] = '该心情不存在'
+            return JsonResponse(res)
+        mood_query.delete()
+        res['code'] = 0
+        return JsonResponse(res)
+

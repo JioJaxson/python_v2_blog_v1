@@ -13,5 +13,6 @@ urlpatterns = [
     re_path('article/collects/(?P<nid>\d+)', article.ArticleCollectsView.as_view()),  # 文章收藏
 
     path('moods/', mood.MoodsView.as_view()),  # 发布心情
+    re_path('moods/(?P<nid>\d+)', mood.MoodsView.as_view()),  # 删除心情
 
 ]

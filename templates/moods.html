@@ -65,7 +65,9 @@
                     <span class="sub_info">
                         <span>点赞({{ mood.digg_count }})</span>
                         <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>
-                        <span class="delete">删除</span>
+                        {% if request.user.is_superuser %}
+                            <span class="delete" @click="mood_delete('{{ mood.nid }}')">删除</span>
+                        {% endif %} 
                     </span>
                 </div>
                 <ul class="sub_comment_list">
@@ -80,8 +82,9 @@
                                 <span class="date">5小时前</span>
                                 <span class="sub_info">
                                     <span>点赞(1)</span>
-
-                                    <span class="delete">删除</span>
+                                    {% if request.user.is_superuser %}
+                                        <span class="delete">删除</span>
+                                    {% endif %}
                                 </span>
                             </div>
                         </div>
