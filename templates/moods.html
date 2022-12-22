@@ -58,7 +58,10 @@
                     {% generate_drawing mood.drawing %}
                 </div>
                 <div class="info">
-                    <span class="date">{{ mood.create_date }} ({{ mood.addr.prov }}-{{ mood.addr.city }})</span>
+                    <span class="date">{{ mood.create_date }}
+                        <img class="addr_lng" src="/static/my/svg/lng.svg" alt="">
+                        <i class="addr_info">{{ mood.addr.prov }}-{{ mood.addr.city }}</i>
+                    </span>
                     <span class="sub_info">
                         <span>点赞({{ mood.digg_count }})</span>
                         <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>
