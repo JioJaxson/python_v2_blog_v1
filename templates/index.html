@@ -358,7 +358,13 @@
                 avatar_id:null,
                 content:'',
                 drawing:'',
-            }
+            },
+            mood_show_drawing:[]
+        },
+        watch:{
+           "mood_add.drawing"(newValue,oldValue){
+                this.mood_show_drawing = newValue.split('\n')
+           }
         },
         created() {
             this.init_theme();
@@ -736,7 +742,8 @@
                     message: '已取消删除'
                   });
                 });
-            }
+            },
+
         }
 
     })

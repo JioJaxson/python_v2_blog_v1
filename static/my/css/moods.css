@@ -118,5 +118,9 @@
   height: 50px;
   border-radius: 5px;
 }
+.main .add_mood_content .show_drawing img {
+  width: initial;
+  margin-right: 20px;
+}
 
 /*# sourceMappingURL=moods.css.map */
