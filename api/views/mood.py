@@ -49,7 +49,7 @@ class MoodsView(View):
         res['code'] = 0
         return JsonResponse(res)
 
-    def delete(self,request,nid):
+    def delete(self, request, nid):
         res = {
             'msg': '心情删除成功!',
             'code': 412,
