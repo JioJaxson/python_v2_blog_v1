@@ -66,7 +66,7 @@
                         <span>点赞({{ mood.digg_count }})</span>
                         <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>
                         {% if request.user.is_superuser %}
-                            <span class="delete" @click="mood_delete('{{ mood.nid }}')">删除</span>
+                            <span class="delete" @click="mood_delete('{{ mood.nid }}','e.$event')">删除</span>
                         {% endif %} 
                     </span>
                 </div>

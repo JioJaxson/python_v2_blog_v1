@@ -94,7 +94,7 @@ def news(request):
 def moods(request):
     # 查询所有头像
     avatar_list = Avatars.objects.all()
-    mood_list = Moods.objects.all()
+    mood_list = Moods.objects.all().order_by('-create_date')
     print(mood_list)
     return render(request, 'moods.html', locals())
 
