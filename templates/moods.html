@@ -55,9 +55,7 @@
                 <h3 class='name'>{{ mood.name }}</h3>
                 <p class="content">{{ mood.content }}</p>
                 <div class="drawing">
-                    {% if mood.drawing %}
-                        <img src="{{ mood.drawing}}" alt="">
-                    {% endif %} 
+                    {% generate_drawing mood.drawing %}
                 </div>
                 <div class="info">
                     <span class="date">{{ mood.create_date }}</span>

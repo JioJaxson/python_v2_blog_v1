@@ -26,6 +26,7 @@ def banner(menu_name, article=None):
         pass
     return {'img_list': img_list}
 
+# 生成标签
 @register.simple_tag
 def generate_order_html(request, key):
     order = request.GET.get(key, '')
@@ -87,3 +88,21 @@ def generate_advert(advert_list):
                 f'<div><a href="{i.href}" title="{i.title}" target="_blank"><img src="{url}"></a></div>'
             )
     return mark_safe(''.join(html_list))
+
+
+# 生成图片
+@register.simple_tag
+def generate_drawing(drawing:str):
+    if not drawing:
+        return ''
+    drawing = drawing.replace(':', ';').replace('\n', ';')
+    drawing_list = drawing.split(';')
+    html_s = ''
+    for i in drawing_list:
+        html_s += f'<img src="{i}" alt="">'
+    return mark_safe(html_s)
+
+
+
+
+
