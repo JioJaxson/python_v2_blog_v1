@@ -302,7 +302,7 @@ class MoodComment(models.Model):
     content = models.TextField(verbose_name='评论内容')
     digg_count = models.IntegerField(verbose_name='点赞数', default=0)
     ip = models.GenericIPAddressField(verbose_name='ip地址', default='120.228.2.238')
-    addr = models.TextField(verbose_name='用户地址信息', null=True)
+    addr = models.JSONField(verbose_name='用户地址信息', null=True)
     mood = models.ForeignKey(
         to='Moods',
         to_field='nid',

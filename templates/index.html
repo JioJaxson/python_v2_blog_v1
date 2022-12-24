@@ -359,7 +359,12 @@
                 content:'',
                 drawing:'',
             },
-            mood_show_drawing:[]
+            mood_show_drawing:[],
+            mood_comment_dialogVisible:false,
+            mood_add_reply:{
+                name:'',
+                content:'',
+            }
         },
         watch:{
            "mood_add.drawing"(newValue,oldValue){
@@ -743,6 +748,27 @@
                   });
                 });
             },
+            // 回复这条心情弹窗
+            mood_comment_dialogVisible_show(nid){
+                this.mood_comment_dialogVisible = true
+                this.mood_reply_add.nid = nid
+            },
+            {#提交回复心情#}
+            mood_reply_add(){
+                let nid = this.mood_reply_add.nid
+                axios.post(`/api/mood_comments/${nid}/`,this.mood_add_reply).then(res=>{
+                    if(res.code){
+                        this.$message.error(res.msg)
+                        this.$refs[`mood_add_name_${res.self}_ref`].focus()
+                        return
+                    }
+                    this.$message.success(res.msg)
+                    setTimeout(()=>{
+                        location.reload()
+                    },1000)
+                })
+                console.log('mood_add_reply',this.mood_add_reply)
+            }
 
         }
 

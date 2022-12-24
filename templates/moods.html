@@ -48,6 +48,26 @@
             <el-button type="primary"  @click="mood_add_method">确 定</el-button>
           </span>
         </el-dialog>
+        <el-dialog
+          title="心情回复"
+          :visible.sync="mood_comment_dialogVisible"
+          width="40%">
+            <div class="add_mood_content">
+                     <div>
+                      <label for="mood_add_name_reply">用户名</label>
+                      <el-input id="mood_add_name_reply" ref="mood_add_name_ref" v-model="mood_add_reply.name" placeholder="请输入用户名" />
+                  </div>
+                 <div>
+                      <label for="mood_add_content_reply">回复内容</label>
+                      <el-input id="mood_add_content_reply" ref="mood_add_content_ref" v-model="mood_add_reply.content" type="textarea" resize="none" :row="2" placeholder="请输入心情内容" />
+                  </div>
+
+            </div>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="mood_comment_dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="mood_reply_add">确 定</el-button>
+          </span>
+        </el-dialog>
         <el-button class="add_mood" @click="mood_dialogVisible =true">发布心情</el-button>
     {% for mood in mood_list %}
        <div class="mood">
@@ -92,8 +112,8 @@
                             </div>
                         </div>
                     </li>
-                    <el-button  type="primary" class="reply_mood">回复这条心情</el-button>
-
+                    <el-button  @click="mood_comment_dialogVisible_show('{{ mood.nid }}')" type="primary" class="reply_mood">
+                        回复这条心情</el-button>
                 </ul>
             </div>
         </div>

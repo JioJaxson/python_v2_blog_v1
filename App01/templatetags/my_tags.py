@@ -92,7 +92,7 @@ def generate_advert(advert_list):
 
 # 生成图片
 @register.simple_tag
-def generate_drawing(drawing:str):
+def generate_drawing(drawing: str):
     if not drawing:
         return ''
     drawing = drawing.replace(':', ';').replace('\n', ';')
