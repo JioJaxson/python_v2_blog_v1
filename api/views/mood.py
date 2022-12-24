@@ -66,3 +66,30 @@ class MoodsView(View):
         res['code'] = 0
         return JsonResponse(res)
 
+# 心情评论
+class MoodCommentsView(View):
+    def post(self, request,nid):
+        res = {
+            'msg': '心情评论成功!',
+            'code': 412,
+            'self': None,
+        }
+        data = request.data
+        print(data)
+        form = AddAMoodsForm(data)
+        if not form.is_valid():
+            # 验证不通过
+            res['self'], res['msg'] = clean_form(form)
+            return JsonResponse(res)
+
+        ip = get_ip(request)
+        addr = get_address_info(ip)
+
+        form.cleaned_data['ip'] = ip
+        form.cleaned_data['addr'] = addr
+        form.cleaned_data['mood_id'] = nid
+        form.cleaned_data.pop('drawing')
+        MoodComment.objects.create(**form.cleaned_data)
+        res['code'] = 0
+        return JsonResponse(res)
+
