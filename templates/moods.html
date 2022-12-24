@@ -69,55 +69,57 @@
           </span>
         </el-dialog>
         <el-button class="add_mood" @click="mood_dialogVisible =true">发布心情</el-button>
-    {% for mood in mood_list %}
-       <div class="mood">
-            <div class="left">
-                <img src="{{ mood.avatar.url.url }}">
-            </div>
-            <div class="right">
-                <h3 class='name'>{{ mood.name }}</h3>
-                <p class="content">{{ mood.content }}</p>
-                <div class="drawing">
-                    {% generate_drawing mood.drawing %}
+        {% for mood in mood_list %}
+            <div class="mood">
+                <div class="left">
+                    <img src="{{ mood.avatar.url.url }}">
                 </div>
-                <div class="info">
-                    <span class="date">{{ mood.create_date }}
-                        <img class="addr_lng" src="/static/my/svg/lng.svg" alt="">
-                        <i class="addr_info">{{ mood.addr.prov }}-{{ mood.addr.city }}</i>
-                    </span>
-                    <span class="sub_info">
-                        <span>点赞({{ mood.digg_count }})</span>
-                        <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>
-                        {% if request.user.is_superuser %}
-                            <span class="delete" @click="mood_delete('{{ mood.nid }}','e.$event')">删除</span>
-                        {% endif %} 
-                    </span>
+                <div class="right">
+                    <h3 class='name'>{{ mood.name }}</h3>
+                    <p class="content">{{ mood.content }}</p>
+                    <div class="drawing">
+                        {% generate_drawing mood.drawing %}
+                    </div>
+                    <div class="info">
+                        <span class="date">{{ mood.create_date }}
+                            <img class="addr_lng" src="/static/my/svg/lng.svg" alt="">
+                            <i class="addr_info">{{ mood.addr.prov }}-{{ mood.addr.city }}</i>
+                        </span>
+                        <span class="sub_info">
+                            <span>点赞({{ mood.digg_count }})</span>
+                            <span @click="mood_show_comment_list($event)">评论({{ mood.comment_count }})</span>
+                                {% if request.user.is_superuser %}
+                                    <span class="delete" @click="mood_delete('{{ mood.nid }}','e.$event')">删除</span>
+                                {% endif %}
+                        </span>
+                    </div>
+                    <ul class="sub_comment_list">
+                        {% for comment in mood.moodcomment_set.all %}
+                            <li>
+                                <div class="left">
+                                    <img src="{{ comment.avatar.url.url }}">
+                                </div>
+                                <div class="right">
+                                    <h4 class="name">{{ comment.name }}</h4>
+                                    <p class="content">{{ comment.content }}</p>
+                                    <div class="info">
+                                        <span class="date">{{ comment.create_date }}</span>
+                                        <span class="sub_info">
+                                            <span>点赞({{ comment.digg_count }})</span>
+                                            {% if request.user.is_superuser %}
+                                                <span class="delete">删除</span>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        <el-button  @click="mood_comment_dialogVisible_show('{{ mood.nid }}')" type="primary" class="reply_mood">
+                            回复这条心情</el-button>
+                    </ul>
                 </div>
-                <ul class="sub_comment_list">
-                    <li>
-                        <div class="left">
-                             <img src="/media/avatars/头像_0002_27.jpg">
-                        </div>
-                        <div class="right">
-                            <h4 class="name">张三</h4>
-                            <p class="content">回复你的</p>
-                            <div class="info">
-                                <span class="date">5小时前</span>
-                                <span class="sub_info">
-                                    <span>点赞(1)</span>
-                                    {% if request.user.is_superuser %}
-                                        <span class="delete">删除</span>
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                    <el-button  @click="mood_comment_dialogVisible_show('{{ mood.nid }}')" type="primary" class="reply_mood">
-                        回复这条心情</el-button>
-                </ul>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
     
 
     </div>

@@ -70,6 +70,7 @@
   color: red;
 }
 .main .mood > .right .sub_comment_list {
+  display: none;
   margin-top: 10px;
   margin-bottom: 10px;
 }

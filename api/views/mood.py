@@ -90,6 +90,8 @@ class MoodCommentsView(View):
         form.cleaned_data['mood_id'] = nid
         form.cleaned_data.pop('drawing')
         MoodComment.objects.create(**form.cleaned_data)
+
+        Moods.objects.filter(nid=nid).update(comment_count=F('comment_count') + 1)
         res['code'] = 0
         return JsonResponse(res)
 
