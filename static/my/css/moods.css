@@ -60,7 +60,10 @@
   top: 4px;
 }
 .main .mood > .right .info .addr_info {
-  color: #ff8803;
+  color: #409eff;
+}
+.main .mood > .right .info .sub_addr_info {
+  color: #333;
 }
 .main .mood > .right .info .sub_info > span {
   cursor: pointer;

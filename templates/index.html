@@ -726,26 +726,26 @@
             },
             // 删除心情
             mood_delete(nid,e){
-                 this.$confirm('此操作将永久删除该心情, 是否继续?', '提示', {
-                      confirmButtonText: '确定',
-                      cancelButtonText: '取消',
-                      type: 'warning'
+                this.$confirm('此操作将永久删除该心情, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
                 }).then(() => {
-                     axios.delete(`/api/moods/${nid}/`).then(res=>{
+                    axios.delete(`/api/moods/${nid}/`).then(res=>{
                         if(res.code){
                             this.$message.error(res.msg)
                             return
                         }
                         this.$message.success(res.msg)
-                             setTimeout(()=>{
-                                 $(e.target).parents('.mood').remove()
-                             },500)
-                            })
+                        setTimeout(()=>{
+                            $(e.target).parents('.mood').remove()
+                        },500)
+                    })
                 }).catch(() => {
-                  this.$message({
-                    type: 'info',
-                    message: '已取消删除'
-                  });
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
                 });
             },
             // 回复这条心情弹窗
@@ -768,6 +768,36 @@
                     },1000)
                 })
                 console.log('mood_add_reply',this.mood_add_reply)
+            },
+
+            //删除心情评论
+            mood_sub_comment_delete(nid, mood_id,e){
+                this.$confirm('此操作将永久删除该评论, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    // nid 文章id  mood_id 心情id
+                    axios.delete(`/api/moods_comments/${nid}/`,{
+                        params:[
+                            mood_id
+                        ]
+                    }).then(res=>{
+                        if(res.code){
+                            this.$message.error(res.msg)
+                            return
+                        }
+                        this.$message.success(res.msg)
+                        setTimeout(()=>{
+                            $(e.target).parents('li').remove()
+                        },500)
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
             }
 
         }

@@ -103,11 +103,14 @@
                                     <h4 class="name">{{ comment.name }}</h4>
                                     <p class="content">{{ comment.content }}</p>
                                     <div class="info">
-                                        <span class="date">{{ comment.create_date }}</span>
+                                        <span class="date">{{ comment.create_date }}
+                                            <img class="addr_lng" src="/static/my/svg/lng.svg" alt="">
+                                            <i class="addr_info sub_addr_info">{{ mood.addr.prov }}-{{ mood.addr.city }}</i>
+                                        </span>
                                         <span class="sub_info">
                                             <span>点赞({{ comment.digg_count }})</span>
                                             {% if request.user.is_superuser %}
-                                                <span class="delete">删除</span>
+                                                <span class="delete" @click="mood_sub_comment_delete('{{ comment.nid }}','{{ mood.nid }}',$event)">删除</span>
                                             {% endif %}
                                         </span>
                                     </div>
