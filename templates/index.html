@@ -685,26 +685,22 @@
                 // 打开标签页
                 window.open('/search/?key=' + this.search_key)
 
-
             },
-
             //初始化搜素词
             init_search_key() {
                 let dom = document.querySelector('.search_key_input')
                 let key = dom.getAttribute('data-search-key')
                 this.search_key = key
             },
-
             //获取热搜数据
             get_new_data(id,name){
                 axios.post('http://www.fengfengzhidao.com/api/news/',{id}).then(res=>{
                     console.log(res)
-                 })
+                })
                 {#  axios.post('https://api.codelife.cc/api/top/list',{id}).then(res=>{#}
                 {#    console.log(res)#}
                 {# })#}
             },
-
             // 心情子级评论显示
             mood_show_comment_list(e){
                 let div = $(e.target).parent().parent().next()
@@ -769,7 +765,6 @@
                 })
                 console.log('mood_add_reply',this.mood_add_reply)
             },
-
             //删除心情评论
             mood_sub_comment_delete(nid, mood_id,e){
                 this.$confirm('此操作将永久删除该评论, 是否继续?', '提示', {
@@ -778,10 +773,10 @@
                     type: 'warning'
                 }).then(() => {
                     // nid 文章id  mood_id 心情id
-                    axios.delete(`/api/moods_comments/${nid}/`,{
-                        params:[
+                    axios.delete(`/api/mood_comments/${nid}/`,{
+                        data:{
                             mood_id
-                        ]
+                        }
                     }).then(res=>{
                         if(res.code){
                             this.$message.error(res.msg)
@@ -799,9 +794,7 @@
                     });
                 });
             }
-
         }
-
     })
 
 
