@@ -68,7 +68,7 @@ class MoodsView(View):
 
 # 心情评论
 class MoodCommentsView(View):
-    def post(self, request,nid):
+    def post(self, request, nid):
         res = {
             'msg': '心情评论成功!',
             'code': 412,
@@ -92,6 +92,23 @@ class MoodCommentsView(View):
         MoodComment.objects.create(**form.cleaned_data)
 
         Moods.objects.filter(nid=nid).update(comment_count=F('comment_count') + 1)
+        res['code'] = 0
+        return JsonResponse(res)
+
+    def delete(self, request, nid):
+        res = {
+            'msg': '评论删除成功!',
+            'code': 412,
+        }
+        if not request.user.is_superuser:
+            # 登陆人不是评论人并且登陆人不是超级管理员
+            res['msg'] = '用户验证失败！'
+            return JsonResponse(res)
+        mood_id = request.get('mood_id')
+        # mood_id = request.post('mood_id')
+        MoodComment.objects.filter(nid=nid).delete()
+        # print('nid', nid, mood_id)
+        Moods.objects.filter(nid=mood_id).update(comment_count=F('comment_count') - 1)
         res['code'] = 0
         return JsonResponse(res)
 
